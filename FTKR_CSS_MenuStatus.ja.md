@@ -1,319 +1,321 @@
-[トップページに戻る](README.md)
+[Return to Top Page](README.md)
 
-# [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) プラグイン
+# [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) Plugin
 
-アクターのメニュー画面のステータス表示を変更するプラグインです。<br>
-本プラグインは、[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.ja.md)の拡張プラグインです。
+This plugin modifies the status display of actors in the menu screen.  
+This plugin is an extension of the [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.ja.md) plugin.
 
-ダウンロード: [FTKR_CSS_MenuStatus.js](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_MenuStatus.js)
+Download: [FTKR_CSS_MenuStatus.js](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_MenuStatus.js)
 
-## 目次
+## Table of Contents
 
-以下の項目の順でプラグインの使い方を説明します。
-1. [概要](#概要)
-2. [プラグインの登録](#プラグインの登録)
-3. [レイアウト設定](#レイアウト設定)
-4. [ウィンドウの設定](#ウィンドウの設定)
-    1. [プラグインパラメータの設定](#プラグインパラメータの設定)
-    2. [ウィンドウ設定における補足](#ウィンドウ設定における補足)
-5. [アクターの表示例](#アクターの表示例)
-    1. [アクターの縦の表示人数を変える場合](#アクターの縦の表示人数を変える場合)
-    1. [アクターを横に並べる場合](#アクターを横に並べる場合)
-    1. [顔画像に別のステータスを重ねて表示](#顔画像に別のステータスを重ねて表示)
-    1. [カスタム画像を使った表示](#カスタム画像を使った表示)
-* [プラグインの更新履歴](#プラグインの更新履歴)
-* [ライセンス](#ライセンス)
+The following sections explain how to use the plugin:
+1. [Overview](#overview)
+2. [Plugin Registration](#plugin-registration)
+3. [Layout Settings](#layout-settings)
+4. [Window Settings](#window-settings)
+    1. [Plugin Parameter Settings](#plugin-parameter-settings)
+    2. [Additional Notes on Window Settings](#additional-notes-on-window-settings)
+5. [Actor Display Examples](#actor-display-examples)
+    1. [Changing the Number of Actors Displayed Vertically](#changing-the-number-of-actors-displayed-vertically)
+    2. [Displaying Actors Horizontally](#displaying-actors-horizontally)
+    3. [Overlaying Status on Face Images](#overlaying-status-on-face-images)
+    4. [Using Custom Images](#using-custom-images)
+* [Plugin Update History](#plugin-update-history)
+* [License](#license)
 
-## 概要
+## Overview
 
-本プラグインを実装することで、メニュー画面で表示するアクターのステータス表示のレイアウトを変更できます。
+By implementing this plugin, you can change the layout of the actor status display in the menu screen.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n01_001.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n01_001.png)
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## プラグインの登録
+## Plugin Registration
 
-本プラグインを使用するためには、[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js)の事前登録が必要です。
-プラグイン管理画面で、以下の順の配置になるように登録してください。
+To use this plugin, you must first register [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js).  
+In the plugin manager, ensure the plugins are registered in the following order:
 ```
 FTKR_CustomSimpleActorStatus.js
 FTKR_CSS_MenuStatus.js
 ```
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## レイアウト設定
+## Layout Settings
 
-本プラグインのステータス画面のレイアウト設定方法は、[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js)と同じです。
-プラグインパラメータ名も同じものを使用しています。
+The layout settings for the status screen in this plugin are the same as in [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js).  
+The plugin parameter names are also the same.
 
-設定方法については、FTKR_CustomSimpleActorStatusの[マニュアル](#FTKR_CustomSimpleActorStatus.ja.md)を参照してください。
+For setting instructions, please refer to the [manual](#FTKR_CustomSimpleActorStatus.ja.md) of FTKR_CustomSimpleActorStatus.
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## ウィンドウの設定
-## プラグインパラメータの設定
-以下のプラグインパラメータで設定できます。
+## Window Settings
+### Plugin Parameter Settings
+The following plugin parameters can be configured:
 
-### 設定の有効化
+#### Enable Custom Window
 `Enabled Custom Window`
 
-メニュー画面のステータスウィンドウ変更機能を使うか指定します。
-* 0 - 無効(デフォルト)
-* 1 - 有効
+Specifies whether to use the custom window feature for the menu screen status window.
+* 0 - Disabled (default)
+* 1 - Enabled
 
-### アクターを横に並べる数
+#### Number of Actors Displayed Horizontally
 `Number Max Cols`
 
-アクターを横に並べる数を変更します。
-デフォルトは 1 です。
+Changes the number of actors displayed horizontally.  
+The default is 1.
 
-### カーソル高さの行数
+#### Cursor Height in Rows
 `Cursor Line Number`
 
-ステータスウィンドウのカーソル高さの行数を変更します。
-デフォルトは4行です。
+Changes the number of rows for the cursor height in the status window.  
+The default is 4 rows.
 
-### 縦のカーソル間隔
+#### Vertical Cursor Spacing
 `Cursor Height Space`
 
-ステータスウィンドウの縦のカーソル間隔を変更します。
-デフォルトは 0 です。
+Changes the vertical spacing between cursors in the status window.  
+The default is 0.
 
-### フォントサイズ
+#### Font Size
 `Font Size`
 
-ウィンドウ内のフォントサイズを変更します。
-デフォルトは 28 です。(単位はpixel)
+Changes the font size within the window.  
+The default is 28 (in pixels).
 
-### 余白サイズ
+#### Window Padding
 `Window Padding`
 
-ウィンドウの周囲の余白を変更します。
-デフォルトは 18 です。(単位はpixel)
+Changes the padding around the window.  
+The default is 18 (in pixels).
 
-### 行の高さ
+#### Line Height
 `Window Line Height`
 
-ウィンドウ内の1行の高さを変更します。
-デフォルトは 36 です。(単位はpixel)
+Changes the height of a single line within the window.  
+The default is 36 (in pixels).
 
-### 背景の透明度
+#### Window Opacity
 `Window Opacity`
 
-ウィンドウ内の背景の透明度を変更します。
-デフォルトは 192 です。
-0 - 透明、255 - 不透明
+Changes the opacity of the window background.  
+The default is 192.  
+0 - Transparent, 255 - Opaque
 
-### ウィンドウ枠の非表示化
+#### Hide Window Frame
 `Hide Window Frame`
 
-ウィンドウ枠を非表示にするか指定します。
-* 1 - 非表示にする
-* 0 - 表示する(デフォルト)
+Specifies whether to hide the window frame.
+* 1 - Hide
+* 0 - Show (default)
 
-## ウィンドウ設定における補足
+### Additional Notes on Window Settings
 
-### ウィンドウの高さ
-ウィンドウの高さは以下の計算で自動的に設定します。
+#### Window Height
+The window height is automatically calculated using the following formula:
 ```
-[ウィンドウ高さ] ＝ [縦の行数] × [1行の高さ] + [余白のサイズ] × 2
-```
-
-### フォントサイズと行の高さ
-基本的に、下の大小関係になるように設定しましょう。
-```
-フォントサイズ ＜ 1行の高さ
+[Window Height] = [Number of Rows] × [Line Height] + [Padding Size] × 2
 ```
 
-### ウィンドウを消す方法
-以下の設定にすると、ウィンドウ枠とウィンドウの背景が消えて、アクターのステータスだけを表示します。
+#### Font Size and Line Height
+Generally, ensure the following relationship:
+```
+Font Size < Line Height
+```
+
+#### How to Remove the Window
+To remove the window frame and background, leaving only the actor status displayed, use the following settings:
 
 `Window Opacity`     : 0 <br>
 `Hide Window Frame`  : 1
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-# アクターの表示例
+# Actor Display Examples
 
-デフォルトの設定では、メニュー画面でアクターを縦に4人まで並べて表示できます。
-当プラグインの設定を変えることで、この表示人数やアクターの並べ方を変えることができます。
+By default, the menu screen can display up to 4 actors vertically.  
+By changing the settings of this plugin, you can modify the number of actors displayed and their arrangement.
 
-## アクターの縦の表示人数を変える場合
+## Changing the Number of Actors Displayed Vertically
 
-下の図のように、アクターの縦の表示人数を5人に変える場合の設定例を説明します。
+The following example explains how to change the number of actors displayed vertically to 5, as shown in the image below.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_001.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n05_001.png)
 
-### ウィンドウの設定変更
-縦5人に変える場合のウィンドウの設定箇所を説明します。
+### Changing Window Settings
+The following settings need to be changed to display 5 actors vertically.
 
-#### 設定の有効化をする
-`Enabled Custom Window`の設定を 1 に変えてください。
+#### Enable Custom Window
+Change the `Enabled Custom Window` setting to 1.
 
-#### カーソル高さを変更する
-`Cursol Line Number`の設定を変更します。<br>
-ウィンドウは16行(デフォルトの場合)あるため、アクター5人を並べる場合は 1人分は3行までになります。
+#### Change Cursor Height
+Modify the `Cursor Line Number` setting.  
+Since the window has 16 rows (by default), displaying 5 actors allows for 3 rows per actor.
 
-### 縦のカーソル間隔を調整する
-`Cursol Height Space`の設定を変更します。<br>
-アクターの画像同士にスペースを空けたい場合は変更してください。
-上記カーソル高さ変更により1行分(デフォルトの場合は36pixel)空欄が開くため、アクター5人を並べる場合は 8pixel まで間隔をあけることが出来ます。
+#### Adjust Vertical Cursor Spacing
+Modify the `Cursor Height Space` setting.  
+If you want to add space between actor images, adjust this setting.  
+Changing the cursor height leaves one row (36 pixels by default) blank, so for 5 actors, you can add up to 8 pixels of spacing.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_003.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n05_003.png)
 
-### レイアウトの設定変更
-レイアウトの設定を行います。
-ウィンドウ設定によりアクター1人分は 3行 までしか使用出来ません。
-そのため、4行使用していた箇所を修正する必要があります。
+### Changing Layout Settings
+Modify the layout settings.  
+Due to the window settings, only 3 rows can be used per actor.  
+Therefore, any settings that use 4 rows need to be adjusted.
 
-#### 顔画像の設定変更
-コード`face`は 4行分使用するため、3行に収めるためにはコード`face(3)`に変えてください。
+#### Changing Face Image Settings
+The `face` code uses 4 rows, so to fit within 3 rows, change it to `face(3)`.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_002.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n05_002.png)
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## アクターを横に並べる場合
+## Displaying Actors Horizontally
 
-下の図のように、アクターを横に並べる場合の設定例を説明します。
+The following example explains how to display actors horizontally, as shown in the image below.
 
-下の図では、各ウィンドウのレイアウト変更に公式プラグインの`AltMenuScreen.js`を使用しています。
-レイアウト変更のプラグインと組み合わせる場合、以下の順番のように本プラグインを下にして登録してください。
+The image below uses the official plugin `AltMenuScreen.js` to modify the layout of each window.  
+When combining layout modification plugins, register this plugin below them in the following order:
 ```
 AltMenuScreen.js
 FTKR_CustomSimpleActorStatus.js
 ```
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_004.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n05_004.png)
 
-### ウィンドウの設定変更
-横4人に変える場合のウィンドウの設定箇所を説明します。
+### Changing Window Settings
+The following settings need to be changed to display 4 actors horizontally.
 
-#### 設定の有効化をする
-`Enabled Custom Window`の設定を 1 に変えてください。
+#### Enable Custom Window
+Change the `Enabled Custom Window` setting to 1.
 
-### アクターを横に並べる数を変更する
-`Number Max Cols`の設定を変更します。<br>
-デフォルトの4人の場合は、4に設定してください。
+#### Change the Number of Actors Displayed Horizontally
+Modify the `Number Max Cols` setting.  
+For the default 4 actors, set this to 4.
 
-#### カーソル高さを変更する
-`Cursol Line Number`の設定を変更します。<br>
-ウィンドウサイズに合わせて 11 に設定してください。
+#### Change Cursor Height
+Modify the `Cursor Line Number` setting.  
+Set this to 11 to match the window size.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_007.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n05_007.png)
 
-### レイアウトの設定変更
-レイアウトの設定を行います。
-アクターを横に並べることで、表示幅が狭くなっています。
-そのため、描画エリアを1つにまとめると良いでしょう。
+### Changing Layout Settings
+Modify the layout settings.  
+Displaying actors horizontally reduces the available width.  
+Therefore, it is recommended to consolidate the drawing areas.
 
-#### 描画エリアの設定変更
+#### Changing Drawing Area Settings
+Remove the settings for Drawing Area 2 and 3, and consolidate them into Drawing Area 1.  
+The settings for Drawing Area 1 will be as follows:
 
-描画エリア2と3の設定を削除し、描画エリア1にまとめます。
-描画エリア1の設定は、以下のとおりになります。
+![Image](image/FTKR_CustomSimpleActorStatus/n05_006.png)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_006.png)
-
-## 空白エリアの設定変更
-`Actor Status Space`の設定を変更します。<br>
-描画エリア2と3を削除するため、描画エリア1と2、描画エリア2と3の空白設定を 0 に変えます。
+#### Changing Blank Area Settings
+Modify the `Actor Status Space` setting.  
+Since Drawing Area 2 and 3 are removed, change the spacing between Drawing Area 1 and 2, and Drawing Area 2 and 3 to 0.
 ```
 10,0,0,10
 ```
 
-#### 描画エリアサイズの設定変更
-`Actor Status Width Rate`の設定を変更します。<br>
-描画エリア2と3を削除するため、描画エリア2と3の比率を 0 に変えます。
+#### Changing Drawing Area Size Settings
+Modify the `Actor Status Width Rate` setting.  
+Since Drawing Area 2 and 3 are removed, change the ratio for Drawing Area 2 and 3 to 0.
 ```
 1,0,0
 ```
 
-![画像](image/FTKR_CustomSimpleActorStatus/n05_005.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n05_005.png)
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## 顔画像に別のステータスを重ねて表示
-顔画像と重ねてステータスを表示する設定例を示します。
-下の図のように、アクターを横に並べることで表示エリアが狭くなった場合などに使えます。
+## Overlaying Status on Face Images
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_001.png)
+The following example shows how to overlay status on face images.  
+This can be useful when the display area is narrow, such as when displaying actors horizontally.
 
-### レイアウトの設定
+![Image](image/FTKR_CustomSimpleActorStatus/n07_001.png)
 
-重ねて表示させるためのポイントは、以下の3点です。
-* `Actor Status Width Rate`で描画エリア(1)の比率を 0 にする
-* 描画エリア(1)の`face`に波括弧を使い描画エリアを拡張する
-* `Face Position X`の設定を左寄せに変更する
+### Layout Settings
 
-この設定により、描画エリア(1)と描画エリア(2)を重ねて表示できます。
+The key points for overlaying status are as follows:
+* Set the ratio of Drawing Area (1) to 0 in `Actor Status Width Rate`
+* Use curly braces to expand the drawing area in the `face` code of Drawing Area (1)
+* Change the `Face Position X` setting to left-align
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_002.png)
+These settings allow Drawing Area (1) and Drawing Area (2) to be displayed overlapped.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_004.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n07_002.png)
 
-### ウィンドウの設定
+![Image](image/FTKR_CustomSimpleActorStatus/n07_004.png)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_003.png)
+### Window Settings
 
-[目次に戻る](#目次)
+![Image](image/FTKR_CustomSimpleActorStatus/n07_003.png)
 
-## カスタム画像を使った表示
-立ち絵のような高さがあるカスタム画像を使った場合の設定例を示します。
+[Return to Table of Contents](#table-of-contents)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_005.png)
+## Using Custom Images
 
-### レイアウトの設定
+The following example shows how to use custom images, such as character portraits, with a large height.
 
-立ち絵は`image`で表示します。<br>
-画像にステータスを重ねて表示させる方法を使います。横幅が狭いため、描画エリアは(2)だけ使用します。
+![Image](image/FTKR_CustomSimpleActorStatus/n07_005.png)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_006.png)
+### Layout Settings
 
-### ウィンドウの設定
+Character portraits are displayed using the `image` code.  
+Use the method of overlaying status on images. Since the width is narrow, only Drawing Area (2) is used.
 
-アクターを横に並べる場合の設定に合わせて、パラメータを調整します。
+![Image](image/FTKR_CustomSimpleActorStatus/n07_006.png)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_007.png)
+### Window Settings
 
-### アクターの設定
+Adjust the parameters according to the settings for displaying actors horizontally.
 
-`image`で表示する画像をアクター毎に設定します。
+![Image](image/FTKR_CustomSimpleActorStatus/n07_007.png)
 
-一人分の表示エリア幅は以下の計算で求めます。
+### Actor Settings
+
+Set the image to be displayed using the `image` code for each actor.
+
+The width of the display area for one actor is calculated as follows:
 ```
-(画面サイズ - コマンドウィンドウの幅 - ステータスウィンドウの余白 * 2) / 横に表示する人数 
+(Screen Size - Command Window Width - Status Window Padding * 2) / Number of Actors Displayed Horizontally
 ```
-デフォルトの画面サイズ(816pixel)で、コマンドウィンドウの幅がデフォルト(240pixel)の場合、一人分の表示エリア幅は 135pixel です。
+For the default screen size (816 pixels) and command window width (240 pixels), the display area width for one actor is 135 pixels.
 
-表示エリアの両端の空白エリアを 計4pixel 確保しているため、画像を表示可能なエリア幅は 131pixel となります。
+Since 4 pixels of blank space are reserved on both ends of the display area, the available width for the image is 131 pixels.
 
-図の例では、余白を考慮して`BGI WIDTH`を 127 に設定しました。
-その他のパラメータは、画像内の立ち絵の位置や立ち絵の構造によって調整してください。
+In the example image, `BGI WIDTH` is set to 127 to account for the padding.  
+Adjust other parameters based on the position and structure of the character portrait within the image.
 
-![画像](image/FTKR_CustomSimpleActorStatus/n07_008.png)
+![Image](image/FTKR_CustomSimpleActorStatus/n07_008.png)
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## プラグインの更新履歴
+## Plugin Update History
 
-| バージョン | 公開日 | 更新内容 |
+| Version | Release Date | Updates |
 | --- | --- | --- |
-| [ver2.1.2](FTKR_CSS_MenuStatus.js) | 2018/12/13 | プラグインパラメータ初期値変更 |
-| ver2.1.1 | 2018/09/12 | 不要なプラグインパラメータ を削除 |
-| ver2.1.0 | 2018/08/30 | FTKR_CustomSimpleActorStatus.js の v3.1.0に対応 |
-| ver2.0.0 | 2018/08/19 | FTKR_CustomSimpleActorStatus.js の v3.0.0に対応 |
-| [ver1.1.0](/archive/FTKR_CSS_MenuStatus_1.1.0.js) | 2017/11/18 | FTKR_CustomSimpleActorStatus.js の v2.6.0に対応 |
-| ver1.0.0 | 2017/06/18 | 初版作成 |
+| [ver2.1.2](FTKR_CSS_MenuStatus.js) | 2018/12/13 | Changed default plugin parameters |
+| ver2.1.1 | 2018/09/12 | Removed unnecessary plugin parameters |
+| ver2.1.0 | 2018/08/30 | Compatible with FTKR_CustomSimpleActorStatus.js v3.1.0 |
+| ver2.0.0 | 2018/08/19 | Compatible with FTKR_CustomSimpleActorStatus.js v3.0.0 |
+| [ver1.1.0](/archive/FTKR_CSS_MenuStatus_1.1.0.js) | 2017/11/18 | Compatible with FTKR_CustomSimpleActorStatus.js v2.6.0 |
+| ver1.0.0 | 2017/06/18 | Initial release |
 
-## ライセンス
+## License
 
-本プラグインはMITライセンスのもとで公開しています。
+This plugin is released under the MIT License.
 
 [The MIT License (MIT)](https://opensource.org/licenses/mit-license.php)
 
 #
-[目次に戻る](#目次)
 
-[トップページに戻る](README.md)
+[Return to Table of Contents](#table-of-contents)
+
+[Return to Top Page](README.md)
