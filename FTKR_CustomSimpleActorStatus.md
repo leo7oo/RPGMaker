@@ -4,7 +4,7 @@
 
 This plugin allows you to customize the display of actor statuses.
 
-Download: [FTKR_CustomSimpleActorStatus.js](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CustomSimpleActorStatus.js)
+Download: [FTKR_CustomSimpleActorStatus.js](https://raw.githubusercontent.com/leo7oo/RPGMaker/refs/heads/master/FTKR_CustomSimpleActorStatus.js)
 
 # Table of Contents
 
@@ -14,24 +14,24 @@ The following sections explain how to use the plugin:
 3. [Basic Settings](#basic-settings)
     1. [Basic Layout Structure](#basic-layout-structure)
     2. [Displayable Statuses](#displayable-statuses)
-4. [Layout Settings](FTKR_CustomSimpleActorStatus_1.en.md)
-    1. [Manipulating statusList](FTKR_CustomSimpleActorStatus_1.en.md#manipulating-statuslist)
-    2. [Setting statusList Parameters](FTKR_CustomSimpleActorStatus_1.en.md#setting-statuslist-parameters)
-    3. [Other Settings](FTKR_CustomSimpleActorStatus_1.en.md#other-settings)
-5. [Displaying Statuses](FTKR_CustomSimpleActorStatus_2.en.md)
-    1. [Displaying Face Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-face-images)
-    2. [Displaying Walking Character Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-walking-character-images)
-    3. [Displaying SV Battle Character Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-sv-battle-character-images)
-    4. [Displaying State Icons](FTKR_CustomSimpleActorStatus_2.en.md#displaying-state-icons)
-    5. [Displaying Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences)
-    6. [Displaying Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-equipment-parameters)
-    7. [Displaying AOP Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-aop-equipment-parameters)
-    8. [Displaying Custom Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-parameters)
-    9. [Displaying Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-gauges)
-    10. [Displaying Custom Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-images)
-    11. [Displaying Actor-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-actor-specific-custom-gauges)
-    12. [Displaying Class-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-class-specific-custom-gauges)
-    13. [Displaying Messages](FTKR_CustomSimpleActorStatus_2.en.md#displaying-messages)
+4. [Layout Settings](FTKR_CustomSimpleActorStatus_1.md)
+    1. [Manipulating statusList](FTKR_CustomSimpleActorStatus_1.md#manipulating-statuslist)
+    2. [Setting statusList Parameters](FTKR_CustomSimpleActorStatus_1.md#setting-statuslist-parameters)
+    3. [Other Settings](FTKR_CustomSimpleActorStatus_1.md#other-settings)
+5. [Displaying Statuses](FTKR_CustomSimpleActorStatus_2.md)
+    1. [Displaying Face Images](FTKR_CustomSimpleActorStatus_2.md#displaying-face-images)
+    2. [Displaying Walking Character Images](FTKR_CustomSimpleActorStatus_2.md#displaying-walking-character-images)
+    3. [Displaying SV Battle Character Images](FTKR_CustomSimpleActorStatus_2.md#displaying-sv-battle-character-images)
+    4. [Displaying State Icons](FTKR_CustomSimpleActorStatus_2.md#displaying-state-icons)
+    5. [Displaying Parameter Differences](FTKR_CustomSimpleActorStatus_2.md#displaying-parameter-differences)
+    6. [Displaying Equipment Parameters](FTKR_CustomSimpleActorStatus_2.md#displaying-equipment-parameters)
+    7. [Displaying AOP Equipment Parameters](FTKR_CustomSimpleActorStatus_2.md#displaying-aop-equipment-parameters)
+    8. [Displaying Custom Parameters](FTKR_CustomSimpleActorStatus_2.md#displaying-custom-parameters)
+    9. [Displaying Custom Gauges](FTKR_CustomSimpleActorStatus_2.md#displaying-custom-gauges)
+    10. [Displaying Custom Images](FTKR_CustomSimpleActorStatus_2.md#displaying-custom-images)
+    11. [Displaying Actor-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.md#displaying-actor-specific-custom-gauges)
+    12. [Displaying Class-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.md#displaying-class-specific-custom-gauges)
+    13. [Displaying Messages](FTKR_CustomSimpleActorStatus_2.md#displaying-messages)
 * [Plugin Update History](#plugin-update-history)
 * [Extension Plugins](#extension-plugins)
 * [License](#license)
@@ -111,27 +111,27 @@ Some codes can also be displayed for enemies.
 | HP | hp | - | - | Displays the actor's current HP, max HP, and HP gauge. |
 | MP | mp | - | - | Displays the actor's current MP, max MP, and MP gauge. |
 | TP | tp | - | - | Displays the actor's current TP and TP gauge. |
-| [Face Image](FTKR_CustomSimpleActorStatus_2.en.md#displaying-face-images) | face <br> face(%1) | - <br> row number | - | Displays the actor's face image. |
-| [Walking Character Image](FTKR_CustomSimpleActorStatus_2.en.md#displaying-walking-character-images) | chara | - | - | Displays the actor's walking character image (front view). |
-| [SV Battle Character Image](FTKR_CustomSimpleActorStatus_2.en.md#displaying-sv-battle-character-images) | sv | - | - | Displays the actor's SV battle character image. |
-| [State Icons](FTKR_CustomSimpleActorStatus_2.en.md#displaying-state-icons) | state <br> state2(%1) | - <br> row number | - | Displays the icons of states applied to the actor in a row. |
+| [Face Image](FTKR_CustomSimpleActorStatus_2.md#displaying-face-images) | face <br> face(%1) | - <br> row number | - | Displays the actor's face image. |
+| [Walking Character Image](FTKR_CustomSimpleActorStatus_2.md#displaying-walking-character-images) | chara | - | - | Displays the actor's walking character image (front view). |
+| [SV Battle Character Image](FTKR_CustomSimpleActorStatus_2.md#displaying-sv-battle-character-images) | sv | - | - | Displays the actor's SV battle character image. |
+| [State Icons](FTKR_CustomSimpleActorStatus_2.md#displaying-state-icons) | state <br> state2(%1) | - <br> row number | - | Displays the icons of states applied to the actor in a row. |
 | Profile | profile | - | ○ | Displays the actor's profile. The profile automatically expands the drawing area to fit the content. |
 | Basic Parameters | param(%1) | x | - | Displays the name and value of basic parameters such as attack and defense. <br> The number **x** corresponds to the following parameters: <br> 0 - Max HP, 1 - Max MP, 2 - Attack, 3 - Defense <br> 4 - Magic Attack, 5 - Magic Defense, 6 - Agility, 7 - Luck |
 | Base Parameters | pbase(%1) | x | - | Displays the name and base value of basic parameters, excluding equipment and trait adjustments. <br> The number **x** is the same as for **param**. |
-| [Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | pdiff(%1) | x | ○ | Displays the increase or decrease in basic parameters due to equipment and traits. <br> The number **x** is the same as for **param**. <br> Increases are displayed in green, decreases in red. |
+| [Parameter Differences](FTKR_CustomSimpleActorStatus_2.md#displaying-parameter-differences) | pdiff(%1) | x | ○ | Displays the increase or decrease in basic parameters due to equipment and traits. <br> The number **x** is the same as for **param**. <br> Increases are displayed in green, decreases in red. |
 | Additional Parameters | xparam(%1) | x | - | Displays the name and value of additional parameters such as hit rate and evasion rate. <br> The number **x** corresponds to the following parameters: <br> 0 - Hit Rate, 1 - Evasion Rate, 2 - Critical Rate, 3 - Critical Evasion Rate <br> 4 - Magic Evasion Rate, 5 - Magic Reflection Rate, 6 - Counter Rate, 7 - HP Regeneration Rate <br> 8 - MP Regeneration Rate, 9 - TP Regeneration Rate <br> The display format (decimal or percentage) can be selected in the plugin parameter `Disp Decimals Param`. <br> Parameter names can be set in the plugin parameter `XPARAM Name`. |
 | Special Parameters | sparam(%1) | x | - | Displays the name and value of special parameters such as target rate and defense effect rate. <br> The number **x** corresponds to the following parameters: <br> 0 - Target Rate, 1 - Defense Effect Rate, 2 - Recovery Effect Rate, 3 - Pharmacy Knowledge <br> 4 - MP Consumption Rate, 5 - TP Charge Rate, 6 - Physical Damage Rate <br> 7 - Magic Damage Rate, 8 - Floor Damage Rate, 9 - EXP Gain Rate <br> The display format (decimal or percentage) can be selected in the plugin parameter `Disp Decimals Param`. <br> Parameter names can be set in the plugin parameter `SPARAM Name`. |
 | Equipment | equip(%1) | x | - | Displays the name and icon of equipment. <br> **x** indicates the equipment type number. <br> In the shop screen, entering `shop` in **value** will display the equipment slot corresponding to the currently selected item. |
-| [Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-equipment-parameters) | eparam(%1) | x | - | Displays the value of basic parameters after equipment changes. <br> The number **x** is the same as for **param**. |
+| [Equipment Parameters](FTKR_CustomSimpleActorStatus_2.md#displaying-equipment-parameters) | eparam(%1) | x | - | Displays the value of basic parameters after equipment changes. <br> The number **x** is the same as for **param**. |
 | Equipment Additional Parameters | exparam(%1) | x | - | Displays the value of additional parameters after equipment changes. <br> The number **x** is the same as for **xparam**. |
 | Equipment Special Parameters | esparam(%1) | x | - | Displays the value of special parameters after equipment changes. <br> The number **x** is the same as for **sparam**. |
 | Unequippable Display | notequip(%1) | x | ○ | Displays the specified text **x** when the selected equipment item cannot be equipped by the actor. If **x** is blank, "Cannot Equip" is displayed. <br> Can be used in windows that reference item data (e.g., shop screen). |
-| [Custom Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-parameters) | custom(%1) | x | ○ | Displays parameters set in the plugin parameters. <br> The number **x** is the custom parameter ID. |
-| [Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-gauges) | gauge(%1) | x | ○ | Displays gauges set in the plugin parameters. <br> The number **x** is the custom gauge ID. |
-| [Actor-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-actor-specific-custom-gauges) | agauge(%1) | x | ○ | Displays gauges set in the actor's note field. <br> The number **x** is the custom gauge ID. |
-| [Class-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-class-specific-custom-gauges) | cgauge(%1) | x | ○ | Displays gauges set in the class's note field. <br> The number **x** is the custom gauge ID. |
-| [Custom Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-images) | image <br> image(%1) | - <br> image ID | - | Displays images set in the actor's note field. |
-| [Messages](FTKR_CustomSimpleActorStatus_2.en.md#displaying-messages) | message | - | ○ | Displays messages based on changes in the actor's state. |
+| [Custom Parameters](FTKR_CustomSimpleActorStatus_2.md#displaying-custom-parameters) | custom(%1) | x | ○ | Displays parameters set in the plugin parameters. <br> The number **x** is the custom parameter ID. |
+| [Custom Gauges](FTKR_CustomSimpleActorStatus_2.md#displaying-custom-gauges) | gauge(%1) | x | ○ | Displays gauges set in the plugin parameters. <br> The number **x** is the custom gauge ID. |
+| [Actor-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.md#displaying-actor-specific-custom-gauges) | agauge(%1) | x | ○ | Displays gauges set in the actor's note field. <br> The number **x** is the custom gauge ID. |
+| [Class-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.md#displaying-class-specific-custom-gauges) | cgauge(%1) | x | ○ | Displays gauges set in the class's note field. <br> The number **x** is the custom gauge ID. |
+| [Custom Images](FTKR_CustomSimpleActorStatus_2.md#displaying-custom-images) | image <br> image(%1) | - <br> image ID | - | Displays images set in the actor's note field. |
+| [Messages](FTKR_CustomSimpleActorStatus_2.md#displaying-messages) | message | - | ○ | Displays messages based on changes in the actor's state. |
 
 #### Actor-Specific Special 1
 
@@ -141,8 +141,8 @@ The following codes require the [FTKR_AddOriginalParameters plugin](FTKR_AddOrig
 | ----------- | ----- | ---- | ---- | ---- |
 | AOP Parameters | aop(%1) | x | - | Displays the name and value of original parameters. <br> The number **x** is the original parameter ID. |
 | Base AOP Parameters | aopbase(%1) | x | - | Displays the name and base value of original parameters, excluding equipment and trait adjustments. <br> The number **x** is the same as for **aop**. |
-| [AOP Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | aopdiff(%1) | x | ○ | Displays the increase or decrease in original parameters due to equipment and traits. <br> The number **x** is the same as for **aop**. <br> Increases are displayed in green, decreases in red. |
-| [AOP Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-aop-equipment-parameters) | eaop(%1) | x | - | Displays the value of original parameters after equipment changes. <br> The number **x** is the same as for **aop**. |
+| [AOP Parameter Differences](FTKR_CustomSimpleActorStatus_2.md#displaying-parameter-differences) | aopdiff(%1) | x | ○ | Displays the increase or decrease in original parameters due to equipment and traits. <br> The number **x** is the same as for **aop**. <br> Increases are displayed in green, decreases in red. |
+| [AOP Equipment Parameters](FTKR_CustomSimpleActorStatus_2.md#displaying-aop-equipment-parameters) | eaop(%1) | x | - | Displays the value of original parameters after equipment changes. <br> The number **x** is the same as for **aop**. |
 
 #### Actor-Specific Special 2
 
@@ -151,10 +151,10 @@ These codes have been standard since v3.4.0 of FTKR_CustomSimpleActorStatus.
 
 | Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| [Equipment Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | ediff(%1) | x | ○ | Displays the increase or decrease in basic parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **eparam**. <br> Increases are displayed in green, decreases in red. |
+| [Equipment Parameter Differences](FTKR_CustomSimpleActorStatus_2.md#displaying-parameter-differences) | ediff(%1) | x | ○ | Displays the increase or decrease in basic parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **eparam**. <br> Increases are displayed in green, decreases in red. |
 | Equipment Additional Parameter Differences | exdiff(%1) | x | ○ | Displays the increase or decrease in additional parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **exparam**. <br> Increases are displayed in green, decreases in red. |
 | Equipment Special Parameter Differences | esdiff(%1) | x | ○ | Displays the increase or decrease in special parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **esparam**. <br> Increases are displayed in green, decreases in red. |
-| [AOP Equipment Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | eaopdiff(%1) | x | ○ | Displays the increase or decrease in original parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **aop**. <br> Increases are displayed in green, decreases in red. |
+| [AOP Equipment Parameter Differences](FTKR_CustomSimpleActorStatus_2.md#displaying-parameter-differences) | eaopdiff(%1) | x | ○ | Displays the increase or decrease in original parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **aop**. <br> Increases are displayed in green, decreases in red. |
 
 #### Actor-Specific Special 3
 
