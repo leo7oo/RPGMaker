@@ -1,324 +1,323 @@
-# RPGツクールMV プラグイン
+# RPG Maker MV Plugins
 
-プラグインは逐次追加更新を行っています。最新情報は、[更新情報](#更新情報)を確認してください。<br>
-公開中のプラグインの数：95<br>
-[対応するかもしれないプラグインのメモ](memo.md)
+Plugins are being added and updated sequentially. For the latest information, please check the [Update Information](#update-information).<br>
+Number of plugins currently available: 95<br>
+[Notes on plugins that might be supported](memo.md)
 
-# 目次
+# Table of Contents
 
-1. [ステータス](#ステータス)
-    1. [ステータス表示の変更](#ステータス表示の変更)
-1. [変数_スイッチ](#変数_スイッチ)
-1. [ウィンドウ](#ウィンドウ)
-1. [メッセージ](#メッセージ)
-1. [アイテム_スキル仕様拡張](#アイテム_スキル仕様拡張)
-1. [スキル](#スキル)
-    1. [スキル強化システム](#スキル強化システム)
-    1. [スキルツリーシステム](#スキルツリーシステム)
-1. [アイテム](#アイテム)
-1. [ステート](#ステート)
-1. [敵グループ](#敵グループ)
-1. [バトル](#バトル)
+1. [Status](#status)
+    1. [Status Display Changes](#status-display-changes)
+1. [Variables_Switches](#variables_switches)
+1. [Windows](#windows)
+1. [Messages](#messages)
+1. [Item_Skill Specification Extensions](#item_skill-specification-extensions)
+1. [Skills](#skills)
+    1. [Skill Enhancement System](#skill-enhancement-system)
+    1. [Skill Tree System](#skill-tree-system)
+1. [Items](#items)
+1. [States](#states)
+1. [Enemy Groups](#enemy-groups)
+1. [Battle](#battle)
     1. [FTKR_AlternatingTurnBattle](#ftkr_alternatingturnbattle)
-1. [イベント](#イベント)
-1. [マップ](#マップ)
-1. [ピクチャ](#ピクチャ)
-1. [セーブ](#セーブ)
-1. [ミニゲーム](#ミニゲーム)
-1. [デバッグ](#デバッグ)
-1. [その他備忘録](#その他備忘録)
-1. [試作品置き場](#試作品置き場)
-1. [更新情報](#更新情報)
+1. [Events](#events)
+1. [Maps](#maps)
+1. [Pictures](#pictures)
+1. [Save](#save)
+1. [Mini-Games](#mini-games)
+1. [Debug](#debug)
+1. [Other Notes](#other-notes)
+1. [Prototype Repository](#prototype-repository)
+1. [Update Information](#update-information)
 
+# Status
 
-# ステータス
+Number of plugins: 6
 
-プラグイン数:6
-
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_AddOriginalParameters](FTKR_AddOriginalParameters.js) | [あり](FTKR_AddOriginalParameters.ja.md) | [v1.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AddOriginalParameters.js) | 2020/03/21 |オリジナルパラメータを追加する |
-| [FTKR_SearchPartyParam](FTKR_SearchPartyParam.js) | [あり](FTKR_SearchPartyParam.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SearchPartyParam.js) | 2017/04/14 | パーティー内のパラメータに関するスクリプトを実装する |
-| [FTKR_ExSvMotion](FTKR_ExSvMotion.js) | [仮版](FTKR_ExSvMotion.ja.md) | [v1.4.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExSvMotion.js) | 2019/04/13 | SVキャラのモーションを拡張する |
-| [FTKR_FacialImageDifference](FTKR_FacialImageDifference.js) | [仮版](FTKR_FacialImageDifference.ja.md) | [v1.1.7](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_FacialImageDifference.js) | 2017/12/02 | アクターの状態によって顔画像を変える<br>顔画像にアニメーションを表示する |
-| [FTKR_FacialImageDifference2](FTKR_FacialImageDifference2.js) | なし | [v2.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_FacialImageDifference2.js) | 2017/12/16 | アクターの状態によって顔画像を変える<br>FTKR_FacialImageDifference.jsと組み合わせて使用できません |
-| [FTKR_ExTraitSetting](FTKR_ExTraitSetting.js) | なし | [v1.0.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExTraitSetting.js) | 2018/02/17 | 装備やステート等の特徴を詳細に設定できる |
+| [FTKR_AddOriginalParameters](FTKR_AddOriginalParameters.js) | [Available](FTKR_AddOriginalParameters.ja.md) | [v1.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AddOriginalParameters.js) | 2020/03/21 | Adds original parameters |
+| [FTKR_SearchPartyParam](FTKR_SearchPartyParam.js) | [Available](FTKR_SearchPartyParam.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SearchPartyParam.js) | 2017/04/14 | Implements scripts related to party parameters |
+| [FTKR_ExSvMotion](FTKR_ExSvMotion.js) | [Draft](FTKR_ExSvMotion.ja.md) | [v1.4.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExSvMotion.js) | 2019/04/13 | Extends SV character motions |
+| [FTKR_FacialImageDifference](FTKR_FacialImageDifference.js) | [Draft](FTKR_FacialImageDifference.ja.md) | [v1.1.7](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_FacialImageDifference.js) | 2017/12/02 | Changes facial images based on actor status<br>Displays animations on facial images |
+| [FTKR_FacialImageDifference2](FTKR_FacialImageDifference2.js) | None | [v2.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_FacialImageDifference2.js) | 2017/12/16 | Changes facial images based on actor status<br>Cannot be used with FTKR_FacialImageDifference.js |
+| [FTKR_ExTraitSetting](FTKR_ExTraitSetting.js) | None | [v1.0.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExTraitSetting.js) | 2018/02/17 | Allows detailed settings for equipment, states, etc. |
 
-## ステータス表示の変更
+## Status Display Changes
 
-プラグイン数:8
+Number of plugins: 8
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) | [あり](FTKR_CustomSimpleActorStatus.ja.md) | [v3.5.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CustomSimpleActorStatus.js) | 2019/05/12 | ステータス表示を変更する 本体プラグイン |
-| [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) | [あり](FTKR_CSS_MenuStatus.ja.md) | [v2.1.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_MenuStatus.js) | 2018/12/13 | メニュー画面のステータス表示を変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
-| [FTKR_CSS_BattleStatus](FTKR_CSS_BattleStatus.js) | [あり](FTKR_CSS_BattleStatus.ja.md) | [v2.2.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_BattleStatus.js) | 2018/12/29 | バトル画面のステータス表示を変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
-| [FTKR_CSS_DetailedStatus](FTKR_CSS_DetailedStatus.js) | [あり](FTKR_CSS_DetailedStatus.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_DetailedStatus.js) | 2018/12/13 | ステータス画面のステータス表示を変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
-| [FTKR_CSS_SkillStatus](FTKR_CSS_SkillStatus.js) | [あり](FTKR_CSS_SkillStatus.ja.md) | [v2.1.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_SkillStatus.js) | 2018/12/13 | スキル画面のステータス表示を変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
-| [FTKR_CSS_EquipStatus](FTKR_CSS_EquipStatus.js) | [仮版](FTKR_CSS_EquipStatus.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_EquipStatus.js) | 2018/12/13 | 装備画面のステータス表示を変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
-| [FTKR_CSS_ShopStatus](FTKR_CSS_ShopStatus.js) | [仮版](FTKR_CSS_ShopStatus.ja.md) | [v2.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_ShopStatus.js) | 2019/05/12 | ショップ画面のステータス表示を変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
-| [FTKR_CSS_CustomizeBattleResults](FTKR_CSS_CustomizeBattleResults.js) | [仮版](FTKR_CSS_CustomizeBattleResults.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_CustomizeBattleResults.js) | 2018/12/13 | バトル終了時に戦闘結果を表示する <br> ＜以下のプラグインが必要＞ <br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) | [Available](FTKR_CustomSimpleActorStatus.ja.md) | [v3.5.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CustomSimpleActorStatus.js) | 2019/05/12 | Changes status display - Main plugin |
+| [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) | [Available](FTKR_CSS_MenuStatus.ja.md) | [v2.1.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_MenuStatus.js) | 2018/12/13 | Changes status display in the menu screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CSS_BattleStatus](FTKR_CSS_BattleStatus.js) | [Available](FTKR_CSS_BattleStatus.ja.md) | [v2.2.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_BattleStatus.js) | 2018/12/29 | Changes status display in the battle screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CSS_DetailedStatus](FTKR_CSS_DetailedStatus.js) | [Available](FTKR_CSS_DetailedStatus.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_DetailedStatus.js) | 2018/12/13 | Changes status display in the status screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CSS_SkillStatus](FTKR_CSS_SkillStatus.js) | [Available](FTKR_CSS_SkillStatus.ja.md) | [v2.1.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_SkillStatus.js) | 2018/12/13 | Changes status display in the skill screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CSS_EquipStatus](FTKR_CSS_EquipStatus.js) | [Draft](FTKR_CSS_EquipStatus.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_EquipStatus.js) | 2018/12/13 | Changes status display in the equipment screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CSS_ShopStatus](FTKR_CSS_ShopStatus.js) | [Draft](FTKR_CSS_ShopStatus.ja.md) | [v2.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_ShopStatus.js) | 2019/05/12 | Changes status display in the shop screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CSS_CustomizeBattleResults](FTKR_CSS_CustomizeBattleResults.js) | [Draft](FTKR_CSS_CustomizeBattleResults.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_CustomizeBattleResults.js) | 2018/12/13 | Displays battle results at the end of a battle<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
 
-FTKR_CSS_GDMはFTKR_CustomSimpleActorStatusに統合しました
+FTKR_CSS_GDM has been integrated into FTKR_CustomSimpleActorStatus.
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# 変数_スイッチ
+# Variables_Switches
 
-プラグイン数:3
+Number of plugins: 3
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ItemSelfVariables](FTKR_ItemSelfVariables.js) | [あり](FTKR_ItemSelfVariables.ja.md) | [v1.2.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemSelfVariables.js) | 2018/01/08 | アイテム、スキル、アクター、エネミーにセルフ変数を追加する |
-| [FTKR_ExVariablesChange](FTKR_ExVariablesChange.js) | [仮版](FTKR_ExVariablesChange.ja.md) | [v1.2.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExVariablesChange.js) | 2018/07/01 | 変数の操作を拡張するプラグイン |
-| [FTKR_EventSelfSwOperation](FTKR_EventSelfSwOperation.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventSelfSwOperation.js) | 2017/04/25 | イベントのセルフスイッチを操作するプラグイン |
+| [FTKR_ItemSelfVariables](FTKR_ItemSelfVariables.js) | [Available](FTKR_ItemSelfVariables.ja.md) | [v1.2.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemSelfVariables.js) | 2018/01/08 | Adds self-variables to items, skills, actors, and enemies |
+| [FTKR_ExVariablesChange](FTKR_ExVariablesChange.js) | [Draft](FTKR_ExVariablesChange.ja.md) | [v1.2.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExVariablesChange.js) | 2018/07/01 | Extends variable operations |
+| [FTKR_EventSelfSwOperation](FTKR_EventSelfSwOperation.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventSelfSwOperation.js) | 2017/04/25 | Operates event self-switches |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# ウィンドウ
+# Windows
 
-プラグイン数:6
+Number of plugins: 6
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_DisplayCommandFrame](FTKR_DisplayCommandFrame.js) | [仮版](FTKR_DisplayCommandFrame.ja.md) | [v1.2.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DisplayCommandFrame.js) | 2020/05/17 | コマンドに枠を付ける |
-| [FTKR_OriginalSceneWindow](FTKR_OriginalSceneWindow.js) | [仮版](FTKR_OriginalSceneWindow.ja.md) | [v1.7.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_OriginalSceneWindow.js) | 2020/03/21 | オリジナルのシーンおよびウィンドウを作成する |
-| [FTKR_SceneBackImages](FTKR_SceneBackImages.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SceneBackImages.js) | 2018/02/24 | メニュー画面やショップ画面などに変数で切替可能な背景画像を設定する |
-| [FTKR_InterlockMouseAndWindow](FTKR_InterlockMouseAndWindow.js) | なし | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_InterlockMouseAndWindow.js) | 2018/04/30 | マウスポインタとウィンドウのカーソルを連動させる |
-| [FTKR_TitleScene](FTKR_TitleScene.js) | なし | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_TitleScene.js) | 2019/04/14 | タイトル画面のコマンドの表示変更や、クレジット画面を追加する。 |
-| [FTKR_RestrictRefreshWindows](FTKR_RestrictRefreshWindows.js) | [仮版](FTKR_RestrictRefreshWindows.ja.md) | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_RestrictRefreshWindows.js) | 2018/12/16 | ウィンドウのリフレッシュ回数を制限して負荷を抑える |
+| [FTKR_DisplayCommandFrame](FTKR_DisplayCommandFrame.js) | [Draft](FTKR_DisplayCommandFrame.ja.md) | [v1.2.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DisplayCommandFrame.js) | 2020/05/17 | Adds frames to commands |
+| [FTKR_OriginalSceneWindow](FTKR_OriginalSceneWindow.js) | [Draft](FTKR_OriginalSceneWindow.ja.md) | [v1.7.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_OriginalSceneWindow.js) | 2020/03/21 | Creates original scenes and windows |
+| [FTKR_SceneBackImages](FTKR_SceneBackImages.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SceneBackImages.js) | 2018/02/24 | Sets background images that can be switched using variables in menu and shop screens |
+| [FTKR_InterlockMouseAndWindow](FTKR_InterlockMouseAndWindow.js) | None | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_InterlockMouseAndWindow.js) | 2018/04/30 | Synchronizes mouse pointer and window cursor |
+| [FTKR_TitleScene](FTKR_TitleScene.js) | None | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_TitleScene.js) | 2019/04/14 | Changes title screen commands and adds a credits screen |
+| [FTKR_RestrictRefreshWindows](FTKR_RestrictRefreshWindows.js) | [Draft](FTKR_RestrictRefreshWindows.ja.md) | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_RestrictRefreshWindows.js) | 2018/12/16 | Limits window refresh rate to reduce load |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# メッセージ
+# Messages
 
-プラグイン数:7
+Number of plugins: 7
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ExEscapeCharacters](FTKR_ExEscapeCharacters.js) | [仮版](FTKR_ExEscapeCharacters.ja.md) | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExEscapeCharacters.js) | 2017/03/28 | 制御文字を追加する |
-| [FTKR_ExMessageWindow](FTKR_ExMessageWindow.js) | [仮版](FTKR_ExMessageWindow.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExMessageWindow.js) | 2017/03/28 | 制御文字を使って、一度に複数のメッセージウィンドウを表示する |
-| [FTKR_ExMessageWindow2](FTKR_ExMessageWindow2.js) | [仮版](FTKR_ExMessageWindow2.ja.md) | [v2.4.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExMessageWindow2.js) | 2017/08/21 | 文章の表示コマンドを使って、一度に複数のメッセージウィンドウを表示する <br> FTKR_ExMessageWindowと組み合わせて使用できません |
-| [FTKR_MessageWindowLines](FTKR_MessageWindowLines.js) | なし | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_MessageWindowLines.js) | 2018/04/28 | メッセージウィンドウの行数を変更する<br>文章の表示コマンドを複数組み合わせて４行以上入力可能 |
-| [FTKR_PopupSpriteMessage](FTKR_PopupSpriteMessage.js) | なし | [v1.2.5](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_PopupSpriteMessage.js) | 2018/08/11 | 任意のメッセージを画面上にポップアップ表示する |
-| [FTKR_PauseSignPosition](FTKR_PauseSignPosition.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_PauseSignPosition.js) | 2018/04/15 | ポーズサインの表示位置を変更する |
-| [FTKR_SelectHelpWindow](FTKR_SelectHelpWindow.js) | [あり](FTKR_SelectHelpWindow.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SelectHelpWindow.js) | 2018/08/06 | 選択肢ウィンドウを表示中に選択肢の説明ウィンドウを表示する |
+| [FTKR_ExEscapeCharacters](FTKR_ExEscapeCharacters.js) | [Draft](FTKR_ExEscapeCharacters.ja.md) | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExEscapeCharacters.js) | 2017/03/28 | Adds control characters |
+| [FTKR_ExMessageWindow](FTKR_ExMessageWindow.js) | [Draft](FTKR_ExMessageWindow.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExMessageWindow.js) | 2017/03/28 | Displays multiple message windows simultaneously using control characters |
+| [FTKR_ExMessageWindow2](FTKR_ExMessageWindow2.js) | [Draft](FTKR_ExMessageWindow2.ja.md) | [v2.4.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExMessageWindow2.js) | 2017/08/21 | Displays multiple message windows simultaneously using text display commands<br>Cannot be used with FTKR_ExMessageWindow |
+| [FTKR_MessageWindowLines](FTKR_MessageWindowLines.js) | None | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_MessageWindowLines.js) | 2018/04/28 | Changes the number of lines in the message window<br>Allows more than 4 lines by combining multiple text display commands |
+| [FTKR_PopupSpriteMessage](FTKR_PopupSpriteMessage.js) | None | [v1.2.5](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_PopupSpriteMessage.js) | 2018/08/11 | Displays any message as a popup on the screen |
+| [FTKR_PauseSignPosition](FTKR_PauseSignPosition.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_PauseSignPosition.js) | 2018/04/15 | Changes the position of the pause sign |
+| [FTKR_SelectHelpWindow](FTKR_SelectHelpWindow.js) | [Available](FTKR_SelectHelpWindow.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SelectHelpWindow.js) | 2018/08/06 | Displays a help window for choices during selection |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# アイテム_スキル仕様拡張
+# Item_Skill Specification Extensions
 
-プラグイン数:6
+Number of plugins: 6
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ExItemConfig_ItemBasic](FTKR_ExItemConfig_ItemBasic.js) | [仮版](FTKR_ExItemConfig_ItemBasic.ja.md) | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_ItemBasic.js) | 2018/04/16 | アイテムとスキルの基本設定を拡張する |
-| [FTKR_ExItemConfig_IB_SkillCost](FTKR_ExItemConfig_IB_SkillCost.js) | [仮版](FTKR_ExItemConfig_IB_SkillCost.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_IB_SkillCost.js) | 2017/04/30 | スキルの消費コストを拡張する <br> ＜以下のプラグインが必要＞<br>[FTKR_ExItemConfig_ItemBasic](FTKR_ExItemConfig_ItemBasic.js) |
-| [FTKR_ExItemConfig_Damage](FTKR_ExItemConfig_Damage.js) | [仮版](FTKR_ExItemConfig_Damage.ja.md) | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Damage.js) | 2020/01/13 | アイテムとスキルのダメージ処理を拡張する |
-| [FTKR_ExItemConfig_Effect](FTKR_ExItemConfig_Effect.js) | [仮版](FTKR_ExItemConfig_Effect.ja.md) | [v1.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Effect.js) | 2019/05/08 | アイテムとスキルの使用効果を拡張する |
-| [FTKR_ExItemConfig_Activate](FTKR_ExItemConfig_Activate.js) | [仮版](FTKR_ExItemConfig_Activate.ja.md) | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Activate.js) | 2017/06/23 | アイテムとスキルの発動設定を拡張する |
-| [FTKR_ExItemConfig_Required](FTKR_ExItemConfig_Required.js) | [仮版](FTKR_ExItemConfig_Required.ja.md) | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Required.js) | 2018/02/01 | アイテムとスキルの使用条件を拡張する |
+| [FTKR_ExItemConfig_ItemBasic](FTKR_ExItemConfig_ItemBasic.js) | [Draft](FTKR_ExItemConfig_ItemBasic.ja.md) | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_ItemBasic.js) | 2018/04/16 | Extends basic settings for items and skills |
+| [FTKR_ExItemConfig_IB_SkillCost](FTKR_ExItemConfig_IB_SkillCost.js) | [Draft](FTKR_ExItemConfig_IB_SkillCost.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_IB_SkillCost.js) | 2017/04/30 | Extends skill cost settings<br>Requires:<br>[FTKR_ExItemConfig_ItemBasic](FTKR_ExItemConfig_ItemBasic.js) |
+| [FTKR_ExItemConfig_Damage](FTKR_ExItemConfig_Damage.js) | [Draft](FTKR_ExItemConfig_Damage.ja.md) | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Damage.js) | 2020/01/13 | Extends damage processing for items and skills |
+| [FTKR_ExItemConfig_Effect](FTKR_ExItemConfig_Effect.js) | [Draft](FTKR_ExItemConfig_Effect.ja.md) | [v1.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Effect.js) | 2019/05/08 | Extends the effects of items and skills |
+| [FTKR_ExItemConfig_Activate](FTKR_ExItemConfig_Activate.js) | [Draft](FTKR_ExItemConfig_Activate.ja.md) | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Activate.js) | 2017/06/23 | Extends activation settings for items and skills |
+| [FTKR_ExItemConfig_Required](FTKR_ExItemConfig_Required.js) | [Draft](FTKR_ExItemConfig_Required.ja.md) | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExItemConfig_Required.js) | 2018/02/01 | Extends usage conditions for items and skills |
 
-注意）FTKR_ExItemConfig_* と FTKR_SkillExpansion は組み合わせて使用できません。
+Note: FTKR_ExItemConfig_* and FTKR_SkillExpansion cannot be used together.
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# スキル
+# Skills
 
-プラグイン数:5
+Number of plugins: 5
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_SkillCounter](FTKR_SkillCounter.js) | [あり](FTKR_SkillCounter.ja.md) | [v1.0.5](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillCounter.js) | 2017/04/29 | 相手のスキルに対抗して効果を変える |
-| [FTKR_SkillSubCommand](FTKR_SkillSubCommand.js) | [仮版](FTKR_SkillSubCommand.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillSubCommand.js) | 2017/04/15 | スキル画面にサブコマンドを追加する <br> FTKR_SEP_ShowSkillStatusと組み合わせて使用できません |
-| [FTKR_AutoInvokeSkill](FTKR_AutoInvokeSkill.js) | なし | [v1.3.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AutoInvokeSkill.js) | 2018/09/07 | 特定条件で自動でスキルを発動させる |
-| [FTKR_AISkillEvaluate](FTKR_AISkillEvaluate.js) | [仮版](FTKR_AISkillEvaluate.ja.md) | [v1.2.6](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AISkillEvaluate.js) | 2018/12/11 | 自動戦闘時に使用するスキルの評価値を個別に設定する |
-| [FTKR_SkillCastingMotion](FTKR_SkillCastingMotion.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillCastingMotion.js) | 2018/04/11 | スキル毎に詠唱モーションのONOFFを設定する |
+| [FTKR_SkillCounter](FTKR_SkillCounter.js) | [Available](FTKR_SkillCounter.ja.md) | [v1.0.5](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillCounter.js) | 2017/04/29 | Changes effects in response to enemy skills |
+| [FTKR_SkillSubCommand](FTKR_SkillSubCommand.js) | [Draft](FTKR_SkillSubCommand.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillSubCommand.js) | 2017/04/15 | Adds sub-commands to the skill screen<br>Cannot be used with FTKR_SEP_ShowSkillStatus |
+| [FTKR_AutoInvokeSkill](FTKR_AutoInvokeSkill.js) | None | [v1.3.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AutoInvokeSkill.js) | 2018/09/07 | Automatically invokes skills under specific conditions |
+| [FTKR_AISkillEvaluate](FTKR_AISkillEvaluate.js) | [Draft](FTKR_AISkillEvaluate.ja.md) | [v1.2.6](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AISkillEvaluate.js) | 2018/12/11 | Sets individual skill evaluation values for auto-battle |
+| [FTKR_SkillCastingMotion](FTKR_SkillCastingMotion.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillCastingMotion.js) | 2018/04/11 | Enables/disables casting motions for each skill |
 
-## スキル強化システム
+## Skill Enhancement System
 
-プラグイン数:4
+Number of plugins: 4
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_SkillExpansion](FTKR_SkillExpansion.js) | [仮版](FTKR_SkillExpansion.ja.md) | [v1.4.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillExpansion.js) | 2018/11/18 | スキルの仕様を拡張する |
-| [FTKR_SEP_ShowSkillStatus](FTKR_SEP_ShowSkillStatus.js) | なし | [v1.4.7](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SEP_ShowSkillStatus.js) | 2018/08/16 | スキル画面の表示を拡張する <br> ＜以下のプラグインが必要＞ <br> [FTKR_SkillExpansion](FTKR_SkillExpansion.js) |
-| [FTKR_SkillUpgradeSystem_Core](FTKR_SkillUpgradeSystem_Core.js) | [ツクマテ](http://tm.lucky-duet.com/viewtopic.php?f=5&t=3076) | [v1.5.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillUpgradeSystem_Core.js) | 2019/12/17 | スキル強化システム <br> ＜以下のプラグインが必要＞ <br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js) |
-| [FTKR_SkillUpgradeSystem_Window](FTKR_SkillUpgradeSystem_Window.js) | なし | [v1.5.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillUpgradeSystem_Window.js) | 2017/10/04 | スキル強化システムの専用画面を実装する <br> ＜以下のプラグインが必要＞ <br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js) <br>[FTKR_SEP_ShowSkillStatus](FTKR_SEP_ShowSkillStatus.js) <br> [FTKR_SkillUpgradeSystem_Core](FTKR_SkillUpgradeSystem_Core.js)|
-| [FTKR_SUS_plus_SP](FTKR_SUS_plus_SP.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SUS_plus_SP.js) | 2019/12/17 | スキル強化システムのコストにスキルツリープラグインのSPを追加する <br> ＜以下のプラグインが必要＞ <br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js) <br>[FTKR_SEP_ShowSkillStatus](FTKR_SEP_ShowSkillStatus.js) <br> [FTKR_SkillUpgradeSystem_Core](FTKR_SkillUpgradeSystem_Core.js) <br> [FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js)|
+| [FTKR_SkillExpansion](FTKR_SkillExpansion.js) | [Draft](FTKR_SkillExpansion.ja.md) | [v1.4.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillExpansion.js) | 2018/11/18 | Extends skill specifications |
+| [FTKR_SEP_ShowSkillStatus](FTKR_SEP_ShowSkillStatus.js) | None | [v1.4.7](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SEP_ShowSkillStatus.js) | 2018/08/16 | Extends skill screen display<br>Requires:<br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js) |
+| [FTKR_SkillUpgradeSystem_Core](FTKR_SkillUpgradeSystem_Core.js) | [Tukmate](http://tm.lucky-duet.com/viewtopic.php?f=5&t=3076) | [v1.5.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillUpgradeSystem_Core.js) | 2019/12/17 | Skill enhancement system<br>Requires:<br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js) |
+| [FTKR_SkillUpgradeSystem_Window](FTKR_SkillUpgradeSystem_Window.js) | None | [v1.5.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillUpgradeSystem_Window.js) | 2017/10/04 | Implements a dedicated screen for the skill enhancement system<br>Requires:<br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js)<br>[FTKR_SEP_ShowSkillStatus](FTKR_SEP_ShowSkillStatus.js)<br>[FTKR_SkillUpgradeSystem_Core](FTKR_SkillUpgradeSystem_Core.js) |
+| [FTKR_SUS_plus_SP](FTKR_SUS_plus_SP.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SUS_plus_SP.js) | 2019/12/17 | Adds SP from the skill tree plugin as a cost for the skill enhancement system<br>Requires:<br>[FTKR_SkillExpansion](FTKR_SkillExpansion.js)<br>[FTKR_SEP_ShowSkillStatus](FTKR_SEP_ShowSkillStatus.js)<br>[FTKR_SkillUpgradeSystem_Core](FTKR_SkillUpgradeSystem_Core.js)<br>[FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js) |
 
-## スキルツリーシステム
+## Skill Tree System
 
-プラグイン数:3
+Number of plugins: 3
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js) | [あり](FTKR_SkillTreeSystem.ja.md) | [v1.18.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillTreeSystem.js) | 201911/17 | ツリー型のスキル習得システム |
-| [FTKR_STS_CustomWindow](FTKR_STS_CustomWindow.js) | [仮版](FTKR_STS_CustomWindow.ja.md) | [v1.3.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_STS_CustomWindow.js) | 2018/09/08 | スキルツリー習得画面のレイアウトを変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js) |
-| [FTKR_STS_CustomSkillStatus](FTKR_STS_CustomSkillStatus.js) | なし | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_STS_CustomSkillStatus.js) | 2018/09/07 | スキルツリーウィンドウに表示するスキルパラメータを変更する <br> ＜以下のプラグインが必要＞ <br> [FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js)<br> [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js) | [Available](FTKR_SkillTreeSystem.ja.md) | [v1.18.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SkillTreeSystem.js) | 2019/11/17 | Tree-based skill acquisition system |
+| [FTKR_STS_CustomWindow](FTKR_STS_CustomWindow.js) | [Draft](FTKR_STS_CustomWindow.ja.md) | [v1.3.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_STS_CustomWindow.js) | 2018/09/08 | Changes the layout of the skill tree acquisition screen<br>Requires:<br>[FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js) |
+| [FTKR_STS_CustomSkillStatus](FTKR_STS_CustomSkillStatus.js) | None | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_STS_CustomSkillStatus.js) | 2018/09/07 | Changes the skill parameters displayed in the skill tree window<br>Requires:<br>[FTKR_SkillTreeSystem](FTKR_SkillTreeSystem.js)<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# アイテム
+# Items
 
-プラグイン数:7
+Number of plugins: 7
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ItemNonScope](FTKR_ItemNonScope.js) | [仮版](FTKR_ItemNonScope.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemNonScope.js) | 2017/04/19 | アイテムが範囲なしの場合にパーティーの全メンバーを対象にする |
-| [FTKR_ItemCategoryFixed](FTKR_ItemCategoryFixed.js) | [仮版](FTKR_ItemCategoryFixed.ja.md) | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemCategoryFixed.js) | 2019/11/22 | アイテムボックスでカテゴリー選択を無くす |
-| [FTKR_ItemSubCommand](FTKR_ItemSubCommand.js) | [仮版](FTKR_ItemSubCommand.ja.md) | [v1.7.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemSubCommand.js) | 2020/01/05 | アイテムボックスにサブコマンドを追加し、アイテム画面でアイテムを捨てたり、装備変更ができるようになるプラグイン |
-| [FTKR_ItemBoxCapacity](FTKR_ItemBoxCapacity.js) | [仮版](FTKR_ItemBoxCapacity.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemBoxCapacity.js) | 2018/09/22 | アイテムボックスに所持容量を追加するプラグイン |
-| [FTKR_ItemBoxCategory](FTKR_ItemBoxCategory.js) | [あり](FTKR_ItemBoxCategory.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemBoxCategory.js) | 2017/12/10 | アイテムボックスのカテゴリーを追加変更するプラグイン<br>FTKR_ItemCategoryFixedと組み合わせて使用できません |
-| [FTKR_ItemCompositionSystem](FTKR_ItemCompositionSystem.js) | [仮版](FTKR_ItemCompositionSystem.ja.md) | [v1.7.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemCompositionSystem.js) | 2020/03/18 | アイテム合成システム |
-| [FTKR_ExEquipSlot](FTKR_ExEquipSlot.js) | [仮版](FTKR_ExEquipSlot.ja.md) | [v1.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExEquipSlot.js) | 2018/12/21 | 同じ装備タイプの装備を２つ以上装備できるようにする |
+| [FTKR_ItemNonScope](FTKR_ItemNonScope.js) | [Draft](FTKR_ItemNonScope.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemNonScope.js) | 2017/04/19 | Targets all party members if the item has no scope |
+| [FTKR_ItemCategoryFixed](FTKR_ItemCategoryFixed.js) | [Draft](FTKR_ItemCategoryFixed.ja.md) | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemCategoryFixed.js) | 2019/11/22 | Removes category selection in the item box |
+| [FTKR_ItemSubCommand](FTKR_ItemSubCommand.js) | [Draft](FTKR_ItemSubCommand.ja.md) | [v1.7.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemSubCommand.js) | 2020/01/05 | Adds sub-commands to the item box, allowing item discarding and equipment changes in the item screen |
+| [FTKR_ItemBoxCapacity](FTKR_ItemBoxCapacity.js) | [Draft](FTKR_ItemBoxCapacity.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemBoxCapacity.js) | 2018/09/22 | Adds item capacity to the item box |
+| [FTKR_ItemBoxCategory](FTKR_ItemBoxCategory.js) | [Available](FTKR_ItemBoxCategory.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemBoxCategory.js) | 2017/12/10 | Adds/changes categories in the item box<br>Cannot be used with FTKR_ItemCategoryFixed |
+| [FTKR_ItemCompositionSystem](FTKR_ItemCompositionSystem.js) | [Draft](FTKR_ItemCompositionSystem.ja.md) | [v1.7.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ItemCompositionSystem.js) | 2020/03/18 | Item composition system |
+| [FTKR_ExEquipSlot](FTKR_ExEquipSlot.js) | [Draft](FTKR_ExEquipSlot.ja.md) | [v1.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExEquipSlot.js) | 2018/12/21 | Allows equipping two or more items of the same type |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# ステート
+# States
 
-プラグイン数:5
+Number of plugins: 5
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_TransformationState](FTKR_TransformationState.js) | なし | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_TransformationState.js) | 2017/10/08 | ステートが掛かっている間SV画像を変更する |
-| [FTKR_AutoStateConditions](FTKR_AutoStateConditions.js) | なし | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AutoStateConditions.js) | 2019/04/14 | ステートに自動付与条件および自動解除条件を設定する |
-| [FTKR_ExStateEffects](FTKR_ExStateEffects.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExStateEffects.js) | 2017/08/04 | ステートが掛かっている間に使用したスキルに別のスキルの特徴を追加する |
-| [FTKR_ChangeRepeatsState](FTKR_ChangeRepeatsState.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ChangeRepeatsState.js) | 2017/08/23 | ステートが掛かっている間に使用したスキルの連続回数を倍加する |
-| [FTKR_DamageFixedStates](FTKR_DamageFixedStates.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DamageFixedStates.js) | 2018/04/03 | ステートが掛かっている間に受けるダメージを固定値にする |
+| [FTKR_TransformationState](FTKR_TransformationState.js) | None | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_TransformationState.js) | 2017/10/08 | Changes SV images while a state is active |
+| [FTKR_AutoStateConditions](FTKR_AutoStateConditions.js) | None | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AutoStateConditions.js) | 2019/04/14 | Sets auto-apply and auto-remove conditions for states |
+| [FTKR_ExStateEffects](FTKR_ExStateEffects.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExStateEffects.js) | 2017/08/04 | Adds another skill's traits to skills used while a state is active |
+| [FTKR_ChangeRepeatsState](FTKR_ChangeRepeatsState.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ChangeRepeatsState.js) | 2017/08/23 | Multiplies the number of skill repeats while a state is active |
+| [FTKR_DamageFixedStates](FTKR_DamageFixedStates.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DamageFixedStates.js) | 2018/04/03 | Fixes damage received while a state is active |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# 敵グループ
+# Enemy Groups
 
-プラグイン数:2
+Number of plugins: 2
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ExMetaData](FTKR_ExMetaData.js) | [あり](FTKR_ExMetaData.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExMetaData.js) | 2018/02/19 | 敵グループとイベントのメタデータを拡張する |
-| [FTKR_SetupTroops](FTKR_SetupTroops.js) | [あり](FTKR_SetupTroops.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SetupTroops.js) | 2017/05/25 | ゲーム内で敵グループの編成を設定する |
+| [FTKR_ExMetaData](FTKR_ExMetaData.js) | [Available](FTKR_ExMetaData.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExMetaData.js) | 2018/02/19 | Extends metadata for enemy groups and events |
+| [FTKR_SetupTroops](FTKR_SetupTroops.js) | [Available](FTKR_SetupTroops.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_SetupTroops.js) | 2017/05/25 | Sets enemy group formations in-game |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# バトル
+# Battle
 
-プラグイン数:13
+Number of plugins: 13
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ExBattleEvent](FTKR_ExBattleEvent.js) | [あり](FTKR_ExBattleEvent.ja.md) | [v1.3.6](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExBattleEvent.js) | 2020/03/02 | バトルイベントを拡張する |
-| [FTKR_DisplayRegenerateMessage](FTKR_DisplayRegenerateMessage.js) | [あり](FTKR_DisplayRegenerateMessage.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DisplayRegenerateMessage.js) | 2017/05/27 | HP再生量をバトルログに表示する |
-| [FTKR_ExBattleCommand](FTKR_ExBattleCommand.js) | [あり](FTKR_ExBattleCommand.ja.md) | [v2.2.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExBattleCommand.js) | 2020/01/03 | バトルコマンドを変更する |
-| [FTKR_FVActorAnimation](FTKR_FVActorAnimation.js) | なし | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_FVActorAnimation.js) | 2020/02/10 | フロントビューモードでアクター画像にアニメーションを表示する<br>別途アクター画像表示用のプラグインが必要 |
-| [FTKR_BattleAbortConditions](FTKR_BattleAbortConditions.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleAbortConditions.js) | 2018/02/12 | 設定した条件を満たすと、バトルを中断して勝利または敗北する |
-| [FTKR_MaxBattleMembers](FTKR_MaxBattleMembers.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_MaxBattleMembers.js) | 2018/02/25 | バトルメンバーの最大人数を変数で管理する |
-| [FTKR_ChangeBattleSpeed](FTKR_ChangeBattleSpeed.js) | なし | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ChangeBattleSpeed.js) | 2019/04/07 | バトル中の各種速度を変数で管理する |
-| [FTKR_BattleWindowLayout](FTKR_BattleWindowLayout.js) | [あり](FTKR_BattleWindowLayout.ja.md) | [v1.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleWindowLayout.js) | 2020/04/26 | 戦闘時のウィンドウ配置を変更する |
-| [FTKR_ExForceAction](FTKR_ExForceAction.js) | [あり](FTKR_ExForceAction.ja.md) | [v1.1.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExForceAction.js) | 2018/08/06 | 戦闘行動の強制コマンドの機能を拡張する |
-| [FTKR_ExGuardEffect](FTKR_ExGuardEffect.js) | [あり](FTKR_ExGuardEffect.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExGuardEffect.js) | 2020/02/11 | 防御の効果を拡張する |
-| [FTKR_DisplayEnemyParameters](FTKR_DisplayEnemyParameters.js) | [あり](FTKR_DisplayEnemyParameters.ja.md) | [v1.1.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DisplayEnemyParameters.js) | 2018/12/20 | 戦闘画面にエネミーのパラメータを表示する |
-| [FTKR_BattleActionTimes](FTKR_BattleActionTimes.js) | [あり](FTKR_BattleActionTimes.ja.md) | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleActionTimes.js) | 2018/12/19 | 戦闘中の行動回数を表示・操作する |
-| [FTKR_BattleActionPoints](FTKR_BattleActionPoints.js) | [あり](FTKR_BattleActionPoints.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleActionPoints.js) | 2018/12/10 | 消費コスト用のパラメータ「アクションポイント(AP)」を導入する |
+| [FTKR_ExBattleEvent](FTKR_ExBattleEvent.js) | [Available](FTKR_ExBattleEvent.ja.md) | [v1.3.6](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExBattleEvent.js) | 2020/03/02 | Extends battle events |
+| [FTKR_DisplayRegenerateMessage](FTKR_DisplayRegenerateMessage.js) | [Available](FTKR_DisplayRegenerateMessage.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DisplayRegenerateMessage.js) | 2017/05/27 | Displays HP regeneration in the battle log |
+| [FTKR_ExBattleCommand](FTKR_ExBattleCommand.js) | [Available](FTKR_ExBattleCommand.ja.md) | [v2.2.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExBattleCommand.js) | 2020/01/03 | Changes battle commands |
+| [FTKR_FVActorAnimation](FTKR_FVActorAnimation.js) | None | [v1.1.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_FVActorAnimation.js) | 2020/02/10 | Displays animations on actor images in front-view mode<br>Requires a separate plugin for actor image display |
+| [FTKR_BattleAbortConditions](FTKR_BattleAbortConditions.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleAbortConditions.js) | 2018/02/12 | Aborts battle and results in victory or defeat if conditions are met |
+| [FTKR_MaxBattleMembers](FTKR_MaxBattleMembers.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_MaxBattleMembers.js) | 2018/02/25 | Manages the maximum number of battle members using variables |
+| [FTKR_ChangeBattleSpeed](FTKR_ChangeBattleSpeed.js) | None | [v1.0.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ChangeBattleSpeed.js) | 2019/04/07 | Manages various battle speeds using variables |
+| [FTKR_BattleWindowLayout](FTKR_BattleWindowLayout.js) | [Available](FTKR_BattleWindowLayout.ja.md) | [v1.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleWindowLayout.js) | 2020/04/26 | Changes window layout during battle |
+| [FTKR_ExForceAction](FTKR_ExForceAction.js) | [Available](FTKR_ExForceAction.ja.md) | [v1.1.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExForceAction.js) | 2018/08/06 | Extends the functionality of the force action command |
+| [FTKR_ExGuardEffect](FTKR_ExGuardEffect.js) | [Available](FTKR_ExGuardEffect.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExGuardEffect.js) | 2020/02/11 | Extends the effects of guarding |
+| [FTKR_DisplayEnemyParameters](FTKR_DisplayEnemyParameters.js) | [Available](FTKR_DisplayEnemyParameters.ja.md) | [v1.1.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DisplayEnemyParameters.js) | 2018/12/20 | Displays enemy parameters in the battle screen |
+| [FTKR_BattleActionTimes](FTKR_BattleActionTimes.js) | [Available](FTKR_BattleActionTimes.ja.md) | [v1.0.2](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleActionTimes.js) | 2018/12/19 | Displays and controls the number of actions during battle |
+| [FTKR_BattleActionPoints](FTKR_BattleActionPoints.js) | [Available](FTKR_BattleActionPoints.ja.md) | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_BattleActionPoints.js) | 2018/12/10 | Introduces a cost parameter "Action Points (AP)" |
 
-FTKR_BattleCommandIconはFTKR_ExBattleCommandに統合しました
+FTKR_BattleCommandIcon has been integrated into FTKR_ExBattleCommand.
 
 # FTKR_AlternatingTurnBattle
 
-プラグイン数:3
+Number of plugins: 3
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_AlternatingTurnBattle](FTKR_AlternatingTurnBattle.js) | [仮版](FTKR_AlternatingTurnBattle.ja.md) | [v2.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AlternatingTurnBattle.js) | 2018/12/19 | 敵味方交互にターンが進むターン制戦闘システム |
-| [FTKR_AltTB_SelectTouchedActor](FTKR_AltTB_SelectTouchedActor.js) | なし | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AltTB_SelectTouchedActor.js) | 2018/12/04 | ステータスウィンドウ内をクリックして、その行または列のアクターを選択する<br> ＜以下のプラグインが必要＞ <br> [FTKR_AlternatingTurnBattle](FTKR_AlternatingTurnBattle.js) |
-| [FTKR_AltTB_BattleEventConditions](FTKR_AltTB_BattleEventConditions.js) | [あり](FTKR_AltTB_BattleEventConditions.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AltTB_BattleEventConditions.js) | 2018/12/04 | バトルイベントにFTKR_AltTB専用のターン条件を設定できる<br> ＜以下のプラグインが必要＞ <br> [FTKR_AlternatingTurnBattle](FTKR_AlternatingTurnBattle.js) |
+| [FTKR_AlternatingTurnBattle](FTKR_AlternatingTurnBattle.js) | [Draft](FTKR_AlternatingTurnBattle.ja.md) | [v2.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AlternatingTurnBattle.js) | 2018/12/19 | Alternating turn-based battle system |
+| [FTKR_AltTB_SelectTouchedActor](FTKR_AltTB_SelectTouchedActor.js) | None | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AltTB_SelectTouchedActor.js) | 2018/12/04 | Selects an actor by clicking on their row or column in the status window<br>Requires:<br>[FTKR_AlternatingTurnBattle](FTKR_AlternatingTurnBattle.js) |
+| [FTKR_AltTB_BattleEventConditions](FTKR_AltTB_BattleEventConditions.js) | [Available](FTKR_AltTB_BattleEventConditions.ja.md) | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AltTB_BattleEventConditions.js) | 2018/12/04 | Sets turn conditions for battle events specific to FTKR_AltTB<br>Requires:<br>[FTKR_AlternatingTurnBattle](FTKR_AlternatingTurnBattle.js) |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# イベント
+# Events
 
-プラグイン数:6
+Number of plugins: 6
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_EventSmoothStart](FTKR_EventSmoothStart.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventSmoothStart.js) | 2017/06/25 | イベント起動時のプレイヤーの移動停止を無視する |
-| [FTKR_EventReSpawnEx](FTKR_EventReSpawnEx.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventReSpawnEx.js) | 2017/11/14 | EventReSpawn.jsとTemplateEvent.jsで生成した一時イベントの座標とセルフスイッチを記録する<br> ＜以下のプラグインが必要＞ <br> [EventReSpawn.js(トリアコンタンさんのHPリンク)](https://triacontane.blogspot.jp/2016/08/blog-post.html)  <br>[TemplateEvent.js(トリアコンタンさんのHPリンク)](https://triacontane.blogspot.jp/2016/06/blog-post_25.html) |
-| [FTKR_MenuEvent](FTKR_MenuEvent.js) | なし | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_MenuEvent.js) | 2018/10/05 | メニュー画面上でコモンイベントを実行する |
-| [FTKR_EventMoveByInput](FTKR_EventMoveByInput.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventMoveByInput.js) | 2018/01/25 | 指定したイベントを画面の中心にしてキー操作で移動させる |
-| [FTKR_ConvertEscapeCharactersInScript](FTKR_ConvertEscapeCharactersInScript.js) | なし | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ConvertEscapeCharactersInScript.js) | 2018/08/13 | イベントコマンドのスクリプトに制御文字を使う |
-| [FTKR_AddRoutineMoveCommands](FTKR_AddRoutineMoveCommands.js) | なし | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AddRoutineMoveCommands.js) | 2018/08/15 | 移動ルートの設定のスクリプトを使ってIF文などの処理を追加する |
+| [FTKR_EventSmoothStart](FTKR_EventSmoothStart.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventSmoothStart.js) | 2017/06/25 | Ignores player movement stop when starting an event |
+| [FTKR_EventReSpawnEx](FTKR_EventReSpawnEx.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventReSpawnEx.js) | 2017/11/14 | Records the coordinates and self-switches of temporary events generated by EventReSpawn.js and TemplateEvent.js<br>Requires:<br>[EventReSpawn.js (Triacontane's HP link)](https://triacontane.blogspot.jp/2016/08/blog-post.html)<br>[TemplateEvent.js (Triacontane's HP link)](https://triacontane.blogspot.jp/2016/06/blog-post_25.html) |
+| [FTKR_MenuEvent](FTKR_MenuEvent.js) | None | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_MenuEvent.js) | 2018/10/05 | Executes common events on the menu screen |
+| [FTKR_EventMoveByInput](FTKR_EventMoveByInput.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_EventMoveByInput.js) | 2018/01/25 | Moves a specified event to the center of the screen and allows movement via key input |
+| [FTKR_ConvertEscapeCharactersInScript](FTKR_ConvertEscapeCharactersInScript.js) | None | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ConvertEscapeCharactersInScript.js) | 2018/08/13 | Uses control characters in event command scripts |
+| [FTKR_AddRoutineMoveCommands](FTKR_AddRoutineMoveCommands.js) | None | [v1.0.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_AddRoutineMoveCommands.js) | 2018/08/15 | Adds processing like IF statements using move route settings scripts |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# マップ
+# Maps
 
-プラグイン数:2
+Number of plugins: 2
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ExTileSettingForRegion](FTKR_ExTileSettingForRegion.js) | なし | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExTileSettingForRegion.js) | 2017/08/27 | 指定したリージョンの通行設定を一時的に変更する |
-| [FTKR_ConnectingMapGenerator](FTKR_ConnectingMapGenerator.js) | [あり](FTKR_ConnectingMapGenerator.ja.md) | [v1.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ConnectingMapGenerator.js) | 2018/10/21 | 複数のマップを繋げて１つの大きなマップにする |
+| [FTKR_ExTileSettingForRegion](FTKR_ExTileSettingForRegion.js) | None | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ExTileSettingForRegion.js) | 2017/08/27 | Temporarily changes passability settings for specified regions |
+| [FTKR_ConnectingMapGenerator](FTKR_ConnectingMapGenerator.js) | [Available](FTKR_ConnectingMapGenerator.ja.md) | [v1.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ConnectingMapGenerator.js) | 2018/10/21 | Connects multiple maps into one large map |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# ピクチャ
+# Pictures
 
-プラグイン数:1
+Number of plugins: 1
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ShowPictureBalloon](FTKR_ShowPictureBalloon.js) | [あり](FTKR_ShowPictureBalloon.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ShowPictureBalloon.js) | 2018/03/25 | ピクチャにフキダシアイコンを表示させる |
+| [FTKR_ShowPictureBalloon](FTKR_ShowPictureBalloon.js) | [Available](FTKR_ShowPictureBalloon.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ShowPictureBalloon.js) | 2018/03/25 | Displays speech bubble icons on pictures |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# セーブ
+# Save
 
-プラグイン数:1
+Number of plugins: 1
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_DeleteSavefile](FTKR_DeleteSavefile.js) | [仮版](FTKR_DeleteSavefile.ja.md) | [v1.0.5](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DeleteSavefile.js) | 2020/05/01 | セーブファイルを削除するコマンドを追加する |
+| [FTKR_DeleteSavefile](FTKR_DeleteSavefile.js) | [Draft](FTKR_DeleteSavefile.ja.md) | [v1.0.5](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_DeleteSavefile.js) | 2020/05/01 | Adds a command to delete save files |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# ミニゲーム
+# Mini-Games
 
-プラグイン数:1
+Number of plugins: 1
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_CardGames](FTKR_CardGames.js) | [仮版](FTKR_CardGames.ja.md) | [v1.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CardGames.js) | 2020/01/10 | カードゲーム |
+| [FTKR_CardGames](FTKR_CardGames.js) | [Draft](FTKR_CardGames.ja.md) | [v1.3.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CardGames.js) | 2020/01/10 | Card games |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# デバッグ
+# Debug
 
-プラグイン数:2
+Number of plugins: 2
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_IgnoreScriptError](FTKR_IgnoreScriptError.js) | なし | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_IgnoreScriptError.js) | 2018/08/13 | イベントで実行するスクリプトのエラーを無視する |
-| [FTKR_OriginalDebugMode](FTKR_OriginalDebugMode.js) | [あり](FTKR_OriginalDebugMode.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_OriginalDebugMode.js) | 2018/04/02 | オリジナルのデバッグモードを追加する |
+| [FTKR_IgnoreScriptError](FTKR_IgnoreScriptError.js) | None | [v1.1.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_IgnoreScriptError.js) | 2018/08/13 | Ignores errors in scripts executed during events |
+| [FTKR_OriginalDebugMode](FTKR_OriginalDebugMode.js) | [Available](FTKR_OriginalDebugMode.ja.md) | [v1.0.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_OriginalDebugMode.js) | 2018/04/02 | Adds an original debug mode |
 
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
 
-# その他備忘録
+# Other Notes
 
-* [コードリスト](Code_List.ja.md)
-* [RPGツクールMVの戦闘システムの解析](battleSystem.md)
+* [Code List](Code_List.ja.md)
+* [Analysis of RPG Maker MV's Battle System](battleSystem.md)
 
-# 試作品置き場
+# Prototype Repository
 
-プラグイン数:3
+Number of plugins: 3
 
-| プラグイン | マニュアル | ダウンロード | 更新日 |  説明 |
+| Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_ActionGauge](FTKR_ActionGauge.js) | なし | [v0.7.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ActionGauge.js) | 2017/04/21 | アクションゲージ |
-| [FTKR_addon_TMShooting](FTKR_addon_TMShooting.js) | なし | [v0.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_addon_TMShooting.js) | 2018/05/09 | tomoakyさんのシューティングプラグインの機能拡張 |
-| [FTKR_GDM_WindowEditor](FTKR_GDM_WindowEditor.js) | [仮版](FTKR_GDM_WindowEditor.ja.md) | [v0.9.17](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_GDM_WindowEditor.js) | 2018/09/15 | トリアコンタンさんのGUI画面デザインプラグイン(GraphicalDesignMode.js)の機能拡張<br>不具合有 |
+| [FTKR_ActionGauge](FTKR_ActionGauge.js) | None | [v0.7.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_ActionGauge.js) | 2017/04/21 | Action gauge |
+| [FTKR_addon_TMShooting](FTKR_addon_TMShooting.js) | None | [v0.2.1](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_addon_TMShooting.js) | 2018/05/09 | Extends Tomoaky's shooting plugin |
+| [FTKR_GDM_WindowEditor](FTKR_GDM_WindowEditor.js) | [Draft](FTKR_GDM_WindowEditor.ja.md) | [v0.9.17](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_GDM_WindowEditor.js) | 2018/09/15 | Extends Triacontane's GUI screen design plugin (GraphicalDesignMode.js)<br>Bugs present |
 
-# 更新情報
+# Update Information
 
-2020/05の更新情報
+2020/05 Update Information
 
 ### 2020/05/17
 * [FTKR_DisplayCommandFrame](FTKR_DisplayCommandFrame.ja.md) v1.2.2
@@ -326,7 +325,6 @@ FTKR_BattleCommandIconはFTKR_ExBattleCommandに統合しました
 ### 2020/05/01
 * [FTKR_DeleteSavefile](FTKR_DeleteSavefile.ja.md) v1.0.5
 
-[過去の更新情報](note.md)
+[Past Update Information](note.md)
 
-#
-[目次に戻る](#目次)
+[Back to Table of Contents](#table-of-contents)
