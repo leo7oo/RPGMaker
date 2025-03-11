@@ -48,7 +48,7 @@ It is also effective when the drawing area is expanded using curly braces.
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_010.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Character Image Display
 
@@ -76,7 +76,7 @@ Sets the direction of the actor's character image.
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_001.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## SV Battle Character Image Display
 
@@ -127,7 +127,7 @@ If enabled, characters with abnormal states, incapacitation, or sleep will displ
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_002.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## State Icon Display
 
@@ -187,7 +187,7 @@ state2(4)
 ```
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_007.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Parameter Difference Display
 
@@ -225,7 +225,7 @@ Control characters can be used.
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_011.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## AOP Equipment Parameter Display
 
@@ -238,7 +238,7 @@ The parameter value is displayed along with a right arrow `→`, similar to the 
 
 This code requires FTKR_AddOriginalParameters.js.
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Custom Parameter Display
 
@@ -277,7 +277,7 @@ a.hit.percent()
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_003.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Custom Gauge Display
 
@@ -339,7 +339,7 @@ Please refer to this when creating custom gauges.
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_004.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Custom Image Display
 
@@ -458,7 +458,7 @@ Example:
 ```
 This command changes the custom image ID 0 of actor ID 1 to /img/pictures/Package1_2.png, leaving the trimming size unchanged and setting the scaling to 50%.
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Actor-Specific Custom Gauge Display
 
@@ -537,7 +537,7 @@ a.hit.percent()
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_012.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Class-Specific Custom Gauge Display
 
@@ -556,7 +556,7 @@ Same as actor-specific custom gauges.
 
 Same as actor-specific custom gauges.
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Message Display
 
@@ -570,4 +570,4 @@ Control characters can be used in the message.
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n04_014.png)
 
-[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#目次)
+[Return to Top](#status-display)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
