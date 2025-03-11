@@ -115,7 +115,7 @@ In front-view mode, this is forcibly disabled.
 `Sv Image Motion`
 
 Sets the default motion to display.  
-Enter the [code name](Code_List.ja.md#モーション) of the motion you want to display.
+Enter the [code name](Code_List.md#motions) of the motion you want to display.
 
 `Enabled State Motion`
 
