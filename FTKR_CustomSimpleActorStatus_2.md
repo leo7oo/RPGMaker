@@ -1,5 +1,5 @@
 [Return to Top Page](README.md)  
-[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#目次)
+[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 # Status Display
 
