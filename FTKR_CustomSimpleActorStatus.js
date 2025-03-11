@@ -1,18 +1,18 @@
-//=============================================================================
-// アクターのステータス表示を変更するプラグイン
+// =============================================================================
+// Plugin to modify actor status display
 // FTKR_CustomSimpleActorStatus.js
-// プラグインNo : 9
-// 作成者     : フトコロ
-// 作成日     : 2017/03/09
-// 最終更新日 : 2019/05/12
-// バージョン : v3.5.3
-//=============================================================================
+// Plugin No: 9
+// Author: Futokoro
+// Creation Date: 2017/03/09
+// Last Updated: 2019/05/12
+// Version: v3.5.3
+// =============================================================================
 // GraphicalDesignMode.js
 // ----------------------------------------------------------------------------
 // Copyright (c) 2015 Triacontane
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
-//=============================================================================
+// =============================================================================
 
 var Imported = Imported || {};
 Imported.FTKR_CSS = true;
@@ -20,711 +20,711 @@ Imported.FTKR_CSS = true;
 var FTKR = FTKR || {};
 FTKR.CSS = FTKR.CSS || {};
 
-//=============================================================================
+// =============================================================================
 /*:
- * @plugindesc v3.5.3 アクターのステータス表示を変更するプラグイン
- * @author フトコロ
+ * @plugindesc v3.5.3 Plugin to modify actor status display
+ * @author Futororo
  *
- * @noteParam CSS_画像
+ * @noteParam CSS_Image
  * @noteRequire 1
  * @noteDir img/pictures/
  * @noteType file
  * @noteData actors
  * 
- * @noteParam CSS_画像
+ * @noteParam CSS_Image
  * @noteRequire 1
  * @noteDir img/pictures/
  * @noteType file
  * @noteData items
  * 
- * @noteParam CSS_画像
+ * @noteParam CSS_Image
  * @noteRequire 1
  * @noteDir img/pictures/
  * @noteType file
  * @noteData weapons
  * 
- * @noteParam CSS_画像
+ * @noteParam CSS_Image
  * @noteRequire 1
  * @noteDir img/pictures/
  * @noteType file
  * @noteData armors
  * 
  * @param face
- * @text --顔画像の設定--
+ * @text --Face Image Settings--
  * @default
  * 
  * @param Face Image Width
- * @desc アクターの顔画像幅を設定します
- * デフォルトは144
+ * @desc Set the width of the actor's face image
+ * The default is 144
  * @default 144
  * @parent face
  * 
  * @param Face Image Height
- * @desc アクターの顔画像高さを設定します
- * デフォルトは144
+ * @desc Set the height of the actor's face image
+ * The default is 144
  * @default 144
  * @parent face
  * 
  * @param Face Position X
- * @desc 顔画像を描画エリア内のどこに表示するか。
- * 0 - 左寄せ, 1 - 中央, 2 - 右寄せ
+ * @desc Where to display the face image within the drawing area.
+ * 0 - Left, 1 - Center, 2 - Right
  * @default 1
  * @parent face
  * 
  * @param chara
- * @text --歩行キャラの設定--
+ * @text --Walking Character Settings--
  * @default
  * 
  * @param Chara Image Width
- * @desc アクターの歩行キャラの画像幅を設定します
- * デフォルトは48
+ * @desc Set the width of the actor's walking character image
+ * The default is 48
  * @default 48
  * @parent chara
  * 
  * @param Chara Image Height
- * @desc アクターの歩行キャラの画像高さを設定します
- * デフォルトは48
+ * @desc Set the height of the actor's walking character image
+ * The default is 48
  * @default 48
  * @parent chara
  * 
  * @param Chara Position X
- * @desc アクターの歩行キャラを描画エリア内のどこに表示するか。
- * 0 - 左寄せ, 1 - 中央, 2 - 右寄せ
+ * @desc Where to display the actor's walking character within the drawing area.
+ * 0 - Left, 1 - Center, 2 - Right
  * @default 1
  * @parent chara
  * 
  * @param Chara Direction
- * @desc アクターの歩行キャラの向きを設定します。
- * 0 - 正面固定, 1 - マップ上の先頭プレイヤーの向き
+ * @desc Set the direction of the actor's walking character.
+ * 0 - Fixed Front, 1 - Direction of the leading player on the map
  * @default 0
  * @parent chara
  * 
  * @param sv
- * @text --SVキャラの設定--
+ * @text --SV Character Settings--
  * @default
  * 
  * @param Sv Image Width
- * @desc アクターのSVキャラの画像幅を設定します
- * デフォルトは64
+ * @desc Set the width of the actor's SV character image
+ * The default is 64
  * @default 64
  * @parent sv
  * 
  * @param Sv Image Height
- * @desc アクターのSvキャラの画像高さを設定します
- * デフォルトは64
+ * @desc Set the height of the actor's SV character image
+ * The default is 64
  * @default 64
  * @parent sv
  * 
  * @param Sv Position X
- * @desc アクターのSvキャラを描画エリア内のどこに表示するか。
- * 0 - 左寄せ, 1 - 中央, 2 - 右寄せ
+ * @desc Where to display the actor's SV character within the drawing area.
+ * 0 - Left, 1 - Center, 2 - Right
  * @default 1
  * @parent sv
  * 
  * @param Enabled Sv Motion
- * @desc Svキャラのモーションを有効にするか設定します
- * 0 - 無効にする, 1 - 常に有効にする, 2 - 戦闘時以外有効
+ * @desc Set whether to enable the SV character motion
+ * 0 - Disable, 1 - Always enabled, 2 - Enabled except in battle
  * @default 1
  * @parent sv
  * 
  * @param Sv Image Motion
- * @desc Svキャラの標準モーションを設定します
+ * @desc Set the default motion for the SV character
  * @default wait
  * @parent sv
  * 
  * @param Enabled State Motion
- * @desc ステートモーションを有効にするか設定します
- * 1 - 有効にする, 0 - 無効にする
+ * @desc Set whether to enable state motion
+ * 1 - Enable, 0 - Disable
  * @default 1
  * @parent sv
  * 
  * @param state
- * @text --ステートの設定--
+ * @text --State Settings--
  * @default
  * 
  * @param Enable CSS States
- * @desc ステートアイコンの表示を専用の描画処理に変えるか。
- * 1 - 有効にする, 0 - 無効にする
+ * @desc Set whether to change the state icon display to a special drawing process.
+ * 1 - Enable, 0 - Disable
  * @default 1
  * @parent state
  * 
  * @param Animation Wait
- * @desc ステートアイコンの切り替え時間を指定します
- * デフォルトは40
+ * @desc Set the time for switching state icons
+ * The default is 40
  * @default 40
  * @parent state
  * 
  * @param Enable Overlap
- * @desc ステートアイコンの重なり表示を有効にする
- * 1 - 有効にする, 0 - 無効にする
+ * @desc Set whether to enable overlapping display of state icons
+ * 1 - Enable, 0 - Disable
  * @default 0
  * @parent state
  * 
  * @param Overlap Rate
- * @desc アイコンの重なりを許容する比率を設定します。
+ * @desc Set the allowed ratio for overlapping of icons.
  * @default 0.5
  * @parent state
  * 
  * @param State Icon Padding
- * @desc アイコン表示に必要な余白を指定します。
+ * @desc Set the padding required for icon display.
  * @default 4
  * @type number
  * @min 0
  * @parent state
  * 
  * @param Enable Auto Scale
- * @desc 行の高さまたは表示幅に合わせてアイコンサイズを調整するか
- * 1 - 有効にする, 0 - 無効にする
+ * @desc Set whether to adjust the icon size according to the row height or display width
+ * 1 - Enable, 0 - Disable
  * @default 0
  * @parent state
  * 
  * @param pdiff
- * @text --通常能力値(差分)の設定--
+ * @text --Normal Stat Difference Settings--
  * @default
  * 
  * @param Enabled Escapecharacters By PDIFF
- * @desc 差分表示に制御文字使えるようにする
+ * @desc Enable the use of control characters in difference display
  * @type boolean
- * @on 有効
- * @off 無効
+ * @on Enable
+ * @off Disable
  * @default true
  * @parent pdiff
  * 
  * @param Format PDIFF Plus
- * @desc 増加の場合の表示を設定します。
- * %1 - 増加値
+ * @desc Set the display for increases.
+ * %1 - Increase value
  * @default \c[24]+ %1
  * @parent pdiff
  * 
  * @param Format PDIFF Minus
- * @desc 減少の場合の表示を設定します。
- * %1 - 減少値
+ * @desc Set the display for decreases.
+ * %1 - Decrease value
  * @default \c[25]- %1
  * @parent pdiff
  * 
  * @param xparam
- * @text --能力値の設定--
+ * @text --Stat Settings--
  * @default
  * 
  * @param Disp Decimals Param
- * @desc 能力値が率で表されるパラメータの表示方法を選択します。
+ * @desc Choose how to display parameters expressed as percentages.
  * @type select
- * @option 少数で表示
+ * @option Display as decimals
  * @value 0
- * @option パーセント(%)で表示
+ * @option Display as percentage (%)
  * @value 1
  * @default 0
  * @parent xparam
  * 
  * @param equip
- * @text --装備パラメータの設定--
+ * @text --Equipment Parameter Settings--
  * @default
  * 
  * @param Equip Right Arrow
- * @desc 装備を変える時に表示する右矢印記号を指定します。
+ * @desc Set the right arrow symbol to display when changing equipment.
  * @default \c[16]→
  * @parent equip
  * 
  * @param ediff
- * @text --装備パラメータ(差分)の設定--
+ * @text --Equipment Parameter (Difference) Settings--
  * @default
  * 
  * @param Enabled Escapecharacters By EDIFF
- * @desc 差分表示に制御文字使えるようにする
+ * @desc Enable the use of control characters in difference display
  * @type boolean
- * @on 有効
- * @off 無効
+ * @on Enable
+ * @off Disable
  * @default true
  * @parent ediff
  * 
  * @param Format EDIFF Plus
- * @desc 増加の場合の表示を設定します。
- * %1 - 増加値
+ * @desc Set the display for increases.
+ * %1 - Increase value
  * @default \c[24]+ %1
  * @parent ediff
  * 
  * @param Format EDIFF Minus
- * @desc 減少の場合の表示を設定します。
- * %1 - 減少値
+ * @desc Set the display for decreases.
+ * %1 - Decrease value
  * @default \c[25]- %1
  * @parent ediff
  * 
  * @param aopdiff
- * @text --AOP能力値(差分)の設定--
+ * @text --AOP Stat (Difference) Settings--
  * @default
  * 
  * @param Enabled Escapecharacters By AOPDIFF
- * @desc 差分表示に制御文字使えるようにする
+ * @desc Enable the use of control characters in difference display
  * @type boolean
- * @on 有効
- * @off 無効
+ * @on Enable
+ * @off Disable
  * @default true
  * @parent aopdiff
  * 
  * @param Format AOPDIFF Plus
- * @desc 増加の場合の表示を設定します。
- * %1 - 増加値
+ * @desc Set the display for increases.
+ * %1 - Increase value
  * @default \c[24]+ %1
  * @parent aopdiff
  * 
  * @param Format AOPDIFF Minus
- * @desc 減少の場合の表示を設定します。
- * %1 - 減少値
+ * @desc Set the display for decreases.
+ * %1 - Decrease value
  * @default \c[25]- %1
  * @parent aopdiff
  * 
  * @param ediffaop
- * @text --AOP装備パラメータ(差分)の設定--
+ * @text --AOP Equipment Parameter (Difference) Settings--
  * @default
  * 
  * @param Enabled Escapecharacters By EDIFFAOP
- * @desc 差分表示に制御文字使えるようにする
+ * @desc Enable the use of control characters in difference display
  * @type boolean
- * @on 有効
- * @off 無効
+ * @on Enable
+ * @off Disable
  * @default true
  * @parent ediffaop
  * 
  * @param Format EDIFFAOP Plus
- * @desc 増加の場合の表示を設定します。
- * %1 - 増加値
+ * @desc Set the display for increases.
+ * %1 - Increase value
  * @default \c[24]+ %1
  * @parent ediffaop
  * 
  * @param Format EDIFFAOP Minus
- * @desc 減少の場合の表示を設定します。
- * %1 - 減少値
+ * @desc Set the display for decreases.
+ * %1 - Decrease value
  * @default \c[25]- %1
  * @parent ediffaop
  * 
  * @param image
- * @text --カスタム画像の設定--
+ * @text --Custom Image Settings--
  * @default
  * 
  * @param Image Position X
- * @desc カスタム画像を描画エリア内のどこに表示するか。
- * 0 - 左寄せ, 1 - 中央, 2 - 右寄せ
+ * @desc Where to display the custom image within the drawing area.
+ * 0 - Left, 1 - Center, 2 - Right
  * @default 1
  * @parent image
  * 
  * @param message
- * @text --メッセージの設定--
+ * @text --Message Settings--
  * @default
  * 
  * @param Display LevelUp Message
- * @desc レベルアップ時のメッセージを設定します。
- * %1 - アクター名, %2 - 現在レベル, %3 - 上昇したレベル
+ * @desc Set the message displayed upon level-up.
+ * %1 - Actor name, %2 - Current level, %3 - Level gained
  * @default \C[17]%3 Level Up!
  * @parent message
  * 
  * @param customParam
- * @text --カスタムパラメータの設定--
+ * @text --Custom Parameter Settings--
  * 
  * @param --Custom Param 0--
  * @default
  * @parent customParam
  * 
  * @param Custom 0 Display Name
- * @desc Custom(0)の表示名を設定します
- * @default \c[16]現在の経験値
- * @parent customParam
+ * @desc Set the display name for Custom(0)
+ * @default \c[16]Current Experience
+ * @parent --Custom Param 0--
  * 
  * @param Custom 0 References
- * @desc Custom(0)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(0).
+ * Use actor as "a" and specify the reference for the status.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 0--
  * 
  * @param Custom 0 Unit
- * @desc Custom(0)の単位を設定します。
+ * @desc Set the unit for Custom(0).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 0--
  * 
  * @param --Custom Param 1--
  * @default
  * @parent customParam
  * 
  * @param Custom 1 Display Name
- * @desc Custom(1)の表示名を設定します
+ * @desc Set the display name for Custom(1)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 1--
  * 
  * @param Custom 1 References
- * @desc Custom(1)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(1).
+ * Use actor as "a" and specify the reference for the status.
  * @default a.currentExp()
- * @parent customParam
+ * @parent --Custom Param 1--
  * 
  * @param Custom 1 Unit
- * @desc Custom(1)の単位を設定します。
+ * @desc Set the unit for Custom(1).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 1--
  * 
  * @param --Custom Param 2--
  * @default
  * @parent customParam
  * 
  * @param Custom 2 Display Name
- * @desc Custom(2)の表示名を設定します
- * @default \c[16]次のレベルまで
- * @parent customParam
+ * @desc Set the display name for Custom(2)
+ * @default \c[16]Next Level
+ * @parent --Custom Param 2--
  * 
  * @param Custom 2 References
- * @desc Custom(2)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(2).
+ * Use actor as "a" and specify the reference for the status.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 2--
  * 
  * @param Custom 2 Unit
- * @desc Custom(2)の単位を設定します。
+ * @desc Set the unit for Custom(2).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 2--
  * 
  * @param --Custom Param 3--
  * @default
  * @parent customParam
  * 
  * @param Custom 3 Display Name
- * @desc Custom(3)の表示名を設定します
+ * @desc Set the display name for Custom(3)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 3--
  * 
  * @param Custom 3 References
- * @desc Custom(3)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(3).
+ * Use actor as "a" and specify the reference for the status.
  * @default a.nextRequiredExp()
- * @parent customParam
+ * @parent --Custom Param 3--
  * 
  * @param Custom 3 Unit
- * @desc Custom(3)の単位を設定します。
+ * @desc Set the unit for Custom(3).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 3--
  * 
  * @param --Custom Param 4--
  * @default
  * @parent customParam
  * 
  * @param Custom 4 Display Name
- * @desc Custom(4)の表示名を設定します
+ * @desc Set the display name for Custom(4)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 4--
  * 
  * @param Custom 4 References
- * @desc Custom(4)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(4).
+ * Use actor as "a" and specify the reference for the status.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 4--
  * 
  * @param Custom 4 Unit
- * @desc Custom(4)の単位を設定します。
+ * @desc Set the unit for Custom(4).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 4--
  * 
  * @param --Custom Param 5--
  * @default 
  * @parent customParam
  * 
  * @param Custom 5 Display Name
- * @desc Custom(5)の表示名を設定します
+ * @desc Set the display name for Custom(5)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 5--
  * 
  * @param Custom 5 References
- * @desc Custom(5)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(5).
+ * Use actor as "a" and specify the reference for the status.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 5--
  * 
  * @param Custom 5 Unit
- * @desc Custom(5)の単位を設定します。
+ * @desc Set the unit for Custom(5).
  * @default 
- * @parent customParam
- * 
+ * @parent --Custom Param 5--
+ *
  * @param --Custom Param 6--
  * @default 
  * @parent customParam
  * 
  * @param Custom 6 Display Name
- * @desc Custom(6)の表示名を設定します
+ * @desc Set the display name for Custom(6)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 6--
  * 
  * @param Custom 6 References
- * @desc Custom(6)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(6).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 6--
  * 
  * @param Custom 6 Unit
- * @desc Custom(6)の単位を設定します。
+ * @desc Set the unit for Custom(6).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 6--
  * 
  * @param --Custom Param 7--
  * @default 
  * @parent customParam
  * 
  * @param Custom 7 Display Name
- * @desc Custom(7)の表示名を設定します
+ * @desc Set the display name for Custom(7)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 7--
  * 
  * @param Custom 7 References
- * @desc Custom(7)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(7).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 7--
  * 
  * @param Custom 7 Unit
- * @desc Custom(7)の単位を設定します。
+ * @desc Set the unit for Custom(7).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 7--
  * 
  * @param --Custom Param 8--
  * @default
  * @parent customParam
  * 
  * @param Custom 8 Display Name
- * @desc Custom(8)の表示名を設定します
+ * @desc Set the display name for Custom(8)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 8--
  * 
  * @param Custom 8 References
- * @desc Custom(8)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(8).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 8--
  * 
  * @param Custom 8 Unit
- * @desc Custom(8)の単位を設定します。
+ * @desc Set the unit for Custom(8).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 8--
  * 
  * @param --Custom Param 9--
  * @default
  * @parent customParam
  * 
  * @param Custom 9 Display Name
- * @desc Custom(9)の表示名を設定します
+ * @desc Set the display name for Custom(9)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 9--
  * 
  * @param Custom 9 References
- * @desc Custom(9)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(9).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 9--
  * 
  * @param Custom 9 Unit
- * @desc Custom(9)の単位を設定します。
+ * @desc Set the unit for Custom(9).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 9--
  * 
  * @param --Custom Param 10--
  * @default
  * @parent customParam
  * 
  * @param Custom 10 Display Name
- * @desc Custom(10)の表示名を設定します
+ * @desc Set the display name for Custom(10)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 10--
  * 
  * @param Custom 10 References
- * @desc Custom(10)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(10).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 10--
  * 
  * @param Custom 10 Unit
- * @desc Custom(10)の単位を設定します。
+ * @desc Set the unit for Custom(10).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 10--
  * 
  * @param --Custom Param 11--
  * @default
  * @parent customParam
  * 
  * @param Custom 11 Display Name
- * @desc Custom(11)の表示名を設定します
+ * @desc Set the display name for Custom(11)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 11--
  * 
  * @param Custom 11 References
- * @desc Custom(11)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(11).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 11--
  * 
  * @param Custom 11 Unit
- * @desc Custom(11)の単位を設定します。
+ * @desc Set the unit for Custom(11).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 11--
  * 
  * @param --Custom Param 12--
  * @default
  * @parent customParam
  * 
  * @param Custom 12 Display Name
- * @desc Custom(12)の表示名を設定します
+ * @desc Set the display name for Custom(12)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 12--
  * 
  * @param Custom 12 References
- * @desc Custom(12)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(12).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 12--
  * 
  * @param Custom 12 Unit
- * @desc Custom(12)の単位を設定します。
+ * @desc Set the unit for Custom(12).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 12--
  * 
  * @param --Custom Param 13--
  * @default
  * @parent customParam
  * 
  * @param Custom 13 Display Name
- * @desc Custom(13)の表示名を設定します
+ * @desc Set the display name for Custom(13)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 13--
  * 
  * @param Custom 13 References
- * @desc Custom(13)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(13).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 13--
  * 
  * @param Custom 13 Unit
- * @desc Custom(13)の単位を設定します。
+ * @desc Set the unit for Custom(13).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 13--
  * 
  * @param --Custom Param 14--
  * @default
  * @parent customParam
  * 
  * @param Custom 14 Display Name
- * @desc Custom(14)の表示名を設定します
+ * @desc Set the display name for Custom(14)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 14--
  * 
  * @param Custom 14 References
- * @desc Custom(14)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(14).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 14--
  * 
  * @param Custom 14 Unit
- * @desc Custom(14)の単位を設定します。
+ * @desc Set the unit for Custom(14).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 14--
  * 
  * @param --Custom Param 15--
  * @default
  * @parent customParam
  * 
  * @param Custom 15 Display Name
- * @desc Custom(15)の表示名を設定します
+ * @desc Set the display name for Custom(15)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 15--
  * 
  * @param Custom 15 References
- * @desc Custom(15)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(15).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 15--
  * 
  * @param Custom 15 Unit
- * @desc Custom(15)の単位を設定します。
+ * @desc Set the unit for Custom(15).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 15--
  * 
  * @param --Custom Param 16--
  * @default
  * @parent customParam
  * 
  * @param Custom 16 Display Name
- * @desc Custom(16)の表示名を設定します
+ * @desc Set the display name for Custom(16)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 16--
  * 
  * @param Custom 16 References
- * @desc Custom(16)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(16).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 16--
  * 
  * @param Custom 16 Unit
- * @desc Custom(16)の単位を設定します。
+ * @desc Set the unit for Custom(16).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 16--
  * 
  * @param --Custom Param 17--
  * @default
  * @parent customParam
  * 
  * @param Custom 17 Display Name
- * @desc Custom(17)の表示名を設定します
+ * @desc Set the display name for Custom(17)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 17--
  * 
  * @param Custom 17 References
- * @desc Custom(17)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(17).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 17--
  * 
- * @param Custom 17Unit
- * @desc Custom(17)の単位を設定します。
+ * @param Custom 17 Unit
+ * @desc Set the unit for Custom(17).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 17--
  * 
  * @param --Custom Param 18--
  * @default
  * @parent customParam
  * 
  * @param Custom 18 Display Name
- * @desc Custom(18)の表示名を設定します
+ * @desc Set the display name for Custom(18)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 18--
  * 
  * @param Custom 18 References
- * @desc Custom(18)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(18).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 18--
  * 
  * @param Custom 18 Unit
- * @desc Custom(18)の単位を設定します。
+ * @desc Set the unit for Custom(18).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 18--
  * 
  * @param --Custom Param 19--
  * @default
  * @parent customParam
  * 
  * @param Custom 19 Display Name
- * @desc Custom(19)の表示名を設定します
+ * @desc Set the display name for Custom(19)
  * @default 
- * @parent customParam
+ * @parent --Custom Param 19--
  * 
  * @param Custom 19 References
- * @desc Custom(19)の値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Set the reference for the value of Custom(19).
+ * Use the actor as 'a' and specify the reference to the stat.
  * @default 
- * @parent customParam
+ * @parent --Custom Param 19--
  * 
  * @param Custom 19 Unit
- * @desc Custom(19)の単位を設定します。
+ * @desc Set the unit for Custom(19).
  * @default 
- * @parent customParam
+ * @parent --Custom Param 19--
  * 
  * @param customGauge
- * @text --カスタムゲージの設定--
+ * @text --Custom Gauge Settings--
  * 
  * @param Gauge Param Digit
- * @desc 現在値と最大値の表示幅を指定した桁数に設定する
+ * @desc Set the number of digits for displaying the current value and maximum value.
  * @default 4
  * @parent customGauge
  * 
@@ -733,741 +733,589 @@ FTKR.CSS = FTKR.CSS || {};
  * @parent customGauge
  * 
  * @param Gauge 0 Display Name
- * @desc Gauge(0)の表示名を設定します
+ * @desc Sets the display name for Gauge(0).
  * @default \C[16]EXP
- * @parent customGauge
+ * @parent --Gauge Param 0--
  * 
  * @param Gauge 0 References
- * @desc Gauge(0)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(0).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 0--
  * 
  * @param Gauge 0 Current
- * @desc Gauge(0)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(0).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default a.isMaxLevel() ? '--------' : a.currentExp()
- * @parent customGauge
+ * @parent --Gauge Param 0--
  * 
  * @param Gauge 0 Max
- * @desc Gauge(0)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(0).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default a.isMaxLevel() ? '--------' : a.nextLevelExp()
- * @parent customGauge
+ * @parent --Gauge Param 0--
  * 
  * @param Gauge 0 Color1
- * @desc Gauge(0)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(0).
  * @default 17
- * @parent customGauge
+ * @parent --Gauge Param 0--
  * 
  * @param Gauge 0 Color2
- * @desc Gauge(0)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(0).
  * @default 6
- * @parent customGauge
+ * @parent --Gauge Param 0--
  * 
  * @param --Gauge Param 1--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 1 Display Name
- * @desc Gauge(1)の表示名を設定します
+ * @desc Sets the display name for Gauge(1).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 1--
  * 
  * @param Gauge 1 References
- * @desc Gauge(1)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(1).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 1--
  * 
  * @param Gauge 1 Current
- * @desc Gauge(1)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(1).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 1--
  * 
  * @param Gauge 1 Max
- * @desc Gauge(1)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(1).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 1--
  * 
  * @param Gauge 1 Color1
- * @desc Gauge(1)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(1).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 1--
  * 
  * @param Gauge 1 Color2
- * @desc Gauge(1)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(1).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 1--
  * 
  * @param --Gauge Param 2--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 2 Display Name
- * @desc Gauge(2)の表示名を設定します
+ * @desc Sets the display name for Gauge(2).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 2--
  * 
  * @param Gauge 2 References
- * @desc Gauge(2)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(2).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 2--
  * 
  * @param Gauge 2 Current
- * @desc Gauge(2)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(2).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 2--
  * 
  * @param Gauge 2 Max
- * @desc Gauge(2)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(2).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 2--
  * 
  * @param Gauge 2 Color1
- * @desc Gauge(2)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(2).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 2--
  * 
  * @param Gauge 2 Color2
- * @desc Gauge(2)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(2).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 2--
  * 
  * @param --Gauge Param 3--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 3 Display Name
- * @desc Gauge(3)の表示名を設定します
+ * @desc Sets the display name for Gauge(3).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 3--
  * 
  * @param Gauge 3 References
- * @desc Gauge(3)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(3).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 3--
  * 
  * @param Gauge 3 Current
- * @desc Gauge(3)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(3).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 3--
  * 
  * @param Gauge 3 Max
- * @desc Gauge(3)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(3).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 3--
  * 
  * @param Gauge 3 Color1
- * @desc Gauge(3)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(3).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 3--
  * 
  * @param Gauge 3 Color2
- * @desc Gauge(3)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(3).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 3--
  * 
  * @param --Gauge Param 4--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 4 Display Name
- * @desc Gauge(4)の表示名を設定します
+ * @desc Sets the display name for Gauge(4).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 4--
  * 
  * @param Gauge 4 References
- * @desc Gauge(4)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(4).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 4--
  * 
  * @param Gauge 4 Current
- * @desc Gauge(4)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(4).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 4--
  * 
  * @param Gauge 4 Max
- * @desc Gauge(4)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(4).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 4--
  * 
  * @param Gauge 4 Color1
- * @desc Gauge(4)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(4).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 4--
  * 
  * @param Gauge 4 Color2
- * @desc Gauge(4)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(4).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 4--
  * 
  * @param --Gauge Param 5--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 5 Display Name
- * @desc Gauge(5)の表示名を設定します
+ * @desc Sets the display name for Gauge(5).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 5--
  * 
  * @param Gauge 5 References
- * @desc Gauge(5)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(5).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 5--
  * 
  * @param Gauge 5 Current
- * @desc Gauge(5)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(5).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 5--
  * 
  * @param Gauge 5 Max
- * @desc Gauge(5)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(5).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 5--
  * 
  * @param Gauge 5 Color1
- * @desc Gauge(5)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(5).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 5--
  * 
  * @param Gauge 5 Color2
- * @desc Gauge(5)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(5).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 5--
  * 
  * @param --Gauge Param 6--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 6 Display Name
- * @desc Gauge(6)の表示名を設定します
+ * @desc Sets the display name for Gauge(6).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 6--
  * 
  * @param Gauge 6 References
- * @desc Gauge(6)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(6).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 6--
  * 
  * @param Gauge 6 Current
- * @desc Gauge(6)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(6).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 6--
  * 
  * @param Gauge 6 Max
- * @desc Gauge(6)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(6).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 6--
  * 
  * @param Gauge 6 Color1
- * @desc Gauge(6)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(6).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 6--
  * 
  * @param Gauge 6 Color2
- * @desc Gauge(6)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(6).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 6--
  * 
  * @param --Gauge Param 7--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 7 Display Name
- * @desc Gauge(7)の表示名を設定します
+ * @desc Sets the display name for Gauge(7).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 7--
  * 
  * @param Gauge 7 References
- * @desc Gauge(7)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(7).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 7--
  * 
  * @param Gauge 7 Current
- * @desc Gauge(7)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(7).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 7--
  * 
  * @param Gauge 7 Max
- * @desc Gauge(7)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(7).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 7--
  * 
  * @param Gauge 7 Color1
- * @desc Gauge(7)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(7).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 7--
  * 
  * @param Gauge 7 Color2
- * @desc Gauge(7)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(7).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 7--
  * 
  * @param --Gauge Param 8--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 8 Display Name
- * @desc Gauge(8)の表示名を設定します
+ * @desc Sets the display name for Gauge(8).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 8--
  * 
  * @param Gauge 8 References
- * @desc Gauge(8)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(8).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 8--
  * 
  * @param Gauge 8 Current
- * @desc Gauge(8)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(8).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 8--
  * 
  * @param Gauge 8 Max
- * @desc Gauge(8)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(8).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 8--
  * 
  * @param Gauge 8 Color1
- * @desc Gauge(8)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(8).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 8--
  * 
  * @param Gauge 8 Color2
- * @desc Gauge(8)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(8).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 8--
  * 
  * @param --Gauge Param 9--
  * @default
  * @parent customGauge
  * 
  * @param Gauge 9 Display Name
- * @desc Gauge(9)の表示名を設定します
+ * @desc Sets the display name for Gauge(9).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 9--
  * 
  * @param Gauge 9 References
- * @desc Gauge(9)で表示する値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the value displayed in Gauge(9).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 9--
  * 
  * @param Gauge 9 Current
- * @desc Gauge(9)の現在値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the current value of Gauge(9).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 9--
  * 
  * @param Gauge 9 Max
- * @desc Gauge(9)の最大値の参照先を設定します。
- * アクターを a として、ステータスの参照先を記述すること。
+ * @desc Sets the reference for the maximum value of Gauge(9).
+ * Use 'a' to represent the actor and specify the status reference.
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 9--
  * 
  * @param Gauge 9 Color1
- * @desc Gauge(9)のゲージの色1を設定します。
+ * @desc Sets color 1 for Gauge(9).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 9--
  * 
  * @param Gauge 9 Color2
- * @desc Gauge(9)のゲージの色2を設定します。
+ * @desc Sets color 2 for Gauge(9).
  * @default 
- * @parent customGauge
+ * @parent --Gauge Param 9--
  * 
  * @param paramName
- * @text --表示名の設定--
+ * @text --Display Name Settings--
  * 
  * @param XPARAM Name
- * @desc 追加能力値の表示名を設定します。
+ * @desc Sets the display name for additional parameters.
  * @type struct<xparam>
- * @default {"hit":"命中率","eva":"回避率","cri":"会心率","cev":"会心回避率","mev":"魔法回避率","mrf":"魔法反射率","cnt":"反撃率","hrg":"HP再生率","mrg":"MP再生率","trg":"TP再生率"}
+ * @default {"hit":"Hit Rate","eva":"Evasion Rate","cri":"Critical Rate","cev":"Critical Evasion Rate","mev":"Magic Evasion Rate","mrf":"Magic Reflection Rate","cnt":"Counter Rate","hrg":"HP Regeneration Rate","mrg":"MP Regeneration Rate","trg":"TP Regeneration Rate"}
  * @parent paramName
  * 
  * @param SPARAM Name
- * @desc 特殊能力値の表示名を設定します。
+ * @desc Sets the display name for special parameters.
  * @type struct<sparam>
- * @default {"tgr":"狙われ率","grd":"防御効果率","rec":"回復効果率","pha":"薬の知識","mcr":"MP消費率","tcr":"TPチャージ率","pdr":"物理ダメージ率","mdr":"魔法ダメージ率","fdr":"床ダメージ率","exr":"経験獲得率"}
+ * @default {"tgr":"Target Rate","grd":"Guard Effect Rate","rec":"Recovery Effect Rate","pha":"Pharmacy Knowledge","mcr":"MP Cost Rate","tcr":"TP Charge Rate","pdr":"Physical Damage Rate","mdr":"Magic Damage Rate","fdr":"Floor Damage Rate","exr":"EXP Gain Rate"}
  * @parent paramName
  * 
  * @help
- *-----------------------------------------------------------------------------
- * 概要
- *-----------------------------------------------------------------------------
- * このプラグインは、アクターのステータス表示のレイアウトをより詳細に設定できる
- * 処理を実装します。
+ * -----------------------------------------------------------------------------
+ * Overview
+ * -----------------------------------------------------------------------------
+ * This plugin implements a feature that allows for more detailed customization
+ * of actor status display layouts.
  * 
- * このプラグインの拡張プラグイン(FTKR_CSS_***.js)と組み合わせることで
- * メニュー画面や、バトル画面などさまざまなステータス画面を設定できるように
- * なります。
+ * By combining this plugin with its extension plugins (FTKR_CSS_***.js),
+ * you can set up various status screens such as the menu screen or battle screen.
  * 
- * このプラグインの v3.0.0 から採用するステータスごとの表示位置指定方式については、
- * 拡張プラグインの v2.0.0 以降を使用してください。
- * ※従来の方式についても、v1の拡張プラグインで使用可能
+ * For the display position specification method for each status adopted from
+ * version v3.0.0 of this plugin, please use version v2.0.0 or later of the
+ * extension plugin.
+ * *Note: The previous method is still available in the v1 extension plugin.
  * 
+ * To use this plugin, please refer to the online manual below:
+ * https://github.com/leo7oo/RPGMaker/blob/master/FTKR_CustomSimpleActorStatus.md
  * 
- * プラグインの使い方は、下のオンラインマニュアルページを見てください。
- * https://github.com/futokoro/RPGMaker/blob/master/FTKR_CustomSimpleActorStatus.ja.md
+ * -----------------------------------------------------------------------------
+ * Setup Instructions
+ * -----------------------------------------------------------------------------
+ * 1. Add this plugin in the "Plugin Manager" (Plugin Management).
  * 
+ * 2. When using in combination with an extension plugin (FTKR_CSS_***.js),
+ *    ensure that this plugin is placed above the extension plugin.
  * 
- *-----------------------------------------------------------------------------
- * 設定方法
- *-----------------------------------------------------------------------------
- * 1.「プラグインマネージャー(プラグイン管理)」に、このプラグインを追加して
- *    ください。
+ * 3. When combining with GraphicalDesignMode.js, place this plugin below it.
  * 
- * 2. 拡張プラグイン(FTKR_CSS_***.js)と組み合わせる場合は、このプラグインが
- *    上になるように配置してください。
+ * 4. No plugin parameters are required to use this plugin.
  * 
- * 3. GraphicalDesignMode.jsと組み合わせる場合は、
- *    このプラグインが下になるように配置してください。
- * 
- * 4. このプラグインを使う上で、設定が必須なプラグインパラメータはありません。
- * 
- * 
- *-----------------------------------------------------------------------------
- * プラグインのライセンスについて(License)
- *-----------------------------------------------------------------------------
- * このプラグインはMITライセンスのもとで公開しています。
+ * -----------------------------------------------------------------------------
+ * License Information for this Plugin
+ * -----------------------------------------------------------------------------
  * This plugin is released under the MIT License.
  * 
  * Copyright (c) 2017,2018 Futokoro
  * http://opensource.org/licenses/mit-license.php
  * 
- * 
- * プラグイン公開元
+ * Plugin Repository:
  * https://github.com/futokoro/RPGMaker/blob/master/README.md
  * 
+ * -----------------------------------------------------------------------------
+*/
+
+/* ja:
+ * -----------------------------------------------------------------------------
+ * Changelog
+ * -----------------------------------------------------------------------------
  * 
- *-----------------------------------------------------------------------------
- * 変更来歴
- *-----------------------------------------------------------------------------
+ * v3.5.3 - 2019/05/12 : Feature Added
+ *    1. Added code (numItem) to display the number of items owned.
+ *    2. Added a dedicated process for shop screen to the equipment display code (equip(%1)).
  * 
- * v3.5.3 - 2019/05/12 : 機能追加
- *    1. アイテムの所持数を表示するコード(numItem)を追加。
- *    2. 装備品の表示コード(equip(%1))に、ショップ画面用の専用処理を追加。
+ * v3.5.2 - 2019/04/14 : Feature Added
+ *    1. Added code to display special abilities (xparam) and additional abilities (sparam).
  * 
- * v3.5.2 - 2019/04/14 : 機能追加
- *    1. 特殊能力値(xparam)と追加能力値(sparam)を表示するコード他を追加。
+ * v3.5.1 - 2019/03/05 : Bug Fixes and Features Added
+ *    1. Fixed a bug where the value of "value" in the "statusList" parameter of the extension plugin
+ *       was not being correctly read.
+ *    2. Added code notequip to display a specific message when the selected equipment cannot be equipped.
+ *       *Available in equipment and shop screens.
  * 
- * v3.5.1 - 2019/03/05 : 不具合修正、機能追加
- *    1. 拡張プラグインのパラメータ"statusList"の"value"の値を正しく読み取れない
- *       不具合を修正。
- *    2. 選択中の装備品を装備できない時に特定も文字を表示させるコード notequip を
- *       追加。※装備画面とショップ画面で使用可能
+ * v3.5.0 - 2018/12/29 : Feature Added
+ *    1. Added a plugin command to modify saved window settings.
  * 
- * v3.5.0 - 2018/12/29 : 機能追加
- *    1. セーブしたウィンドウ設定を変更するプラグインコマンドを追加。
+ * v3.4.7 - 2018/12/27 : Bug Fixes
+ *    1. Fixed bugs in FTKR_CSS_ShopStatus v2.2.2.
+ *    2. Addressed an issue where item data images could not be displayed in FTKR_OriginalSceneWindow.
  * 
- * v3.4.7 - 2018/12/27 : 不具合修正
- *    1. FTKR_CSS_ShopStatus v2.2.2 の不具合修正対応。
- *    2. FTKR_OriginalSceneWindow でアイテムデータ画像が表示できない不具合対応。
+ * v3.4.6 - 2018/12/15 : Bug Fixes (Optimization)
+ *    1. Reviewed display processing for custom parameters and custom gauges.
+ *    2. Optimized the evaluation process for plugin commands.
  * 
- * v3.4.6 - 2018/12/15 : 不具合修正(軽量化)
- *    1. カスタムパラメータとカスタムゲージの表示処理を見直し。
- *    2. プラグインコマンドの判定処理を見直し。
+ * v3.4.5 - 2018/12/13 : Bug Fixes (Optimization)
+ *    1. Reviewed the evaluation process for parameters in the form code(x), where eval() was always used.
  * 
- * v3.4.5 - 2018/12/13 : 不具合修正(軽量化)
- *    1. code(x)の形のパラメータの判定時に必ずeval()で評価していた処理を見直し。
+ * v3.4.4 - 2018/12/02 : Bug Fix
+ *    1. Fixed a bug where specifying a non-existent image ID for custom images caused an error.
  * 
- * v3.4.4 - 2018/12/02 : 不具合修正
- *    1. カスタム画像で、存在しない画像IDを指定した場合にエラーになる不具合を修正。
+ * v3.4.3 - 2018/11/03 : Specification Change
+ *    1. Independent configuration of the display content for ediff(x), aopdiff(x), ediffaop(x) from pdiff(x).
  * 
- * v3.4.3 - 2018/11/03 : 仕様変更
- *    1. ediff(x)、aopdiff(x)、ediffaop(x)の表示内容の設定を、pdiff(x)から独立。
+ * v3.4.2 - 2018/10/28 : Bug Fix
+ *    1. Fixed a bug where original parameters and original gauges were not displayed correctly in certain scenes.
  * 
- * v3.4.2 - 2018/10/28 : 不具合修正
- *    1. オリジナルパラメータおよびオリジナルゲージの数値が、一部のシーンで正常に
- *       表示できない不具合を修正。
+ * v3.4.1 - 2018/10/11 : Features Added, Specification Changed
+ *    1. Added a feature to disable control characters in differential parameter displays.
+ *    2. Changed the display to hide when a differential parameter is 0.
  * 
- * v3.4.1 - 2018/10/11 : 機能追加、仕様変更
- *    1. パラメータの差分表示に制御文字を無効にする機能を追加。
- *    2. パラメータの差分表示で 0 の場合に表示しないように変更。
+ * v3.4.0 - 2018/10/10 : Feature Added
+ *    1. Moved the ediff(x) and ediffaop(x) codes from FTKR_CSS_ShopStatus.
  * 
- * v3.4.0 - 2018/10/10 : 機能追加
- *    1. ediff(x)およびediffaop(x)のコードをFTKR_CSS_ShopStatusから移動。
+ * v3.3.4 - 2018/09/28 : Feature Added
+ *    1. Added AOP parameter display codes to status codes.
  * 
- * v3.3.4 - 2018/09/28 : 機能追加
- *    1. ステータスコードに、AOPパラメータ表示用のコードを追加。
+ * v3.3.3 - 2018/09/28 : Feature Added
+ *    1. Added parameter display codes to status codes.
  * 
- * v3.3.3 - 2018/09/28 : 機能追加
- *    1. ステータスコードに、パラメータ表示用のコードを追加。
+ * v3.3.2 - 2018/09/19 : Feature Added
+ *    1. Added item display codes to status codes.
  * 
- * v3.3.2 - 2018/09/19 : 機能追加
- *    1. ステータスコードに、アイテム用のコードを追加。
+ * v3.3.1 - 2018/09/19 : Bug Fix
+ *    1. Fixed a bug where state icons were not displayed when the actor was incapacitated.
  * 
- * v3.3.1 - 2018/09/19 : 不具合修正
- *    1. 戦闘不能時に、ステートアイコンを表示しない不具合を修正。
+ * v3.3.0 - 2018/09/15 : Feature Added
+ *    1. Added item display codes to status codes.
+ *    2. Added a feature to set the spacing between status icons.
+ *    3. Changed so that at least one status icon is displayed, even when space is insufficient.
+ *    4. When Enable Auto Scale is enabled in plugin parameters, icons will adjust size even when the display width is small.
  * 
- * v3.3.0 - 2018/09/15 : 機能追加
- *    1. ステータスコードに、アイテム用のコードを追加。
- *    2. ステータスアイコン同士間の余白サイズを設定する機能を追加。
- *    3. ステータスアイコンを高さ幅が不足しても最低１つは表示させるように変更。
- *    4. プラグインパラメータ Enable Auto Scale を有効にした場合に、表示幅が小さい
- *       場合でもサイズ調整するように変更。
+ * v3.2.0 - 2018/09/11 : Fixed descriptions for FTKR_GDM_WindowEditor.js.
  * 
- * v3.2.0 - 2018/09/11 : FTKR_GDM_WindowEditor.js 用の記述を修正。
+ * v3.1.1 - 2018/09/09 : Removed code for GraphicalDesignMode.js.
  * 
- * v3.1.1 - 2018/09/09 : GraphicalDesignMode.js 用の記述を削除
+ * v3.1.0 - 2018/08/30 : Feature Added
+ *    1. Added a feature to select displayed statuses as a list in the extension plugin's parameters.
  * 
- * v3.1.0 - 2018/08/30 : 機能追加
- *    1. 拡張プラグインのプラグインパラメータで表示するステータスをリストで
- *       選択できる機能を追加。
+ * v3.0.2 - 2018/08/25 : Bug Fix
+ *    1. Fixed a bug where setting the margin and background transparency to 0 in the extension plugin rendered the settings invalid.
  * 
- * v3.0.2 - 2018/08/25 : 不具合修正
- *    1. 拡張プラグインで、余白と背景透明度を 0 に設定した場合に、設定が無効になる
- *       不具合を修正。
+ * v3.0.1 - 2018/08/20 : Bug Fix
+ *    1. Fixed a bug where an error occurred when enabling status window settings in the extension plugin.
  * 
- * v3.0.1 - 2018/08/20 : 不具合修正
- *    1. 拡張プラグインでステータスウィンドウの設定を有効にした場合にエラーになる
- *       不具合を修正。
+ * v3.0.0 - 2018/08/19 : Specification Change
+ *    1. Adopted the method of specifying display positions for each status in status and parameter input.
+ *    2. Fixed for FTKR_GDM_WindowEditor support.
+ *    3. Reduced help documentation.
+ *    4. Added a feature to adjust the size of facial images.
+ *    5. Moved the integration with GraphicalDesignMode.js to FTKR_GDM_Editor.
  * 
- * v3.0.0 - 2018/08/19 : 仕様変更
- *    1. ステータスの表示とパラメータの入力に、ステータスごとの表示位置指定方式を採用。
- *    2. FTKR_GDM_WindowEditor対応版に修正。
- *    3. ヘルプの記述を削減。
- *    4. 顔画像のサイズを調整する機能を追加。
- *    5. GraphicalDesignMode.jsとの連携機能を、FTKR_GDM_Editorに移行。
+ * v2.7.2 - 2018/08/18 : Bug Fix
+ *    1. Fixed an issue where state icons were not displayed when using the extension plugin.
  * 
- * v2.7.2 - 2018/08/18 : 不具合修正
- *    1. 拡張プラグイン使用時にステートアイコンが表示されない不具合を修正。
+ * v2.7.1 - 2018/08/17 : Bug Fix
+ *    1. Fixed an issue where state icons were displayed even if the status window was hidden in the battle scene.
  * 
- * v2.7.1 - 2018/08/17 : 不具合修正
- *    1. バトルシーンでステータスウィンドウが非表示でも、ステートアイコンが
- *       表示される不具合を修正。
+ * v2.7.0 - 2018/03/17 : Feature Added
+ *    1. Added a plugin command to change custom images in-game.
  * 
- * v2.7.0 - 2018/03/17 : 機能追加
- *    1. カスタム画像をゲーム中に変更するプラグインコマンドを追加。
+ * v2.6.3 - 2018/03/12 : Process Change
+ *    1. Made the transparency check for facial and custom images into a separate function.
+ *    2. Added exception handling for cases where an actor is not set.
  * 
- * v2.6.3 - 2018/03/12 : 処理変更
- *    1. 顔画像やカスタム画像の表示透過度の判定部を関数として独立。
- *    2. コード処理部にアクターが設定されていない場合の例外処理を追加。
+ * v2.6.2 - 2018/03/11 : Bug Fix
+ *    1. Fixed a bug where codes set in square brackets were not displayed correctly.
+ *    2. Fixed a bug where the state icon display was not updated when the state code was changed in design mode.
  * 
- * v2.6.2 - 2018/03/11 : 不具合修正
- *    1. 角括弧で設定したコードが正しく表示されない不具合を修正。
- *    2. デザインモード中にstateコードを変更した際に、ステートアイコンの表示が
- *       一部更新されない不具合を修正。
+ * v2.6.1 - 2018/01/07 : Process Change
+ *    1. Made the X-axis alignment of facial images, walking characters, and SV characters into a separate function.
  * 
- * v2.6.1 - 2018/01/07 : 処理変更
- *    1. 顔画像、歩行キャラ、SVキャラのX座標方向の寄せ表示部分を関数として独立。
+ * v2.6.0 - 2017/11/18 : Feature Added
+ *    1. Added processing for FTKR_CSS_***Status extension plugins to support GraphicalDesignMode.js.
  * 
- * v2.6.0 - 2017/11/18 : 機能追加
- *    1. FTKR_CSS_***Status系の拡張プラグインをGraphicalDesignMode.jsに
- *       対応する処理を追加。
+ * v2.5.1 - 2017/11/08 : Bug Fix
+ *    1. Fixed a bug where an error occurred when a window generated by FTKR_OriginalSceneWindow.js existed at the start of a scene.
  * 
- * v2.5.1 - 2017/11/08 : 不具合修正
- *    1. FTKR_OriginalSceneWindow.jsで生成したウィンドウが有る場合に
- *       シーン開始時にエラーになる不具合を修正。
+ * v2.5.0 - 2017/11/08 : Feature Added
+ *    1. Added a code to display horizontal lines ("line").
+ *    2. Added a feature to change layouts in-game using GraphicalDesignMode.js and FTKR_CSS_GDM.js.
  * 
- * v2.5.0 - 2017/11/08 : 機能追加
- *    1. 横線を表示するコード「line」を追加。
- *    2. GraphicalDesignMode.jsとFTKR_CSS_GDM.jsにより、デザインモード中に
- *       ゲーム内でレイアウトを変更する機能を追加。
+ * v2.4.3 - 2017/11/02 : Bug Fix
+ *    1. Fixed a bug where parameter settings were not applied in certain cases when using the extension plugin.
  * 
- * v2.4.3 - 2017/11/02 : 不具合修正
- *    1. 装備画面でフリーズする不具合を修正。
+ * v2.4.2 - 2017/10/23 : Bug Fix
+ *    1. Fixed a bug where the value of the "name" argument in "customStatusWindow" was not displayed correctly.
  * 
- * v2.4.2 - 2017/11/01 : 不具合修正
- *    1. カスタムパラメータとカスタムゲージで、名前が表示されない不具合を修正。
- *    2. 装備のパラメータが表示されない不具合を修正。
+ * v2.4.1 - 2017/10/20 : Feature Added
+ *    1. Added code to display the name of the actor.
  * 
- * v2.4.1 - 2017/10/19 : 不具合修正
- *    1. カスタムパラメータとカスタムゲージで、アイコンを表示したときに
- *       表示位置がずれる場合がある不具合を修正。
+ * v2.4.0 - 2017/10/15 : Feature Added
+ *    1. Added code to customize facial image size and alignment.
  * 
- * v2.4.0 - 2017/10/16 : 仕様変更
- *    1. カスタムゲージで、現在値および最大値に文字列を表示できるように変更。
+ * v2.3.0 - 2017/10/14 : Feature Added
+ *    1. Added a feature to support original design mode (FTKR_GDM_WindowEditor).
  * 
- * v2.3.0 - 2017/07/23 : 機能追加
- *    1. 表示コードの判定部の記述を見直し。
- *    2. 括弧で数値を指定する表示コードに対して、数値ではなくスクリプトで
- *       指定できるように修正。
- *    3. FTKR_AddOriginalParametersで作成したオリジナルパラメータの
- *       装備パラメータを表示するコード「eaop(x)」を追加。
+ * v2.2.0 - 2017/10/12 : Feature Added
+ *    1. Added features to display custom parameters and gauges for status.
  * 
- * v2.2.0 - 2017/06/19 : 機能変更、機能追加
- *    1. テキストコードに、JS計算式の評価処理を追加。
- *    2. JS計算式の評価コードで、文字列のまま表示する機能を追加。
+ * v2.1.0 - 2017/10/09 : Feature Added
+ *    1. Added support for custom parameters in the status display.
  * 
- * v2.1.0 - 2017/06/19 : 機能変更、機能追加
- *    1. カスタム画像の設定仕様を変更。
- *    2. カスタム画像を複数設定できる機能を追加。
+ * v2.0.0 - 2017/10/06 : Feature Added
+ *    1. Added an extension plugin to customize the status display for actors.
  * 
- * v2.0.0 - 2017/06/18 : メニュー画面の変更機能を分離
+ * v1.0.0 - 2017/09/30 : Feature Added
+ *    1. Initial release
  * 
- * v1.8.0 - 2017/06/17 : 機能追加
- *    1. カスタムパラメータに単位を表示する機能を追加。
- * 
- * v1.7.6 - 2017/06/10 : 不具合修正
- *    1. YEP_BuffsStatesCore.jsと組み合わせた時にステートカウントの表示が
- *       正しく更新されない不具合を修正。
- * 
- * v1.7.5 - 2017/06/10 : 不具合修正
- *    1. テキストコードに制御文字を入力すると、正しく表示できない不具合を修正。
- * 
- * v1.7.4 - 2017/06/09 : YEP_BuffsStatesCore.jsに対応
- * 
- * v1.7.3 - 2017/06/08 : 機能追加
- *    1. ステートアイコンの表示処理をMVデフォルトに戻す機能を追加。
- * 
- * v1.7.2 - 2017/06/07 : 不具合修正、機能追加
- *    1. 波括弧による描画エリアの拡張が正しく機能しない不具合を修正。
- *    2. eval()によるJS計算結果を表示するコードを追加。
- * 
- * v1.7.1 - 2017/06/05 : 不具合修正、機能追加
- *    1. 歩行キャラが正しく表示されない不具合を修正。
- *    2. 歩行キャラの向きを、マップ上のプレイヤーに合わせる機能を追加。
- *    3. SVキャラのモーションを無効にする機能を追加。
- *    4. カスタム画像を表示する位置を調整する機能を追加。
- * 
- * v1.7.0 - 2017/06/02 : 機能追加、不具合修正
- *    1. アクター毎に個別に設定できるカスタムゲージを追加。
- *    2. クラス毎に個別に設定できるカスタムゲージを追加。
- *    3. プラグインパラメータ<Enabled Skill Status>を無効にした場合
- *       スキル画面のステータス欄が表示しない不具合を修正。
- * 
- * v1.6.0 - 2017/06/01 : 機能見直し、機能追加
- *    1. カスタムゲージの表示内容の調整機能を見直し。
- *    2. カスタムゲージのゲージバーを非表示にする機能を追加。
- *    3. カスタムゲージに現在値と最大値の替わりに指定した値を設定する機能を追加。
- * 
- * v1.5.3 - 2017/05/13 : 機能追加
- *    1. 装備画面で使用可能な、パラメータ表示コードを追加。
- * 
- * v1.5.2 - 2017/05/12 : 不具合修正、機能追加、不要なパラメータを削除
- *    1. アクターを横に並べたときに描画エリアを拡張すると、隣のアクターの
- *       表示エリアにも拡張される不具合を修正。
- *    2. 画像の表示位置の調整機能を追加。
- * 
- * v1.5.1 - 2017/05/11 : 不具合修正、機能追加
- *    1. ステータスウィンドウに表示できる人数よりもパーティーが少ない場合に
- *       エラーになる不具合を修正。
- *    2. 表示したSVキャラの位置を固定するように変更。
- * 
- * v1.5.0 - 2017/05/10 : 機能追加
- *    1. FTKR_FacialImageDifference.jsに対応。
- * 
- * v1.4.4 - 2017/05/08 : 不具合修正
- *    1. メニュー画面のアクターのスプライトが正しく更新されない不具合を修正。
- * 
- * v1.4.3 - 2017/05/06 : 不具合修正、機能追加
- *    1. アクターを横に並べた時に、顔画像が正しく表示されない不具合を修正。
- *    2. 縦のカーソル間隔を設定する機能を追加。
- * 
- * v1.4.2 - 2017/05/04 : 機能追加
- *    1. カスタムパラメータとカスタムゲージに、セルフ変数を適用。
- * 
- * v1.4.1 - 2017/04/25 : 不具合修正
- *    1. 「逃げる」でバトルを終了した場合、ステータス上のSVキャラの
- *       表示位置がずれる不具合を修正。
- * 
- * v1.4.0 - 2017/04/21 : 仕様変更、機能追加
- *    1. 詳細ステータス画面の表示変更機能を拡張プラグインとして分離。
- *    2. スキル画面の表示変更機能を拡張プラグインとして分離。
- *    3. 顔画像の表示仕様を変更。
- *    4. カスタム画像をタグの仕様を変更し、ディプロイメントでカスタム画像を
- *       保存するように変更。
- *    5. メニュー画面の簡易ステータスウィンドウの設定変更機能を追加。
- * 
- * v1.3.1 - 2017/04/21 : 機能追加
- *    1. FTKR_ExSvMotion.jsに対応。
- * 
- * v1.3.0 - 2017/04/19 : 機能変更
- *    1. ステートアイコンの表示仕様を変更。
- * 
- * v1.2.5 - 2017/04/15 : 機能追加
- *    1. ステートアイコンの表示位置を微調整
- *    2. 行の高さに合わせてステートアイコンサイズを自動調整する機能を追加。
- * 
- * v1.2.4 - 2017/04/12 : 顔画像の縦横のサイズを合わせるように修正
- * 
- * v1.2.3 - 2017/04/11 : ヘルプ修正
- * 
- * v1.2.2 - 2017/04/11 : 機能追加
- *    1. 指定した画像を表示する機能を追加。
- *    2. 複数列を跨いで表示させる機能を追加。
- *    3. ステートを縦に並べて表示させる機能を追加。
- * 
- * v1.2.1 - 2017/04/01 : 機能削除、機能追加
- *    1. ステータスのparam(x)に対してMV標準の制御文字を使用できる機能を削除。
- *    2. カスタムパラメータを20個まで設定できるように変更。
- *    3. 詳細ステータス画面の表示エリア間のラインの線色、太さ、透明度を
- *       変更する機能を追加。
- *    4. 簡易ステータス画面の表示内容を変更する機能をON/OFFする
- *       プラグインパラメータを追加。
- * 
- * v1.2.0 - 2017/03/20 : 仕様変更
- *    1. ステートアイコンを並べて表示した時に表示エリア内に収まらない場合、
- *       アイコンを重ねて表示するように変更。
- *    2. ステータスのprofile、param(x)、custom(x)、gauge(x)、text(x)の表示に、
- *       MV標準の制御文字を使用できるように変更。
- * 
- * v1.1.1 - 2017/03/18 : 機能追加
- *    1. 詳細ステータスの表示内容を変更する機能をON/OFFする
- *       プラグインパラメータを追加。
- *    2. FTKR_SEP_ShowSkillStatus.jsと組み合わせている場合、プロフィール文に
- *       制御文字を使用できるように変更。
- *    3. ヘルプ内容を修正。
- * 
- * v1.1.0 - 2017/03/17 : 仕様変更、機能追加、不具合修正
- *    1. Text間のスペースを設定するプラグインパラメータの仕様を変更。
- *    2. 装備と好きな文字列を表示させるパラメータを追加。
- *    3. 詳細ステータスの表示内容を変更する機能を追加。
- *    4. カスタムパラメータとカスタムゲージを10個まで設定できるように変更。
- *    5. ニックネームが表示されない不具合を修正。
- * 
- * v1.0.3 - 2017/03/16 : 機能追加
- *    1. 表示名や値の参照先を自由に設定できるカスタムゲージの表示機能を追加。
- * 
- * v1.0.2 - 2017/03/16 : 機能追加
- *    1. <Actor Status Text>で、1行に複数のステータスを表示する機能を追加。
- * 
- * v1.0.1 - 2017/03/10 : 機能追加
- *    1. 攻撃力や防御力等のパラメータを表示できる機能を追加。
- *    2. 表示名や値の参照先を自由に設定できるカスタムパラメータの
- *       表示機能を追加。
- * 
- * v1.0.0 - 2017/03/09 : 初版作成
- * 
- *-----------------------------------------------------------------------------
+ * -----------------------------------------------------------------------------
  */
-//=============================================================================
+// =============================================================================
 /*~struct~status:
  * @param text
- * @desc 表示するステータスを選択
- * リストにない場合は、直接テキストで記述
+ * @desc Select the status to display
+ * If not in the list, you can directly write it as text
  * @default 
  * @type select
- * @option 名前
+ * @option Name
  * @value name
- * @option 二つ名
+ * @option Nickname
  * @value nickname
- * @option 職業
+ * @option Class
  * @value class
- * @option レベル
+ * @option Level
  * @value level
  * @option HP
  * @value hp
@@ -1475,202 +1323,202 @@ FTKR.CSS = FTKR.CSS || {};
  * @value mp
  * @option TP
  * @value tp
- * @option 顔画像
+ * @option Face Image
  * @value face
- * @option 顔画像(サイズ指定)
+ * @option Face Image (with size)
  * @value face(%1)
- * @option 歩行キャラ画像
+ * @option Character Image
  * @value chara
- * @option SV戦闘キャラ画像
+ * @option SV Battle Character Image
  * @value sv
- * @option ステート(横)
+ * @option State (horizontal)
  * @value state
- * @option ステート(縦)
+ * @option State (vertical)
  * @value state2(%1)
- * @option プロフィール
+ * @option Profile
  * @value profile
- * @option 通常能力値
+ * @option Base Stats
  * @value param(%1)
- * @option 通常能力値(素)
+ * @option Base Stats (raw)
  * @value pbase(%1)
- * @option 通常能力値(増加分)
+ * @option Base Stats (increase)
  * @value pdiff(%1)
- * @option 追加能力値
+ * @option Additional Stats
  * @value xparam(%1)
- * @option 特殊能力値
+ * @option Special Stats
  * @value sparam(%1)
- * @option 装備
+ * @option Equipment
  * @value equip(%1)
- * @option 装備通常能力値
+ * @option Equipment Base Stats
  * @value eparam(%1)
- * @option 装備追加能力値
+ * @option Equipment Additional Stats
  * @value exparam(%1)
- * @option 装備特殊能力値
+ * @option Equipment Special Stats
  * @value esparam(%1)
- * @option 装備通常能力値差分
+ * @option Equipment Base Stat Difference
  * @value ediff(%1)
- * @option 装備追加能力値差分
+ * @option Equipment Additional Stat Difference
  * @value exdiff(%1)
- * @option 装備特殊能力値差分
+ * @option Equipment Special Stat Difference
  * @value esdiff(%1)
- * @option 装備不可表示
+ * @option Equipment Unavailable Display
  * @value notequip(%1)
- * @option カスタムパラメータ
+ * @option Custom Parameters
  * @value custom(%1)
- * @option カスタムゲージ
+ * @option Custom Gauges
  * @value gauge(%1)
- * @option アクター別カスタムゲージ
+ * @option Actor-Specific Custom Gauges
  * @value agauge(%1)
- * @option クラス別カスタムゲージ
+ * @option Class-Specific Custom Gauges
  * @value cgauge(%1)
- * @option カスタム画像
+ * @option Custom Image
  * @value image
- * @option カスタム画像(登録ID)
+ * @option Custom Image (Registered ID)
  * @value image(%1)
- * @option メッセージ
+ * @option Message
  * @value message
- * @option テキスト
+ * @option Text
  * @value text(%1)
- * @option JS計算式(数値表示)
+ * @option JS Calculation (numeric display)
  * @value eval(%1)
- * @option JS計算式(文字列表示)
+ * @option JS Calculation (string display)
  * @value streval(%1)
- * @option 横線
+ * @option Horizontal Line
  * @value line
- * @option AOP能力値
+ * @option AOP Stats
  * @value aop(%1)
- * @option AOP能力値(素)
+ * @option AOP Stats (raw)
  * @value aopbase(%1)
- * @option AOP能力値(増加分)
+ * @option AOP Stats (increase)
  * @value aopdiff(%1)
- * @option AOP装備パラメータ
+ * @option AOP Equipment Parameters
  * @value eaop(%1)
- * @option AOP装備パラメータ差分
+ * @option AOP Equipment Parameter Difference
  * @value ediffaop(%1)
- * @option アイテム名
+ * @option Item Name
  * @value iname
- * @option アイテムアイコン
+ * @option Item Icon
  * @value iicon
- * @option アイテム説明
+ * @option Item Description
  * @value idesc
- * @option アイテムタイプ
+ * @option Item Type
  * @value itype
- * @option アイテム装備タイプ
+ * @option Item Equipment Type
  * @value ietype
- * @option アイテム範囲
+ * @option Item Range
  * @value iscope
- * @option アイテム属性
+ * @option Item Element
  * @value ielement
- * @option アイテム設定詳細
+ * @option Item Settings Details
  * @value iparam(%1)
- * @option アイテムカスタム画像
+ * @option Item Custom Image
  * @value iimage(%1)
- * @option アイテム所持数
+ * @option Item Quantity
  * @value inumber
- * @option マップ名
+ * @option Map Name
  * @value mapname
  *
  * @param value
- * @desc code(%1)の形式で設定するステータスの%1の内容を入力
+ * @desc Enter the content of %1 for the status set in the code(%1) format
  * @default 
  * 
  * @param x
- * @desc 表示するX座標
+ * @desc X coordinate for display
  * @default 0
  *
  * @param y
- * @desc 表示するY座標
+ * @desc Y coordinate for display
  * @default 0
  *
  * @param width
- * @desc 表示する幅
+ * @desc Width for display
  * @default 0
  *
  */
 /*~struct~xparam:
  *
  * @param hit
- * @desc 命中率の表示名
- * @default 命中率
+ * @desc Hit Rate display name
+ * @default Hit Rate
  *
  * @param eva
- * @desc 回避率の表示名
- * @default 回避率
+ * @desc Evasion Rate display name
+ * @default Evasion Rate
  *
  * @param cri
- * @desc 会心率の表示名
- * @default 会心率
+ * @desc Critical Hit Rate display name
+ * @default Critical Hit Rate
  *
  * @param cev
- * @desc 会心回避率の表示名
- * @default 会心回避率
+ * @desc Critical Evasion Rate display name
+ * @default Critical Evasion Rate
  *
  * @param mev
- * @desc 魔法回避率の表示名
- * @default 魔法回避率
+ * @desc Magic Evasion Rate display name
+ * @default Magic Evasion Rate
  *
  * @param mrf
- * @desc 魔法反射率の表示名
- * @default 魔法反射率
+ * @desc Magic Reflection Rate display name
+ * @default Magic Reflection Rate
  *
  * @param cnt
- * @desc 反撃率の表示名
- * @default 反撃率
+ * @desc Counter Rate display name
+ * @default Counter Rate
  *
  * @param hrg
- * @desc HP再生率の表示名
- * @default HP再生率
+ * @desc HP Regeneration Rate display name
+ * @default HP Regeneration Rate
  *
  * @param mrg
- * @desc MP再生率の表示名
- * @default MP再生率
+ * @desc MP Regeneration Rate display name
+ * @default MP Regeneration Rate
  *
  * @param trg
- * @desc TP再生率の表示名
- * @default TP再生率
+ * @desc TP Regeneration Rate display name
+ * @default TP Regeneration Rate
  *
  */
 /*~struct~sparam:
  *
  * @param tgr
- * @desc 狙われ率の表示名
- * @default 狙われ率
+ * @desc Targeted Rate display name
+ * @default Targeted Rate
  *
  * @param grd
- * @desc 防御効果率の表示名
- * @default 防御効果率
+ * @desc Defense Effect Rate display name
+ * @default Defense Effect Rate
  *
  * @param rec
- * @desc 回復効果率の表示名
- * @default 回復効果率
+ * @desc Healing Effect Rate display name
+ * @default Healing Effect Rate
  *
  * @param pha
- * @desc 薬の知識の表示名
- * @default 薬の知識
+ * @desc Knowledge of Medicines display name
+ * @default Knowledge of Medicines
  *
  * @param mcr
- * @desc MP消費率の表示名
- * @default MP消費率
+ * @desc MP Consumption Rate display name
+ * @default MP Consumption Rate
  *
  * @param tcr
- * @desc TPチャージ率の表示名
- * @default TPチャージ率
+ * @desc TP Charge Rate display name
+ * @default TP Charge Rate
  *
  * @param pdr
- * @desc 物理ダメージ率の表示名
- * @default 物理ダメージ率
+ * @desc Physical Damage Rate display name
+ * @default Physical Damage Rate
  *
  * @param mdr
- * @desc 魔法ダメージ率の表示名
- * @default 魔法ダメージ率
+ * @desc Magical Damage Rate display name
+ * @default Magical Damage Rate
  *
  * @param fdr
- * @desc 床ダメージ率の表示名
- * @default 床ダメージ率
+ * @desc Floor Damage Rate display name
+ * @default Floor Damage Rate
  *
  * @param exr
- * @desc 経験獲得率の表示名
- * @default 経験獲得率
+ * @desc Experience Gain Rate display name
+ * @default Experience Gain Rate
  *
  */
 
@@ -1689,11 +1537,11 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //=============================================================================
-    // プラグイン パラメータ
+    // Plugin Parameters
     //=============================================================================
     var parameters = PluginManager.parameters('FTKR_CustomSimpleActorStatus');
 
-    //オリジナルステータス設定オブジェクト
+    // Original Status Object Settings
     FTKR.CSS.cssStatus = {
         face:{
             width:Number(parameters['Face Image Width'] || 0),
@@ -1887,22 +1735,22 @@ FTKR.CSS = FTKR.CSS || {};
     if (xparamName) {
         FTKR.CSS.cssStatus.xparam = Object.entries(xparamName).map(function(obj){return obj[1];});
     } else {
-        console.error('プラグインパラメータ XPARAM Name が設定されていません。');
+        console.error('The plugin parameter XPARAM Name has not been set.');
         return;
     }
     var sparamName = paramParse(parameters['SPARAM Name']);
     if (sparamName) {
         FTKR.CSS.cssStatus.sparam = Object.entries(sparamName).map(function(obj){return obj[1];});
     } else {
-        console.error('プラグインパラメータ SPARAM Name が設定されていません。');
+        console.error('The plugin parameter SPARAM Name has not been set.');
         return;
     }
 
-    //SV戦闘キャラ用の影画像の高さ
+    // Shadow image height for SV battle characters
     Window_Base.SV_SHADOW_HEIGHT = 48;
 
     //=============================================================================
-    // 自作関数(グローバル)
+    // Custom Function (Global)
     //=============================================================================
 
     FTKR.gameData = FTKR.gameData || {
@@ -1964,10 +1812,10 @@ FTKR.CSS = FTKR.CSS || {};
     }
 
     //=============================================================================
-    // 自作処理
+    // Custom Process
     //=============================================================================
 
-    // <codeTitle:id>text</codeTitle>の形式のメタデータを読み取って{id,text}を返す
+    // Read metadata in the format of <codeTitle:id>text</codeTitle> and return {id, text}
     var readEntrapmentCodeToTextEx = function(obj, codeTitles) {
         var regs = convertEntrapmentRegArrayEx(codeTitles);
         var notedata = obj.note.split(/[\r\n]+/);
@@ -2025,7 +1873,7 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
 
-    // 配列の要素の合計
+    // Sum of the elements of the array
     Math.sam = function(arr) {
         return arr.reduce( function(prev, current, i, arr) {
             return prev + current;
@@ -2037,7 +1885,7 @@ FTKR.CSS = FTKR.CSS || {};
       return list[1] !== undefined && list[1].length > 0 ? list[1].length : 0;
     };
 
-    // 少数で表現された割合をパーセント表示の整数に変換する (例:0.5 を 50 に変換)
+    // Convert a ratio expressed as a decimal to an integer percentage (e.g., convert 0.5 to 50)
     Math.percent = function(dec) {
       var decnum = Math._getDec(dec);
       var int = +(dec + '').replace('.', '');
@@ -2050,7 +1898,7 @@ FTKR.CSS = FTKR.CSS || {};
         return list[1] !== undefined && list[1].length > 0 ? list[1].length : 0;
     };
 
-    // 少数で表現された数値をパーセント表示の数値に変換する (例:0.5 を 50 に変換)
+    // Convert a decimal value to a percentage value (e.g., convert 0.5 to 50)
     Number.prototype.percent = function(dec) {
         dec = dec || 0;
         var decnum = this._getDec();
@@ -2059,7 +1907,7 @@ FTKR.CSS = FTKR.CSS || {};
         return Math.floor(int * Math.pow(10, diffdec)) / Math.pow(10, dec);
     }
 
-    //配列の要素を、すべて数値に変換する。
+    // Convert all elements of the array to numbers
     Array.prototype.num = function() {
       return this.map(function(elm) {
           return Number(elm);
@@ -2067,7 +1915,7 @@ FTKR.CSS = FTKR.CSS || {};
     }
 
     //=============================================================================
-    // バトル終了後に、逃走フラグを削除
+    // Remove the escape flag after the battle ends
     //=============================================================================
 
     var _Scene_Map_start = Scene_Map.prototype.start;
@@ -2338,7 +2186,7 @@ FTKR.CSS = FTKR.CSS || {};
         this._cssbgi[imageId] = bgi;
     };
 
-    //ステートモーションを取得する
+    // Obtain state motion
     Game_Actor.prototype.getStateMotion = function() {
         if(Imported.FTKR_ESM) {
             return this.getEsmMotion();
@@ -2413,7 +2261,7 @@ FTKR.CSS = FTKR.CSS || {};
         return actor && actor.isBattleMember();
     };
 
-    //制御文字を考慮して入力したテキスト長を求める
+    // Calculate the length of the input text, considering control characters
     Window_Base.prototype.convertTextWidth = function(text) {
         var textObj = { text : text, width : 0 };
         textObj.text = this.convertEscapeCharacters(textObj.text);
@@ -2442,15 +2290,15 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     /*-------------------------------------------------------------
-    アクターの簡易ステータスを表示する関数
+    // A function to display the actor's simplified status
     drawCssActorStatus(index, actor, x, y, width, height, lss)
-    index :アクターの表示番号
-    actor :アクターオブジェクト
-    x     :x座標
-    y     :y座標
-    width :表示エリアの幅
-    height:表示エリアの高さ
-    lss   :簡易ステータスオブジェクト
+    index :Actor display number
+    actor :Actor object
+    x     :X-coordinate
+    y     :Y-coordinate
+    width :Display area width
+    height:Display area height
+    lss   :Simplified status object
     -------------------------------------------------------------*/
     Window_Base.prototype.drawCssActorStatus = function(index, actor, x, y, width, height, lss) {
         if (lss && lss.statusList) {
@@ -2481,15 +2329,15 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     /*-------------------------------------------------------------
-    描画エリアを表示する関数
+    // A function to display the drawing area
     drawCssActorStatusText(index, actor, x, y, width, statusnames, lss)
-    index       :アクターの表示番号
-    actor       :アクターオブジェクト
-    x           :描画エリアのx座標
-    y           :描画エリアのy座標
-    width       :描画エリアの幅
-    statusnames :描画エリアの表示コードの配列
-    lss         :簡易ステータスオブジェクト
+    index       :Actor display number
+    actor       :Actor object
+    x           :X-coordinate of the drawing area
+    y           :Y-coordinate of the drawing area
+    width       :Width of the drawing area
+    statusnames :Height of the drawing area
+    lss         :Simplified status object
     -------------------------------------------------------------*/
     Window_Base.prototype.drawCssActorStatusText = function(index, actor, x, y, width, height, status, lss) {
         if (lss && lss.statusList) {
@@ -2560,15 +2408,15 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     /*-------------------------------------------------------------
-    表示コードを判定する関数
+    // A function to determine the display code
     drawCssActorStatusBase(index, actor, x, y, width, status, lss)
-    index       :アクターの表示番号
-    actor       :アクターオブジェクト
-    x           :描画エリアのx座標
-    y           :描画エリアのy座標
-    width       :描画エリアの幅
-    status    　:描画する表示コード
-    lss         :簡易ステータスオブジェクト
+    index       :Actor display number
+    actor       :Actor object
+    x           :X-coordinate of the drawing area
+    y           :Y-coordinate of the drawing area
+    width       :Width of the drawing area
+    status      :Height of the drawing area
+    lss         :Simplified status object
     -------------------------------------------------------------*/
     Window_Base.prototype.drawCssActorStatusBase = function(index, actor, x, y, width, status, lss) {
         var css = FTKR.CSS.cssStatus;
@@ -2580,7 +2428,7 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
 
-    // 括弧で表示する内容を指定する表示コード
+    // Display code to specify the content to be displayed in parentheses
     Window_Base.prototype.drawCssActorStatusBase_A = function(index, actor, x, y, width, match, lss, css) {
         switch(match[1].toUpperCase()) {
             case 'IPARAM':
@@ -2596,14 +2444,14 @@ FTKR.CSS = FTKR.CSS || {};
             case 'EQUIP':
                 return this.drawCssActorEquip(actor, x, y, width, match[2], lss);
             default:
-//                if (!actor) return 1;
+                // if (!actor) return 1;
                 FTKR.setGameData(actor, lss.target, lss.item);
                 match[2] = this.convertCssNumber(actor, match[2]);
                 return this.drawCssActorStatusBase_A1(index, actor, x, y, width, match, lss, css);
         }
     };
 
-    // 括弧で表示する内容を指定する表示コード(括弧内をevalで計算させる場合)
+    // Display code to specify the content to be displayed in parentheses (when the content inside the parentheses is evaluated using eval)
     Window_Base.prototype.drawCssActorStatusBase_A1 = function(index, actor, x, y, width, match, lss, css) {
         switch(match[1].toUpperCase()) {
             case 'EDIFFAOP':
@@ -2659,7 +2507,7 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
 
-    // 括弧を使わない表示コード
+    // Display code without using parentheses
     Window_Base.prototype.drawCssActorStatusBase_B = function(index, actor, x, y, width, status, lss, css) {
         switch (status.toUpperCase()) {
             case 'IICON':
@@ -2718,7 +2566,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテム名の表示関数
+    // Item icon display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemIcon = function(actor, x, y, width, lss) {
         var index = lss.item ? lss.item.iconIndex : 0;
@@ -2727,7 +2575,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムアイコンの表示関数
+    // Item name display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemName = function(actor, x, y, width, lss) {
         var name = lss.item ? lss.item.name : '';
@@ -2736,7 +2584,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムの説明の表示関数
+    // Item description display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemDesc = function(actor, x, y, width, lss) {
         var name = lss.item ? lss.item.description : '';
@@ -2745,7 +2593,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムの設定の表示関数
+    // Item setting display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemParam = function(actor, x, y, width, param, lss) {
         var item = lss.item;
@@ -2755,7 +2603,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムのタイプ（スキルタイプ、武器タイプ、防具タイプ）
+    // Item type (skill type, weapon type, armor type)
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemType = function(actor, x, y, width, lss) {
         this.drawText(DataManager.itemTypeName(lss.item), x, y, width);
@@ -2764,10 +2612,10 @@ FTKR.CSS = FTKR.CSS || {};
 
     Window_Base.ITEM_TYPES = [
         '',
-        '一般アイテム',
-        '大事なもの',
-        '隠しアイテムA',
-        '隠しアイテムB',
+        'General Item',
+        'Important Item',
+        'Hidden Item A',
+        'Hidden Item B',
     ];
 
     DataManager.itemTypeName = function(item) {
@@ -2785,7 +2633,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムの装備タイプ
+    // Item equip type
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemEType = function(actor, x, y, width, lss) {
         var name = lss.item ?  $dataSystem.equipTypes[lss.item.etypeId] : '';
@@ -2794,7 +2642,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムの範囲
+    // Item range
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemScope = function(actor, x, y, width, lss) {
         var name = lss.item ? Window_Base.ITEM_SCOPE[lss.item.scope] : '';
@@ -2804,21 +2652,21 @@ FTKR.CSS = FTKR.CSS || {};
 
     Window_Base.ITEM_SCOPE = [
         '',
-        '敵単体',
-        '敵全体',
-        '敵１体ランダム',
-        '敵２体ランダム',
-        '敵３体ランダム',
-        '敵４体ランダム',
-        '味方単体',
-        '味方全体',
-        '味方単体（戦闘不能）',
-        '味方全体（戦闘不能）',
-        '使用者'
+        'Single enemy',
+        'All enemies',
+        'Single random enemy',
+        'Two random enemies',
+        'Three random enemies',
+        'Four random enemies',
+        'Single ally',
+        'All allies',
+        'Single ally (incapacitated)',
+        'All allies (incapacitated)',
+        'User'
     ];
 
     //------------------------------------------------------------------------
-    //アイテムの属性
+    // Item attributes
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemElement = function(actor, x, y, width, lss) {
         var name = lss.item && lss.item.damage ? $dataSystem.elements[lss.item.damage.elementId] : '';
@@ -2827,7 +2675,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムのカスタム画像の表示
+    // Display of custom item images
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemImage = function(actor, dx, dy, width, id, lss) {
         var item = lss.item;
@@ -2851,7 +2699,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アイテムの所持数
+    // Item quantity
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssItemNumber = function(actor, x, y, width, lss) {
         if (lss.item){
@@ -2862,7 +2710,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //マップ名の表示
+    // Display of map name
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssMapName = function(actor, x, y, width, lss) {
         this.drawText($gameMap.displayName(), x, y, width);
@@ -2870,7 +2718,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターの顔画像の表示関数
+    // Actor face image display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorFace = function(actor, x, y, width, lss, scale) {
         var dy = this.lineHeight();
@@ -2908,7 +2756,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //エネミーの戦闘画像の表示関数
+    // Enemy battle image display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssEnemyChara = function(actor, dx, dy, width) {
         if (!actor) return 1;
@@ -2925,7 +2773,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターの歩行キャラの表示関数
+    // Actor walking character display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorChara = function(actor, x, y, width, chara) {
         var dy = this.lineHeight();
@@ -2959,7 +2807,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのSV戦闘キャラの表示関数
+    // Actor SV battle character display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorSvChara = function(index, actor, x, y, width, svChara) {
         var dy = this.lineHeight();
@@ -3025,7 +2873,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターの名前の表示関数
+    // Actor name display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorName = function(actor, x, y, width) {
         if (!actor) return 1;
@@ -3035,7 +2883,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのクラス名の表示関数
+    // Actor class name display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorClass = function(actor, x, y, width) {
         this.resetTextColor();
@@ -3044,7 +2892,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターの二つ名の表示関数
+    // Actor title display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorNickname = function(actor, x, y, width) {
         this.resetTextColor();
@@ -3053,7 +2901,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのレベルの表示関数
+    // Actor level display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorLevel = function(actor, x, y, width) {
         var value = actor.level;
@@ -3066,7 +2914,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのステートアイコンの表示関数
+    // Actor state icon display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorIcons = function(index, actor, x, y, width, line) {
         if (FTKR.CSS.cssStatus.state.enable) {
@@ -3139,7 +2987,7 @@ FTKR.CSS = FTKR.CSS || {};
         return Math.min(Math.max(len - iconPadding, 0) / iw);
     };
 
-    //アイコンの表示スケールを指定できる表示関数
+    // Icon display function with customizable scale
     Window_Base.prototype.drawCssIcon = function(iconIndex, x, y, scale, auto) {
         var iconPadding = FTKR.CSS.cssStatus.state.iconPadding;
         scale = scale || 1;
@@ -3153,7 +3001,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのHPの表示関数
+    // Actor HP display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorHp = function(actor, x, y, width) {
         this.drawActorHp(actor, x, y, width);
@@ -3161,7 +3009,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのMPの表示関数
+    // Actor MP display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorMp = function(actor, x, y, width) {
         this.drawActorMp(actor, x, y, width);
@@ -3169,7 +3017,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターのTPの表示関数
+    // Actor TP display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorTp = function(actor, x, y, width) {
         this.drawActorTp(actor, x, y, width);
@@ -3177,7 +3025,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //パラメータの表示関数
+    // Parameter display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorParam = function(actor, x, y, width, paramId) {
         if (paramId < 0 && paramId > 7) return 0;
@@ -3189,7 +3037,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //素のパラメータの表示関数
+    // Base parameter display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorParamBase = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 7) return 0;
@@ -3201,7 +3049,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //パラメータ差分の表示関数
+    // Parameter difference display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorParamDiff = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 7) return 1;
@@ -3229,7 +3077,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //追加能力値の表示関数
+    // Additional attribute display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorXParam = function(actor, x, y, width, paramId) {
         if (paramId < 0 && paramId > 9) return 0;
@@ -3245,7 +3093,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //特殊能力値の表示関数
+    // Special attribute display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorSParam = function(actor, x, y, width, paramId) {
         if (paramId < 0 && paramId > 9) return 0;
@@ -3261,7 +3109,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //指定したアイテムを装備した時のパラメータの表示関数
+    // Parameter display function when equipping a specified item
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipParam = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 7) return 0;
@@ -3283,7 +3131,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //指定したアイテムを装備した時の追加能力値の表示関数
+    // Additional attribute display function when equipping a specified item
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipXParam = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 9) return 0;
@@ -3304,7 +3152,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //指定したアイテムを装備した時の特殊能力値の表示関数
+    // Special attribute display function when equipping a specified item
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipSParam = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 9) return 0;
@@ -3325,7 +3173,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //装備パラメータ差分の表示関数
+    // Equipped parameter difference display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipDiff = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 7) return 1;
@@ -3341,7 +3189,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //追加能力値の装備パラメータ差分の表示関数
+    // Additional attribute equipped parameter difference display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipXPDiff = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 9) return 1;
@@ -3360,7 +3208,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //特殊能力値の装備パラメータ差分の表示関数
+    // Special attribute equipped parameter difference display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipSPDiff = function(actor, x, y, width, paramId, lss) {
         if (paramId < 0 && paramId > 9) return 1;
@@ -3379,7 +3227,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //AOP能力値の表示関数
+    // AOP attribute display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorAopParam = function(actor, x, y, width, paramId, lss) {
         if (!Imported.FTKR_AOP) return 1;
@@ -3392,7 +3240,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //素のAOP能力値の表示関数
+    // Base AOP attribute display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorAopParamBase = function(actor, x, y, width, paramId, lss) {
         if (!Imported.FTKR_AOP) return 1;
@@ -3405,7 +3253,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //AOP能力値差分の表示関数
+    // AOP attribute difference display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorAopParamDiff = function(actor, x, y, width, paramId, lss) {
         if (!Imported.FTKR_AOP) return 1;
@@ -3418,7 +3266,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //指定したアイテムを装備した時のAOPパラメータの表示関数
+    // AOP parameter display function when equipping a specified item
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipAopParam = function(actor, x, y, width, paramId, lss) {
         if (!Imported.FTKR_AOP) return 1;
@@ -3437,7 +3285,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //AOP装備パラメータ差分の表示関数
+    // AOP equipped parameter difference display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquipAopDiff = function(actor, x, y, width, paramId, lss) {
         if (!Imported.FTKR_AOP) return 1;
@@ -3455,7 +3303,7 @@ FTKR.CSS = FTKR.CSS || {};
     
 
     //------------------------------------------------------------------------
-    //カスタムパラメータの表示関数
+    // Custom parameter display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorCustom = function(actor, x, y, width, custom) {
         if (!custom) return 1;
@@ -3474,7 +3322,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //カスタムゲージの表示関数
+    // Custom gauge display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorGauge = function(actor, x, y, width, gauge) {
         if (!gauge) return 1;
@@ -3521,7 +3369,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //装備の表示関数
+    // Equipment display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorEquip = function(actor, x, y, width, equipId, lss) {
         if ((equipId +'').toUpperCase() === 'SHOP') {
@@ -3541,20 +3389,20 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //装備可否の表示関数
+    // Equipment availability display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssCannotEquip = function(actor, x, y, width, text, lss) {
         var item = FTKR.gameData.item || lss.item;
         if (!item) return 1;
         if (!actor.canEquip(item)) {
-            text = text == 'null' ? '装備不可' : text;
+            text = text == 'null' ? 'Cannot equip' : text;
             this.drawTextEx(text, x, y);
         }
         return 1;
     };
 
     //------------------------------------------------------------------------
-    //プロフィールの表示関数
+    // Profile display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssProfile = function(actor, x, y, width) {
         this._setItem = actor.actor();
@@ -3567,7 +3415,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //テキストの表示関数
+    // Text display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssText = function(actor, x, y, width, text) {
         if (!text) return 1;
@@ -3579,7 +3427,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //JS評価式の表示関数
+    // JS expression display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssEval = function(actor, x, y, width, text, isNumber) {
         if (!text) return 1;
@@ -3596,7 +3444,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //カスタム画像の表示関数
+    // Custom image display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorImage = function(actor, x, y, width, id) {
         if (!actor) return 1;
@@ -3624,7 +3472,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターに設定したカスタムゲージの表示関数
+    // Custom gauge display function set for actor
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorCustomGauge = function(actor, x, y, width, paramId) {
         var gauge = actor.actor().cssGauges[paramId];
@@ -3633,7 +3481,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //クラスに設定したカスタムゲージの表示関数
+    // Custom gauge display function set for class
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssClassCustomGauge = function(actor, x, y, width, paramId) {
         var gauge = actor.currentClass().cssGauges[paramId];
@@ -3642,7 +3490,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //アクターの状態の変化に対するメッセージの表示関数
+    // Message display function for actor's state changes
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssActorMessage = function(actor, x, y, width) {
         if (!actor._levelUpCount) return 1;
@@ -3666,7 +3514,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    //横線の表示関数
+    // Horizontal line display function
     //------------------------------------------------------------------------
     Window_Base.prototype.drawCssLine = function(x, y, width, thick, color) {
         var thick = thick > 0 ? thick : 2;
@@ -3679,7 +3527,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    // ウィンドウレイアウトの初期値設定用の修正
+    // Fix for default window layout settings
     //------------------------------------------------------------------------
 
     var _CSS_Window_Base_initialize = Window_Base.prototype.initialize;
@@ -3719,7 +3567,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //=============================================================================
-    // customデータの参照
+    // Referencing custom data
     //=============================================================================
 
     var _CSS_Window_Base_standardFontSize = Window_Base.prototype.standardFontSize;
@@ -3745,11 +3593,11 @@ FTKR.CSS = FTKR.CSS || {};
     //------------------------------------------------------------------------
     // _customHideFrame
     //------------------------------------------------------------------------
-    //ウィンドウ枠の表示
+    // Window frame display
     Window_Base.prototype._refreshFrame = function() {
         Window.prototype._refreshFrame.call(this);
         if (this._customHideFrame) {
-            this._windowFrameSprite.alpha = 0;//フレームだけ消す
+            this._windowFrameSprite.alpha = 0; // Remove only the frame
         } else {
             this._windowFrameSprite.alpha = 1;
         }
@@ -3801,30 +3649,30 @@ FTKR.CSS = FTKR.CSS || {};
     };
     
     //=============================================================================
-    // customデータの反映
+    // Apply custom data
     //=============================================================================
 
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.maxRows = function() {
         return Math.max(Math.ceil(this.maxItems() / this.customMaxCols()), 1);
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.row = function() {
         return Math.floor(this.index() / this.customMaxCols());
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.maxPageItems = function() {
         return this.maxPageRows() * this.customMaxCols();
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.topIndex = function() {
         return this.topRow() * this.customMaxCols();
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.cursorDown = function(wrap) {
         var index = this.index();
         var maxItems = this.maxItems();
@@ -3834,7 +3682,7 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.cursorUp = function(wrap) {
         var index = this.index();
         var maxItems = this.maxItems();
@@ -3844,7 +3692,7 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.cursorRight = function(wrap) {
         var index = this.index();
         var maxItems = this.maxItems();
@@ -3854,7 +3702,7 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
     
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.cursorLeft = function(wrap) {
         var index = this.index();
         var maxItems = this.maxItems();
@@ -3864,12 +3712,12 @@ FTKR.CSS = FTKR.CSS || {};
         }
     };
     
-    //書き換え
+    // Rewrite
     Window_Command.prototype.numVisibleRows = function() {
         return Math.ceil(this.maxItems() / this.customMaxCols());
     };
         
-    //書き換え
+    // Rewrite
     Window_Selectable.prototype.itemWidth = function() {
         return Math.floor((this.width - this.padding * 2 +
                            this.customSpacing()) / this.customMaxCols() - this.customSpacing());
@@ -3936,8 +3784,8 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //=============================================================================
-    // Sprite_Battlerの修正
-    // Sprite_Actorの修正
+    // Sprite_Battler fix
+    // Sprite_Actor fix
     //=============================================================================
 
     FTKR.CSS.Sprite_Battler_initMembers = Sprite_Battler.prototype.initMembers;
@@ -3947,7 +3795,7 @@ FTKR.CSS = FTKR.CSS || {};
     };
 
     //------------------------------------------------------------------------
-    // SV戦闘キャラの位置を変更できないようにする
+    // Prevent changing the position of the SV battle character
     //------------------------------------------------------------------------
     Sprite_Actor.prototype.stopMove = function() {
         this._canMove = false;
@@ -3963,11 +3811,11 @@ FTKR.CSS = FTKR.CSS || {};
         FTKR.CSS.Sprite_Actor_updateTargetPosition.call(this);
     };
 
-}());//END
+}()); // END
 
 //=============================================================================
 // Sprite_CssStateIcon
-// ステートアイコン用のスプライト
+// Sprite for state icon
 //=============================================================================
 
 function Sprite_CssStateIcon() {
@@ -4015,7 +3863,7 @@ Sprite_CssStateIcon.prototype.setup = function(battler, showNum) {
 
 Sprite_CssStateIcon.prototype.updateIcon = function() {
     var icons = [];
-//    if (this._battler && this._battler.isAlive()) {
+   // if (this._battler && this._battler.isAlive()) {
     if (this._battler) {
             icons = this._battler.allIcons();
     }
@@ -4062,7 +3910,7 @@ Sprite_CssStateIcon.prototype.updateOpacity = function() {
 };
 
 //=============================================================================
-// YEP_BuffsStatesCoreの修正
+// Fix for YEP_BuffsStatesCore
 //=============================================================================
 if (Imported.YEP_BuffsStatesCore) {
 
@@ -4086,6 +3934,6 @@ Sprite_CssStateIcon.prototype.updateTurnAndCounter = function() {
     }
 };
 
-}//YEP_BuffsStatesCore.js END
+}// YEP_BuffsStatesCore.js END
 
-//EOF
+// EOF
