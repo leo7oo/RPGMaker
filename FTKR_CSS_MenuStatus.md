@@ -5,7 +5,7 @@
 This plugin modifies the status display of actors in the menu screen.  
 This plugin is an extension of the [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.md) plugin.
 
-Download: [FTKR_CSS_MenuStatus.js](https://github.com/1e747a77-35f8-4e26-adcc-7067e4322e85)
+Download: [FTKR_CSS_MenuStatus.js](https://raw.githubusercontent.com/leo7oo/RPGMaker/refs/heads/master/FTKR_CSS_MenuStatus.js)
 
 ## Table of Contents
 
