@@ -1,55 +1,54 @@
-[トップページに戻る](README.md)
+[Return to Top Page](README.md)
 
-# [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) プラグイン
+# [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) Plugin
 
-アクターのステータス表示を変更するプラグインです。
+This plugin allows you to customize the display of actor statuses.
 
-ダウンロード: [FTKR_CustomSimpleActorStatus.js](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CustomSimpleActorStatus.js)
+Download: [FTKR_CustomSimpleActorStatus.js](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CustomSimpleActorStatus.js)
 
-# 目次
+# Table of Contents
 
-以下の項目の順でプラグインの使い方を説明します。
-1. [概要](#概要)
-1. [プラグインの登録](#プラグインの登録)
-2. [基本設定](#基本設定)
-    1. [レイアウトの基本構成](#レイアウトの基本構成)
-    2. [表示できるステータス](#表示できるステータス)
-3. [レイアウトの設定](FTKR_CustomSimpleActorStatus_1.ja.md)
-    1. [statusListの操作](FTKR_CustomSimpleActorStatus_1.ja.md#statuslistの操作)
-    1. [statusListパラメータの設定](FTKR_CustomSimpleActorStatus_1.ja.md#statuslistパラメータの設定)
-    1. [その他の設定](FTKR_CustomSimpleActorStatus_1.ja.md#その他の設定)
-4. [ステータスの表示](FTKR_CustomSimpleActorStatus_2.ja.md)
-    1. [顔画像の表示](FTKR_CustomSimpleActorStatus_2.ja.md#顔画像の表示)
-    2. [歩行キャラ画像の表示](FTKR_CustomSimpleActorStatus_2.ja.md#歩行キャラ画像の表示)
-    3. [SV戦闘キャラ画像の表示](FTKR_CustomSimpleActorStatus_2.ja.md#SV戦闘キャラ画像の表示)
-    4. [ステートアイコンの表示](FTKR_CustomSimpleActorStatus_2.ja.md#ステートアイコンの表示)
-    5. [パラメータの差分表示](FTKR_CustomSimpleActorStatus_2.ja.md#パラメータの差分表示)
-    5. [装備パラメータの表示](FTKR_CustomSimpleActorStatus_2.ja.md#装備パラメータの表示)
-    5. [ＡＯＰ装備パラメータの表示](FTKR_CustomSimpleActorStatus_2.ja.md#ＡＯＰ装備パラメータの表示)
-    5. [カスタムパラメータの表示](FTKR_CustomSimpleActorStatus_2.ja.md#カスタムパラメータの表示)
-    6. [カスタムゲージの表示](FTKR_CustomSimpleActorStatus_2.ja.md#カスタムゲージの表示)
-    7. [カスタム画像の表示](FTKR_CustomSimpleActorStatus_2.ja.md#カスタム画像の表示)
-    6. [アクター別のカスタムゲージの表示](FTKR_CustomSimpleActorStatus_2.ja.md#アクター別のカスタムゲージの表示)
-    6. [クラス別のカスタムゲージの表示](FTKR_CustomSimpleActorStatus_2.ja.md#クラス別のカスタムゲージの表示)
-    6. [メッセージの表示](FTKR_CustomSimpleActorStatus_2.ja.md#メッセージの表示)
-* [プラグインの更新履歴](#プラグインの更新履歴)
-* [拡張プラグイン](#拡張プラグイン)
-* [ライセンス](#ライセンス)
+The following sections explain how to use the plugin:
+1. [Overview](#overview)
+2. [Plugin Registration](#plugin-registration)
+3. [Basic Settings](#basic-settings)
+    1. [Basic Layout Structure](#basic-layout-structure)
+    2. [Displayable Statuses](#displayable-statuses)
+4. [Layout Settings](FTKR_CustomSimpleActorStatus_1.en.md)
+    1. [Manipulating statusList](FTKR_CustomSimpleActorStatus_1.en.md#manipulating-statuslist)
+    2. [Setting statusList Parameters](FTKR_CustomSimpleActorStatus_1.en.md#setting-statuslist-parameters)
+    3. [Other Settings](FTKR_CustomSimpleActorStatus_1.en.md#other-settings)
+5. [Displaying Statuses](FTKR_CustomSimpleActorStatus_2.en.md)
+    1. [Displaying Face Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-face-images)
+    2. [Displaying Walking Character Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-walking-character-images)
+    3. [Displaying SV Battle Character Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-sv-battle-character-images)
+    4. [Displaying State Icons](FTKR_CustomSimpleActorStatus_2.en.md#displaying-state-icons)
+    5. [Displaying Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences)
+    6. [Displaying Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-equipment-parameters)
+    7. [Displaying AOP Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-aop-equipment-parameters)
+    8. [Displaying Custom Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-parameters)
+    9. [Displaying Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-gauges)
+    10. [Displaying Custom Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-images)
+    11. [Displaying Actor-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-actor-specific-custom-gauges)
+    12. [Displaying Class-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-class-specific-custom-gauges)
+    13. [Displaying Messages](FTKR_CustomSimpleActorStatus_2.en.md#displaying-messages)
+* [Plugin Update History](#plugin-update-history)
+* [Extension Plugins](#extension-plugins)
+* [License](#license)
 
-# 概要
+# Overview
 
-当プラグインは、アクターのステータス表示のレイアウトをより詳細に設定できる処理を実装します。
+This plugin implements detailed customization for the layout of actor status displays.
 
-当プラグインの拡張プラグイン(FTKR_CSS_***.js)と組み合わせることで、メニュー画面や、バトル画面などさまざまなステータス画面を設定できるようになります。
+By combining this plugin with its extension plugins (FTKR_CSS_***.js), you can customize various status screens such as the menu screen and battle screen.
 
-プラグインのバージョンによって設定方法が異なります。
-v2.x.xの場合は[こちら](FTKR_CustomSimpleActorStatus_old.ja.md)を参照してください。
+The setup method varies depending on the plugin version. For v2.x.x, refer to [this document](FTKR_CustomSimpleActorStatus_old.en.md).
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-# プラグインの登録
+# Plugin Registration
 
-以下のプラグインと組み合わせて使用する場合は、プラグイン管理画面で以下の順の配置になるように登録してください。
+When using this plugin in combination with the following plugins, ensure they are registered in the plugin manager in the following order:
 ```
 YEP_BuffsStatesCore.js
 FTKR_CustomSimpleActorStatus.js
@@ -58,273 +57,271 @@ FTKR_ExSvMotion.js
 FTKR_FacialImageDifference.js
 ```
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-# 基本設定
-## レイアウトの基本構成
+# Basic Settings
 
-ステータスウィンドウのレイアウトは、プラグインパラメータ`statusList`によって設定します。
-このパラメータは、拡張プラグイン(FTKR_CSS_***.js)側で設定します。
+## Basic Layout Structure
 
-`statusList`は、以下のようにリスト構造になっています。
-このリストの１つ１つの要素によって、どんなステータスをどこに表示するのか指定します。
+The layout of the status window is configured using the plugin parameter `statusList`. This parameter is set in the extension plugin (FTKR_CSS_***.js).
 
-以下の例では、7つのステータス(face,name,level,state,class,hp,mp)を表示する設定になっています。
+`statusList` is structured as a list. Each element in the list specifies which status to display and where.
 
-リストにはいくつでもステータスを追加することができます。
+The following example shows a setup for displaying 7 statuses (face, name, level, state, class, hp, mp).
 
-![画像](image/FTKR_CustomSimpleActorStatus/n01_statusList.png)
+You can add as many statuses as you want to the list.
 
-プラグインパラメータ`statusList`のリストの要素は、以下のようになっています。
-以下のパラメータを個別に設定します。
-* text  : [表示させるステータス](#表示できるステータス)を指定します。
-* value : 表示させるステータスによって入力する内容が変わります。
-* x : このステータスのウィンドウ内での表示位置(x座標)を指定します。
-* y : このステータスのウィンドウ内での表示位置(y座標)を指定します。
-* width : このステータスの表示幅を指定します。
+![Image](image/FTKR_CustomSimpleActorStatus/n01_statusList.png)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n01_statusList_param.png)
+The elements of the `statusList` parameter are as follows:
+* **text**: Specifies the [status to display](#displayable-statuses).
+* **value**: The content to input varies depending on the status being displayed.
+* **x**: Specifies the X-coordinate of the status within the window.
+* **y**: Specifies the Y-coordinate of the status within the window.
+* **width**: Specifies the display width of the status.
 
-これらのパラメータを設定することで、メニュー画面などのステータスウィンドウに反映されます。
+![Image](image/FTKR_CustomSimpleActorStatus/n01_statusList_param.png)
 
-![画像](image/FTKR_CustomSimpleActorStatus/n01_menuScene.png)
+By setting these parameters, the status window in the menu screen and other screens will reflect the changes.
 
-[目次に戻る](#目次)
+![Image](image/FTKR_CustomSimpleActorStatus/n01_menuScene.png)
 
-## 表示できるステータス
+[Return to Table of Contents](#table-of-contents)
 
-プラグインパラメータ`statusList`のリストで設定可能な、ステータスの一覧です。
+## Displayable Statuses
 
-* `text`と`value`が、プラグインパラメータに入力する内容です。
-* `value`が`-`になっている場合は、入力不要です。
-* `text`に入力する文字列には、大文字小文字の区別はありません。
-* `value`に対しては、スクリプトを入力することもできます。
-* 制御文字欄に ○ があるステータスは、表示できる内容に制御文字が使用できます。
+Below is a list of statuses that can be configured in the `statusList` parameter.
 
-### アクター用コード
+* **text** and **value** are the inputs for the plugin parameter.
+* If **value** is `-`, no input is required.
+* The string entered in **text** is case-insensitive.
+* You can also input scripts for **value**.
+* Statuses with ○ in the control character column can use control characters in their displayable content.
 
-一部のコードはエネミーに対しても表示可能です。
+### Actor-Specific Codes
 
-| ステータス名 | text | value | 制御文字 |説明 |
+Some codes can also be displayed for enemies.
+
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| 名前 | name | - | - | アクターの名前を表示します
-| 二つ名 | nickname | - | - | アクターの二つ名を表示します |
-| 職業 | class | - | - | アクターの職業を表示します |
-| レベル | level | - | - | アクターの現在レベルを表示します |
-| ＨＰ | hp | - | - | アクターの現在HPと最大HPとHPゲージを表示します |
-| ＭＰ | mp | - | - | アクターの現在MPと最大MPとMPゲージを表示します |
-| ＴＰ | tp | - | - | アクターの現在TPとTPゲージを表示します |
-| [顔画像](FTKR_CustomSimpleActorStatus_2.ja.md#顔画像の表示) | face <br> face(%1) | - <br> 行数 | - | アクターの顔画像を表示します |
-| [歩行キャラ画像](FTKR_CustomSimpleActorStatus_2.ja.md#歩行キャラ画像の表示) | chara | - | - | アクターの歩行キャラ画像(正面)を表示します |
-| [SV戦闘キャラ画像](FTKR_CustomSimpleActorStatus_2.ja.md#SV戦闘キャラ画像の表示) | sv | - | - | アクターのSVの戦闘キャラ画像を表示します |
-| [ステートアイコン](FTKR_CustomSimpleActorStatus_2.ja.md#ステートアイコンの表示) | state <br> state2(%1) | - <br> 行数 | - | アクターに付与されているステートのアイコンを並べて表示します |
-| プロフィール | profile | - | ○ | アクターのプロフィールを表示します <br> プロフィールは自動的に描画エリアを拡張して表示します |
-| 通常能力値 | param(%1) | x | - | 攻撃力や防御力等の通常能力名と数値を表示します <br> x に指定する数値と表示する能力は以下の通りです <br> 0 - 最大HP、1 - 最大MP、2 - 攻撃力、3 - 防御力 <br> 4 - 魔法攻撃、5 - 魔法防御、6 - 敏捷性、7 - 運|
-| 通常能力値(素) | pbase(%1) | x | - | 攻撃力や防御力等の通常能力名と装備や特徴による増減を抜かした素の数値を表示します <br> x に指定する数値は param と同じです|
-| [通常能力値(差分)](FTKR_CustomSimpleActorStatus_2.ja.md#パラメータの差分表示) | pdiff(%1) | x | ○ | 攻撃力や防御力等の通常能力の装備や特徴による増減値を表示します <br> x に指定する数値は param と同じです<br>増加値は緑、減少値は赤で表示します|
-| 追加能力値 | xparam(%1) | x | - | 命中率や回避率等の追加能力名と数値を表示します <br> x に指定する数値と表示する能力は以下の通りです <br> 0 - 命中率、1 - 回避率、2 - 会心率、3 - 会心回避率 <br> 4 - 魔法回避率、5 - 魔法反射率、6 - 反撃率、7 - HP再生率 <br> 8 - MP再生率、9 - TP再生率<br> 数値の表示方法は、プラグインパラメータ`Disp Decimals Param`で少数かパーセントか選択できます<br>能力値の表示名はプラグインパラメータ`XPARAM Name`で設定できます |
-| 特殊能力値 | sparam(%1) | x | - | 狙われ率や防御効果率等の特殊能力名と数値を表示します <br> x に指定する数値と表示する能力は以下の通りです <br> 0 - 狙われ率、1 - 防御効果率、2 - 回復効果率、3 - 薬の知識 <br> 4 - MP消費率、5 - TPチャージ率、6 - 物理ダメージ率 <br> 7 - 魔法ダメージ率、8 - 床ダメージ率、9 - 経験獲得率<br> 数値の表示方法は、プラグインパラメータ`Disp Decimals Param`で少数かパーセントか選択できます<br>能力値の表示名はプラグインパラメータ`SPARAM Name`で設定できます|
-| 装備 | equip(%1) | x | - | 装備の名前とアイコンを表示します <br> x が装備タイプ番号を示します <br>ショップ画面で`value`に`shop`と入力すると、カーソル選択中のアイテムと同じ装備箇所を表示できます |
-| [装備パラメータ](FTKR_CustomSimpleActorStatus_2.ja.md#装備パラメータの表示) | eparam(%1) | x | - | 装備変更後の攻撃力や防御力等の数値を表示します<br> x に指定する数値は param と同じです |
-| 装備追加能力値 | exparam(%1) | x | - | 装備変更後の命中率や回避率等の追加能力の数値を表示します<br> x に指定する数値は xparam と同じです |
-| 装備特殊能力値 | esparam(%1) | x | - | 装備変更後の狙われ率や防御効果率等の特殊能力の数値を表示します<br> x に指定する数値は sparam と同じです |
-| 装備不可表示 | notequip(%1) | x | ○ | 選択中の装備アイテムを、アクターが装備できない場合に x で指定した文字を表示します。x が空欄の場合は「装備不可」と表示します。<br>アイテムデータを参照しているウィンドウで使用可能です。(例：ショップ画面) |
-| [カスタムパラメータ](FTKR_CustomSimpleActorStatus_2.ja.md#カスタムパラメータの表示) | custom(%1) | x | ○ | プラグインパラメータで設定したパラメータを表示します<br> x に指定する数値はカスタムパラメータIDです |
-| [カスタムゲージ](FTKR_CustomSimpleActorStatus_2.ja.md#カスタムゲージの表示) | gauge(%1) | x | ○ | プラグインパラメータで設定したゲージを表示します<br> x に指定する数値はカスタムゲージIDです |
-| [アクター別のカスタムゲージ](FTKR_CustomSimpleActorStatus_2.ja.md#アクター別のカスタムゲージの表示) | agauge(%1) | x | ○ | アクターのメモ欄で設定したゲージを表示します<br> x に指定する数値はカスタムゲージIDです |
-| [クラス別のカスタムゲージ](FTKR_CustomSimpleActorStatus_2.ja.md#クラス別のカスタムゲージの表示) | cgauge(%1) | x | ○ | クラスのメモ欄で設定したゲージを表示します<br> x に指定する数値はカスタムゲージIDです |
-| [カスタム画像](FTKR_CustomSimpleActorStatus_2.ja.md#カスタム画像の表示) | image <br> image(%1) | - <br> 画像ID | - | アクターのメモ欄で設定した画像を表示します |
-| [メッセージ](FTKR_CustomSimpleActorStatus_2.ja.md#メッセージの表示) | message | - | ○ | アクターの状態変化に合わせてメッセージを表示します |
+| Name | name | - | - | Displays the actor's name. |
+| Nickname | nickname | - | - | Displays the actor's nickname. |
+| Class | class | - | - | Displays the actor's class. |
+| Level | level | - | - | Displays the actor's current level. |
+| HP | hp | - | - | Displays the actor's current HP, max HP, and HP gauge. |
+| MP | mp | - | - | Displays the actor's current MP, max MP, and MP gauge. |
+| TP | tp | - | - | Displays the actor's current TP and TP gauge. |
+| [Face Image](FTKR_CustomSimpleActorStatus_2.en.md#displaying-face-images) | face <br> face(%1) | - <br> row number | - | Displays the actor's face image. |
+| [Walking Character Image](FTKR_CustomSimpleActorStatus_2.en.md#displaying-walking-character-images) | chara | - | - | Displays the actor's walking character image (front view). |
+| [SV Battle Character Image](FTKR_CustomSimpleActorStatus_2.en.md#displaying-sv-battle-character-images) | sv | - | - | Displays the actor's SV battle character image. |
+| [State Icons](FTKR_CustomSimpleActorStatus_2.en.md#displaying-state-icons) | state <br> state2(%1) | - <br> row number | - | Displays the icons of states applied to the actor in a row. |
+| Profile | profile | - | ○ | Displays the actor's profile. The profile automatically expands the drawing area to fit the content. |
+| Basic Parameters | param(%1) | x | - | Displays the name and value of basic parameters such as attack and defense. <br> The number **x** corresponds to the following parameters: <br> 0 - Max HP, 1 - Max MP, 2 - Attack, 3 - Defense <br> 4 - Magic Attack, 5 - Magic Defense, 6 - Agility, 7 - Luck |
+| Base Parameters | pbase(%1) | x | - | Displays the name and base value of basic parameters, excluding equipment and trait adjustments. <br> The number **x** is the same as for **param**. |
+| [Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | pdiff(%1) | x | ○ | Displays the increase or decrease in basic parameters due to equipment and traits. <br> The number **x** is the same as for **param**. <br> Increases are displayed in green, decreases in red. |
+| Additional Parameters | xparam(%1) | x | - | Displays the name and value of additional parameters such as hit rate and evasion rate. <br> The number **x** corresponds to the following parameters: <br> 0 - Hit Rate, 1 - Evasion Rate, 2 - Critical Rate, 3 - Critical Evasion Rate <br> 4 - Magic Evasion Rate, 5 - Magic Reflection Rate, 6 - Counter Rate, 7 - HP Regeneration Rate <br> 8 - MP Regeneration Rate, 9 - TP Regeneration Rate <br> The display format (decimal or percentage) can be selected in the plugin parameter `Disp Decimals Param`. <br> Parameter names can be set in the plugin parameter `XPARAM Name`. |
+| Special Parameters | sparam(%1) | x | - | Displays the name and value of special parameters such as target rate and defense effect rate. <br> The number **x** corresponds to the following parameters: <br> 0 - Target Rate, 1 - Defense Effect Rate, 2 - Recovery Effect Rate, 3 - Pharmacy Knowledge <br> 4 - MP Consumption Rate, 5 - TP Charge Rate, 6 - Physical Damage Rate <br> 7 - Magic Damage Rate, 8 - Floor Damage Rate, 9 - EXP Gain Rate <br> The display format (decimal or percentage) can be selected in the plugin parameter `Disp Decimals Param`. <br> Parameter names can be set in the plugin parameter `SPARAM Name`. |
+| Equipment | equip(%1) | x | - | Displays the name and icon of equipment. <br> **x** indicates the equipment type number. <br> In the shop screen, entering `shop` in **value** will display the equipment slot corresponding to the currently selected item. |
+| [Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-equipment-parameters) | eparam(%1) | x | - | Displays the value of basic parameters after equipment changes. <br> The number **x** is the same as for **param**. |
+| Equipment Additional Parameters | exparam(%1) | x | - | Displays the value of additional parameters after equipment changes. <br> The number **x** is the same as for **xparam**. |
+| Equipment Special Parameters | esparam(%1) | x | - | Displays the value of special parameters after equipment changes. <br> The number **x** is the same as for **sparam**. |
+| Unequippable Display | notequip(%1) | x | ○ | Displays the specified text **x** when the selected equipment item cannot be equipped by the actor. If **x** is blank, "Cannot Equip" is displayed. <br> Can be used in windows that reference item data (e.g., shop screen). |
+| [Custom Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-parameters) | custom(%1) | x | ○ | Displays parameters set in the plugin parameters. <br> The number **x** is the custom parameter ID. |
+| [Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-gauges) | gauge(%1) | x | ○ | Displays gauges set in the plugin parameters. <br> The number **x** is the custom gauge ID. |
+| [Actor-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-actor-specific-custom-gauges) | agauge(%1) | x | ○ | Displays gauges set in the actor's note field. <br> The number **x** is the custom gauge ID. |
+| [Class-Specific Custom Gauges](FTKR_CustomSimpleActorStatus_2.en.md#displaying-class-specific-custom-gauges) | cgauge(%1) | x | ○ | Displays gauges set in the class's note field. <br> The number **x** is the custom gauge ID. |
+| [Custom Images](FTKR_CustomSimpleActorStatus_2.en.md#displaying-custom-images) | image <br> image(%1) | - <br> image ID | - | Displays images set in the actor's note field. |
+| [Messages](FTKR_CustomSimpleActorStatus_2.en.md#displaying-messages) | message | - | ○ | Displays messages based on changes in the actor's state. |
 
-#### アクター用特殊1
+#### Actor-Specific Special 1
 
-以下のコードを使用するためには、[FTKR_AddOriginalParametersプラグイン](FTKR_AddOriginalParameters.ja.md)が必要です。
+The following codes require the [FTKR_AddOriginalParameters plugin](FTKR_AddOriginalParameters.en.md).
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| ＡＯＰ能力値 | aop(%1) | x | - | オリジナルパラメータの表示名と数値を表示します <br> x に指定する数値と表示する能力はオリジナルパラメータのIDです。|
-| ＡＯＰ能力値(素) | aopbase(%1) | x | - | オリジナルパラメータの表示名と装備や特徴による増減を抜かした素の数値を表示します <br> x に指定する数値は aop と同じです|
-| [ＡＯＰ能力値(差分)](FTKR_CustomSimpleActorStatus_2.ja.md#パラメータの差分表示) | aopdiff(%1) | x | ○ | 攻オリジナルパラメータの装備や特徴による増減値を表示します <br> x に指定する数値は aop と同じです<br>増加値は緑、減少値は赤で表示します|
-| [ＡＯＰ装備パラメータ](FTKR_CustomSimpleActorStatus_2.ja.md#ＡＯＰ装備パラメータの表示) | eaop(%1) | x | - | 装備変更後のオリジナルパラメータの数値を表示します <br> x に指定する数値は aop と同じです |
+| AOP Parameters | aop(%1) | x | - | Displays the name and value of original parameters. <br> The number **x** is the original parameter ID. |
+| Base AOP Parameters | aopbase(%1) | x | - | Displays the name and base value of original parameters, excluding equipment and trait adjustments. <br> The number **x** is the same as for **aop**. |
+| [AOP Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | aopdiff(%1) | x | ○ | Displays the increase or decrease in original parameters due to equipment and traits. <br> The number **x** is the same as for **aop**. <br> Increases are displayed in green, decreases in red. |
+| [AOP Equipment Parameters](FTKR_CustomSimpleActorStatus_2.en.md#displaying-aop-equipment-parameters) | eaop(%1) | x | - | Displays the value of original parameters after equipment changes. <br> The number **x** is the same as for **aop**. |
 
+#### Actor-Specific Special 2
 
-#### アクター用特殊2
+The following codes require the [FTKR_CSS_ShopStatus plugin](FTKR_CSS_ShopStatus.en.md). <br>
+These codes have been standard since v3.4.0 of FTKR_CustomSimpleActorStatus.
 
-以下のコードを使用するためには、[FTKR_CSS_ShopStatusプラグイン](FTKR_CSS_ShopStatus.ja.md)が必要です。<br>
-FTKR_CustomSimpleActorStatus の v3.4.0 以降から標準実装。
-
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| [装備パラメータ(差分)](FTKR_CustomSimpleActorStatus_2.ja.md#パラメータの差分表示) | ediff(%1) | x | ○ | 装備変更後の攻撃力や防御力等の通常能力の装備や特徴による増減値を表示します <br> x に指定する数値は eparam と同じです<br>増加値は緑、減少値は赤で表示します |
-| 装備追加能力値(差分) | exdiff(%1) | x | ○ | 装備変更後の命中率や回避率等の追加能力の装備や特徴による増減値を表示します <br> x に指定する数値は exparam と同じです<br>増加値は緑、減少値は赤で表示します |
-| 装備特殊能力値(差分) | esdiff(%1) | x | ○ | 装備変更後の狙われ率や防御効果率等の特殊能力の装備や特徴による増減値を表示します <br> x に指定する数値は esparam と同じです<br>増加値は緑、減少値は赤で表示します |
-| [ＡＯＰ装備パラメータ(差分)](FTKR_CustomSimpleActorStatus_2.ja.md#パラメータの差分表示) | eaopdiff(%1) | x | ○ | 装備変更後のオリジナルパラメータの装備や特徴による増減値を表示します <br> x に指定する数値は aop と同じです<br>増加値は緑、減少値は赤で表示します |
+| [Equipment Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | ediff(%1) | x | ○ | Displays the increase or decrease in basic parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **eparam**. <br> Increases are displayed in green, decreases in red. |
+| Equipment Additional Parameter Differences | exdiff(%1) | x | ○ | Displays the increase or decrease in additional parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **exparam**. <br> Increases are displayed in green, decreases in red. |
+| Equipment Special Parameter Differences | esdiff(%1) | x | ○ | Displays the increase or decrease in special parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **esparam**. <br> Increases are displayed in green, decreases in red. |
+| [AOP Equipment Parameter Differences](FTKR_CustomSimpleActorStatus_2.en.md#displaying-parameter-differences) | eaopdiff(%1) | x | ○ | Displays the increase or decrease in original parameters due to equipment and traits after equipment changes. <br> The number **x** is the same as for **aop**. <br> Increases are displayed in green, decreases in red. |
 
-#### アクター用特殊3
+#### Actor-Specific Special 3
 
-以下のコードを使用するためには、[FTKR_CSS_CustomizeBattleResultsプラグイン](FTKR_CSS_CustomizeBattleResults.ja.md)が必要です。
+The following codes require the [FTKR_CSS_CustomizeBattleResults plugin](FTKR_CSS_CustomizeBattleResults.en.md).
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| メッセージ２ | message2 | - | ○ | messageコードの表示内容に加えて、レベルアップ時のスキル習得のメッセージを表示します<br>表示に２行必要です |
+| Message 2 | message2 | - | ○ | Displays the content of the **message** code along with a message for skill acquisition upon level-up. <br> Requires 2 lines for display. |
 
-#### アクター用特殊4
+#### Actor-Specific Special 4
 
-以下のコードを使用するためには、[FTKR_SkillTreeSystemプラグイン](FTKR_SkillTreeSystem.ja.md)が必要です。
+The following codes require the [FTKR_SkillTreeSystem plugin](FTKR_SkillTreeSystem.en.md).
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| スキルポイント | sp | - | - | アクターのスキルポイントを表示します |
+| Skill Points | sp | - | - | Displays the actor's skill points. |
 
-#### アクター用特殊5
+#### Actor-Specific Special 5
 
-以下のコードを使用するためには、[FTKR_AlternatingTurnBattleプラグイン](FTKR_AlternatingTurnBattle.ja.md)が必要です。
+The following codes require the [FTKR_AlternatingTurnBattle plugin](FTKR_AlternatingTurnBattle.en.md).
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| 行動回数 | actc | - | - | アクターの行動回数を表示します |
-| アクションポイント | actp | - | - | パーティーのアクションポイントを表示します |
+| Action Count | actc | - | - | Displays the actor's action count. |
+| Action Points | actp | - | - | Displays the party's action points. |
 
-### 汎用コード
+### General Codes
 
-以下のコードは、アクター以外のパラメータを表示します。
+The following codes display parameters for entities other than actors.
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| テキスト | text(%1) | x | ○ | 文字列 x を表示します<br>x はパラメータの参照コードを入力することが可能です<br>text($dataItems[1].name) で、アイテムID1の名前を表示 |
-| JS計算式 | eval(%1) | x | - | 文字列 x をJS関数のeval()で評価しその結果を数値で表示します |
-| JS計算式 | streval(%1) | x | - | 文字列 x をJS関数のeval()で評価しその結果を文字列で表示します |
-| 横線を引く | line | - | - | 横線を引きます |
-| マップ表示名 | mapname | - | - | 現在マップの表示名を表示します |
+| Text | text(%1) | x | ○ | Displays the string **x**. <br> **x** can be a parameter reference code. <br> For example, `text($dataItems[1].name)` displays the name of item ID 1. |
+| JS Expression | eval(%1) | x | - | Evaluates the string **x** using the JS function `eval()` and displays the result as a number. |
+| JS String Expression | streval(%1) | x | - | Evaluates the string **x** using the JS function `eval()` and displays the result as a string. |
+| Draw Horizontal Line | line | - | - | Draws a horizontal line. |
+| Map Display Name | mapname | - | - | Displays the current map's display name. |
 
-### アイテム用コード
+### Item-Specific Codes
 
-以下のコードは、アクターではなくアイテムのパラメータを表示します。<br>
-ここでのアイテムとは、武器や防具、スキルも含みます。<br>
-アイテムデータを参照しているウィンドウで使用可能です。(例：ショップ画面)
+The following codes display parameters for items rather than actors. <br>
+Items here include weapons, armor, and skills. <br>
+These codes can be used in windows that reference item data (e.g., shop screen).
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| アイテム名 | iname | - | - | アイテム名を表示します |
-| アイテムアイコン | iicon | - | - | アイテムに設定したアイコンを表示します |
-| アイテム説明 | idesc | - | ○ | アイテムに設定した説明文を2行を使って表示します |
-| アイテムタイプ | itype | - | - | アイテムタイプを表示します |
-| アイテム装備タイプ | ietype | - | - | アイテムの装備タイプを表示します(武器、防具のみ) |
-| アイテム範囲 | iscope | - | - | アイテムの範囲を表示します(アイテム、スキルのみ) |
-| アイテム属性 | ielement | - | - | アイテムの属性を表示します(アイテム、スキルのみ) |
-| アイテムパラメータ | iparam(%1) | x | - | 文字列 x のプロパティのデータを表示します |
-| アイテムカスタム画像 | iimage(%1) | x | - | アイテムに設定したカスタム画像ID x を表示します |
-| アイテム所持数 | inumber | - | - | アイテムの所持数を表示します(アイテム、武器、防具のみ) |
+| Item Name | iname | - | - | Displays the item's name. |
+| Item Icon | iicon | - | - | Displays the item's icon. |
+| Item Description | idesc | - | ○ | Displays the item's description using 2 lines. |
+| Item Type | itype | - | - | Displays the item's type. |
+| Item Equipment Type | ietype | - | - | Displays the item's equipment type (for weapons and armor only). |
+| Item Scope | iscope | - | - | Displays the item's scope (for items and skills only). |
+| Item Element | ielement | - | - | Displays the item's element (for items and skills only). |
+| Item Parameter | iparam(%1) | x | - | Displays the data of the property specified by the string **x**. |
+| Item Custom Image | iimage(%1) | x | - | Displays the custom image ID **x** set for the item. |
+| Item Quantity | inumber | - | - | Displays the quantity of the item (for items, weapons, and armor only). |
 
-### アイテム用特殊コード
+### Item-Specific Special Codes
 
-以下のコードを使用するためには、[FTKR_STS_CustomSkillStatusプラグイン](FTKR_STS_CustomSkillStatus.ja.md)が必要です。<br>
-これらのコードは、スキルツリーウィンドウでのみ使用可能です。
+The following codes require the [FTKR_STS_CustomSkillStatus plugin](FTKR_STS_CustomSkillStatus.en.md). <br>
+These codes can only be used in the skill tree window.
 
-| ステータス名 | text | value | 制御文字 |説明 |
+| Status Name | text | value | Control Char | Description |
 | ----------- | ----- | ---- | ---- | ---- |
-| スキル習得コスト | istscost(%1) | x | - | スキルツリー上でスキルの習得コストを表示します<br>x はコスト番号を指定します<br>複数コストを設定した場合にメモ欄の上から0,1,2...と数えます |
-| スキル習得回数 | istscount | - | - | スキルツリー上でスキルの習得回数を表示します |
+| Skill Acquisition Cost | istscost(%1) | x | - | Displays the skill acquisition cost in the skill tree. <br> **x** specifies the cost number. <br> If multiple costs are set, they are counted from the top of the note field as 0, 1, 2, etc. |
+| Skill Acquisition Count | istscount | - | - | Displays the number of times the skill has been acquired in the skill tree. |
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-# プラグインの更新履歴
+# Plugin Update History
 
-| バージョン | 公開日 | 更新内容 |
+| Version | Release Date | Update Details |
 | --- | --- | --- |
-| [ver3.5.3](FTKR_CustomSimpleActorStatus.js) | 2019/05/12 | アイテムの所持数を表示するコード(numItem)を追加<br>装備品の表示コード(equip(%1))に、ショップ画面用の専用処理を追加 |
-| ver3.5.2 | 2019/04/14 | 特殊能力値(xparam)と追加能力値(sparam)を表示するコード他を追加 |
-| ver3.5.1 | 2019/03/05 | 拡張プラグインのパラメータ"statusList"の"value"の値を正しく読み取れない不具合を修正<br>選択中の装備品を装備できない時に特定も文字を表示させるパラメータ notequip を追加。※装備画面とショップ画面で使用可能 |
-| ver3.5.0 | 2018/12/29 | セーブしたウィンドウ設定を変更するプラグインコマンドを追加(FTKR_CSS_BattleStatus) |
-| ver3.4.7 | 2018/12/27 | FTKR_CSS_ShopStatus v2.2.2 の不具合修正対応<br>FTKR_OriginalSceneWindow でアイテムデータ画像が表示できない不具合対応 |
-| ver3.4.6 | 2018/12/15 | カスタムパラメータとカスタムゲージの表示処理を見直し<br>プラグインコマンドの判定処理を見直し |
-| ver3.4.5 | 2018/12/13 | code(x)の形のパラメータの判定時に必ずeval()で評価していた処理を見直し |
-| ver3.4.4 | 2018/12/02 | カスタム画像で、存在しない画像IDを指定した場合にエラーになる不具合を修正 |
-| ver3.4.3 | 2018/11/03 | ediff(x)、aopdiff(x)、ediffaop(x)の表示内容の設定を、pdiff(x)から独立 |
-| ver3.4.2 | 2018/10/28 | オリジナルパラメータおよびオリジナルゲージの数値が、一部のシーンで正常に表示できない不具合を修正 |
-| ver3.4.1 | 2018/10/11 | パラメータの差分表示に制御文字を無効にする機能を追加<br>パラメータの差分表示で 0 の場合に表示しないように変更 |
-| ver3.4.0 | 2018/10/10 | ediff(x)およびediffaop(x)のコードをFTKR_CSS_ShopStatusから移動 |
-| ver3.3.4 | 2018/09/29 | ステータスコードに、AOPパラメータ表示用のコードを追加 |
-| ver3.3.3 | 2018/09/28 | ステータスコードに、パラメータ表示用のコードを追加 |
-| ver3.3.2 | 2018/09/19 | ステータスコードに、アイテム用のコードを追加 |
-| ver3.3.1 | 2018/09/19 | 戦闘不能時に、ステートアイコンを表示しない不具合を修正 |
-| ver3.3.0 | 2018/09/15 | ステータスコードに、アイテム用のコードを追加<br>ステータスアイコン同士間の余白サイズを設定する機能を追加<br>ステータスアイコンを高さ幅が不足しても最低１つは表示させるように変更<br>プラグインパラメータ Enable Auto Scale を有効にした場合に、表示幅が小さい場合でもサイズ調整するように変更 |
-| ver3.2.0 | 2018/09/11| FTKR_GDM_WindowEditor.js 用の記述を修正 |
-| ver3.1.1 | 2018/09/09| GraphicalDesignMode.js 用の記述を削除 |
-| ver3.1.0 | 2018/08/30| 拡張プラグインのプラグインパラメータで表示するステータスをリストで選択できる機能を追加 |
-| ver3.0.2 | 2018/08/25| 拡張プラグインで、余白と背景透明度を 0 に設定した場合に、設定が無効になる不具合を修正 |
-| ver3.0.1 | 2018/08/20| 拡張プラグインでステータスウィンドウの設定を有効にした場合にエラーになる不具合を修正 |
-| ver3.0.0 | 2018/08/19| ステータスの表示とパラメータの入力に、ステータスごとの表示位置指定方式を採用<br>FTKR_GDM_WindowEditor対応版に修正<br>顔画像のサイズを調整する機能を追加 |
-| [ver2.7.2](archive/FTKR_CustomSimpleActorStatus_2.7.2.js) | 2018/08/18| 拡張プラグイン使用時にステートアイコンが表示されない不具合を修正 |
-| ver2.7.1 | 2018/08/17| バトルシーンでステータスウィンドウが非表示でも、ステートアイコンが表示される不具合を修正 |
-| ver2.7.0 | 2018/03/17| カスタム画像をゲーム中に変更するプラグインコマンドを追加 |
-| ver2.6.3 | 2018/03/12| 顔画像やカスタム画像の表示透過度の判定部を関数として独立<br>コード処理部にアクターが設定されていない場合の例外処理を追加 |
-| ver2.6.2 | 2018/03/11| 角括弧で設定したコードが正しく表示されない不具合を修正<br>デザインモード中にstateコードを変更した際に、ステートアイコンの表示が一部更新されない不具合を修正 |
-| ver2.6.1 | 2018/01/07| 顔画像、歩行キャラ、SVキャラのX座標方向の寄せ表示部分を関数として独立 |
-| ver2.6.0 | 2017/11/18| FTKR_CSS_***Status系の拡張プラグインをGraphicalDesignMode.jsに対応する処理を追加 |
-| ver2.5.1 | 2017/11/08| FTKR_OriginalSceneWindow.jsで生成したウィンドウが有る場合にシーン開始時にエラーになる不具合を修正 |
-| ver2.5.0 | 2017/11/08| 横線を表示するコードを追加<br>GraphicalDesignMode.jsとFTKR_CSS_GDM.jsにより、デザインモード中にゲーム内でレイアウトを変更する機能を追加 |
-| ver2.4.3 | 2017/11/02| 装備画面でフリーズする不具合を修正 |
-| ver2.4.2 | 2017/11/01| カスタムパラメータとカスタムゲージで、名前が表示されない不具合を修正<br>装備のパラメータが表示されない不具合を修正 |
-| ver2.4.1 | 2017/10/16 | カスタムパラメータとカスタムゲージで、制御文字を使用した時に、表示位置がずれる場合がある不具合を修正 |
-| ver2.4.0 | 2017/10/16 | カスタムゲージで、現在値および最大値に文字列を表示できるように変更 |
-| ver2.3.0 | 2017/07/23 | 表示コードの判定部の記述を見直し<br>括弧で数値を指定する表示コードに対して、数値ではなくスクリプトで指定できるように修正<br>FTKR_AddOriginalParametersで作成したオリジナルパラメータの装備パラメータを表示するコード「eaop(x)」を追加 |
-| ver2.2.0 | 2017/06/20 | テキストコードに、JS計算式の評価処理を追加<br>JS計算式の評価コードで、文字列のまま表示する機能を追加 |
-| ver2.1.0 | 2017/06/19 | カスタム画像の設定仕様を変更<br>カスタム画像を複数設定できる機能を追加 |
-| ver2.0.0 | 2017/06/18 | メニュー画面のレイアウト変更機能を削除 |
-| [ver1.8.0](archive/FTKR_CustomSimpleActorStatus_1.8.0.js) | 2017/06/17 | カスタムパラメータに単位を表示する機能を追加 |
-| ver1.7.6 | 2017/06/10 | YEP_BuffsStatesCore.jsと組み合わせた時にステートカウントの表示が正しく更新されない不具合を修正 |
-| ver1.7.5 | 2017/06/10 | テキストコードに制御文字を入力すると、正しく表示できない不具合を修正 |
-| ver1.7.4 | 2017/06/09 | YEP_BuffsStatesCore.jsに対応 |
-| ver1.7.3 | 2017/06/08 | ステートアイコンの表示処理をMVデフォルトに戻す機能を追加 |
-| ver1.7.2 | 2017/06/07 | 波括弧による描画エリアの拡張が正しく機能しない不具合を修正<br>eval()によるJS計算結果を表示するコードを追加<br>レベルアップメッセージを表示するコードを追加 |
-| ver1.7.1 | 2017/06/05 | 歩行キャラが正しく表示されない不具合を修正<br>歩行キャラの向きをマップ上のプレイヤーに合わせる機能を追加<br>SVキャラのモーションを無効にする機能を追加<br>カスタム画像を表示する位置を調整する機能を追加 |
-| ver1.7.0 | 2017/06/02 | アクター毎に個別に設定できるカスタムゲージを追加<br>クラス毎に個別に設定できるカスタムゲージを追加<br>プラグインパラメータEnabled Skill Statusを無効にした場合にスキル画面のステータス欄が表示しない不具合を修正 |
-| ver1.6.0 | 2017/06/01 | カスタムゲージの表示内容の調整機能を見直し<br>カスタムゲージのゲージバーを非表示にする機能を追加<br>カスタムゲージに現在値と最大値の替わりに指定した値を設定する機能を追加 |
-| ver1.5.3 | 2017/05/13 | 装備画面で使用可能なパラメータ表示コード'eparam'を追加 |
-| ver1.5.2 | 2017/05/12 | アクターを横に並べたときに描画エリアを拡張すると、隣のアクターの表示エリアにも拡張される不具合を修正<br>画像の表示位置の調整機能を追加 |
-| ver1.5.1 | 2017/05/11 | ステータスウィンドウに表示できる人数よりもパーティーが少ない場合にエラーになる不具合を修正 |
-| ver1.5.0 | 2017/05/10 | FTKR_FacialImageDifference.jsに対応 |
-| [ver1.4.4](/archive/FTKR_CustomSimpleActorStatus_1.4.4.js) | 2017/05/08 | メニュー画面のアクターのスプライトが正しく更新されない不具合を修正 |
-| ver1.4.3 | 2017/05/06 | アクターを横に並べた時に、顔画像が正しく表示されない不具合を修正<br>縦のカーソル間隔を設定する機能を追加 |
-| ver1.4.2 | 2017/05/04 | カスタムパラメータとカスタムゲージにアクターのセルフ変数を適用 |
-| ver1.4.1 | 2017/04/25 | 逃走で戦闘終了するとSVキャラの表示位置が移動する不具合を修正 |
-| ver1.4.0 | 2017/04/21 | メニュー画面以外の表示変更機能を拡張プラグインとして分離<br>顔画像の表示仕様を変更<br>カスタム画像のタグの仕様を変更<br>メニュー画面の簡易ステータスウィンドウの設定変更機能を追加 |
-| [ver1.3.1](/archive/FTKR_CustomSimpleActorStatus_1.3.1.js) | 2017/04/21 | FTKR_ExSvMotion.jsに対応 |
-| ver1.3.0 | 2017/04/19 | ステートアイコンの表示仕様を変更 |
-| [ver1.2.5](/archive/FTKR_CustomSimpleActorStatus_1.2.5.js) | 2017/04/15 | ステートアイコンの表示位置を微調整 <br> 行の高さに合わせてステートアイコンのサイズを調整する機能を追加 |
-| ver1.2.4 | 2017/04/12 | 顔画像の拡大縮小処理修正 |
-| ver1.2.3 | 2017/04/11 | ヘルプ修正 |
-| ver1.2.2 | 2017/04/11 | 機能追加、GitHubで公開開始 |
-| ver1.2.1 | 2017/04/01 | 機能削除、機能追加、[ツクマテ](http://tm.lucky-duet.com/viewtopic.php?f=5&t=3305)で公開 |
-| ver1.0.0 | 2017/03/09 | 初版作成、[ツクマテ](http://tm.lucky-duet.com/viewtopic.php?f=5&t=3305)で公開 |
+| [ver3.5.3](FTKR_CustomSimpleActorStatus.js) | 2019/05/12 | Added code to display item quantity (numItem). <br> Added special processing for the shop screen to the equipment display code (equip(%1)). |
+| ver3.5.2 | 2019/04/14 | Added codes to display special parameters (xparam) and additional parameters (sparam). |
+| ver3.5.1 | 2019/03/05 | Fixed a bug where the "value" parameter in the extension plugin's "statusList" was not read correctly. <br> Added the **notequip** parameter to display specific text when the selected equipment cannot be equipped. (Can be used in the equipment and shop screens.) |
+| ver3.5.0 | 2018/12/29 | Added a plugin command to change saved window settings (FTKR_CSS_BattleStatus). |
+| ver3.4.7 | 2018/12/27 | Fixed a bug in FTKR_CSS_ShopStatus v2.2.2. <br> Fixed a bug where item data images were not displayed in FTKR_OriginalSceneWindow. |
+| ver3.4.6 | 2018/12/15 | Revised the display processing for custom parameters and custom gauges. <br> Revised the judgment processing for plugin commands. |
+| ver3.4.5 | 2018/12/13 | Revised the processing to avoid always evaluating code(x) parameters with `eval()`. |
+| ver3.4.4 | 2018/12/02 | Fixed a bug where specifying a non-existent image ID in custom images caused an error. |
+| ver3.4.3 | 2018/11/03 | Separated the display settings for **ediff(x)**, **aopdiff(x)**, and **ediffaop(x)** from **pdiff(x)**. |
+| ver3.4.2 | 2018/10/28 | Fixed a bug where original parameters and original gauge values were not displayed correctly in some scenes. |
+| ver3.4.1 | 2018/10/11 | Added a feature to disable control characters in parameter difference displays. <br> Changed parameter difference displays to hide values of 0. |
+| ver3.4.0 | 2018/10/10 | Moved **ediff(x)** and **ediffaop(x)** codes from FTKR_CSS_ShopStatus. |
+| ver3.3.4 | 2018/09/29 | Added codes for displaying AOP parameters. |
+| ver3.3.3 | 2018/09/28 | Added codes for displaying parameters. |
+| ver3.3.2 | 2018/09/19 | Added item-specific codes. |
+| ver3.3.1 | 2018/09/19 | Fixed a bug where state icons were not displayed when the actor was incapacitated. |
+| ver3.3.0 | 2018/09/15 | Added item-specific codes. <br> Added a feature to set the margin between state icons. <br> Changed state icons to display at least one icon even if the height or width is insufficient. <br> Changed the size adjustment to work even when the display width is small if the plugin parameter **Enable Auto Scale** is enabled. |
+| ver3.2.0 | 2018/09/11 | Revised descriptions for FTKR_GDM_WindowEditor.js. |
+| ver3.1.1 | 2018/09/09 | Removed descriptions for GraphicalDesignMode.js. |
+| ver3.1.0 | 2018/08/30 | Added a feature to select displayable statuses in a list in the extension plugin's parameters. |
+| ver3.0.2 | 2018/08/25 | Fixed a bug where settings were invalidated when margin and background opacity were set to 0 in the extension plugin. |
+| ver3.0.1 | 2018/08/20 | Fixed a bug where enabling status window settings in the extension plugin caused errors. |
+| ver3.0.0 | 2018/08/19 | Adopted a per-status display position specification method for status display and parameter input. <br> Revised for compatibility with FTKR_GDM_WindowEditor. <br> Added a feature to adjust the size of face images. |
+| [ver2.7.2](archive/FTKR_CustomSimpleActorStatus_2.7.2.js) | 2018/08/18 | Fixed a bug where state icons were not displayed when using the extension plugin. |
+| ver2.7.1 | 2018/08/17 | Fixed a bug where state icons were displayed even when the status window was hidden in the battle scene. |
+| ver2.7.0 | 2018/03/17 | Added a plugin command to change custom images during gameplay. |
+| ver2.6.3 | 2018/03/12 | Separated the opacity judgment for face images and custom images into a function. <br> Added exception handling for cases where no actor is set in the code processing section. |
+| ver2.6.2 | 2018/03/11 | Fixed a bug where codes set in square brackets were not displayed correctly. <br> Fixed a bug where state icon displays were not fully updated when changing the **state** code in design mode. |
+| ver2.6.1 | 2018/01/07 | Separated the X-coordinate alignment for face images, walking characters, and SV characters into a function. |
+| ver2.6.0 | 2017/11/18 | Added compatibility with GraphicalDesignMode.js for FTKR_CSS_***Status extension plugins. |
+| ver2.5.1 | 2017/11/08 | Fixed a bug where scenes would error on startup if a window created by FTKR_OriginalSceneWindow.js was present. |
+| ver2.5.0 | 2017/11/08 | Added a code to display horizontal lines. <br> Added a feature to change layouts in-game during design mode using GraphicalDesignMode.js and FTKR_CSS_GDM.js. |
+| ver2.4.3 | 2017/11/02 | Fixed a bug where the equipment screen would freeze. |
+| ver2.4.2 | 2017/11/01 | Fixed a bug where custom parameters and custom gauges did not display names. <br> Fixed a bug where equipment parameters were not displayed. |
+| ver2.4.1 | 2017/10/16 | Fixed a bug where the display position would shift when using control characters in custom parameters and custom gauges. |
+| ver2.4.0 | 2017/10/16 | Changed custom gauges to display strings for current and max values. |
+| ver2.3.0 | 2017/07/23 | Revised the judgment processing for display codes. <br> Allowed scripts to be specified instead of numbers for display codes with parentheses. <br> Added the **eaop(x)** code to display equipment parameters for original parameters created with FTKR_AddOriginalParameters. |
+| ver2.2.0 | 2017/06/20 | Added JS expression evaluation processing to the text code. <br> Added a feature to display JS expression evaluation results as strings. |
+| ver2.1.0 | 2017/06/19 | Changed the custom image setup specifications. <br> Added a feature to set multiple custom images. |
+| ver2.0.0 | 2017/06/18 | Removed the menu screen layout change feature. |
+| [ver1.8.0](archive/FTKR_CustomSimpleActorStatus_1.8.0.js) | 2017/06/17 | Added a feature to display units for custom parameters. |
+| ver1.7.6 | 2017/06/10 | Fixed a bug where state count displays were not updated correctly when combined with YEP_BuffsStatesCore.js. |
+| ver1.7.5 | 2017/06/10 | Fixed a bug where control characters in the text code were not displayed correctly. |
+| ver1.7.4 | 2017/06/09 | Added compatibility with YEP_BuffsStatesCore.js. |
+| ver1.7.3 | 2017/06/08 | Added a feature to revert state icon display processing to MV's default. |
+| ver1.7.2 | 2017/06/07 | Fixed a bug where curly braces did not correctly expand the drawing area. <br> Added a code to display JS calculation results using `eval()`. <br> Added a code to display level-up messages. |
+| ver1.7.1 | 2017/06/05 | Fixed a bug where walking characters were not displayed correctly. <br> Added a feature to align walking character directions with the map's player. <br> Added a feature to disable SV character motions. <br> Added a feature to adjust the position of custom images. |
+| ver1.7.0 | 2017/06/02 | Added actor-specific custom gauges. <br> Added class-specific custom gauges. <br> Fixed a bug where the skill screen's status section was not displayed when the plugin parameter **Enabled Skill Status** was disabled. |
+| ver1.6.0 | 2017/06/01 | Revised the adjustment features for custom gauge displays. <br> Added a feature to hide custom gauge bars. <br> Added a feature to set custom gauges to display specified values instead of current and max values. |
+| ver1.5.3 | 2017/05/13 | Added the **eparam** code to display parameters in the equipment screen. |
+| ver1.5.2 | 2017/05/12 | Fixed a bug where expanding the drawing area for horizontally aligned actors also expanded the display area of adjacent actors. <br> Added a feature to adjust image display positions. |
+| ver1.5.1 | 2017/05/11 | Fixed a bug where errors occurred if the party had fewer members than the status window could display. |
+| ver1.5.0 | 2017/05/10 | Added compatibility with FTKR_FacialImageDifference.js. |
+| [ver1.4.4](/archive/FTKR_CustomSimpleActorStatus_1.4.4.js) | 2017/05/08 | Fixed a bug where actor sprites in the menu screen were not updated correctly. |
+| ver1.4.3 | 2017/05/06 | Fixed a bug where face images were not displayed correctly when actors were aligned horizontally. <br> Added a feature to set vertical cursor spacing. |
+| ver1.4.2 | 2017/05/04 | Applied actor self-variables to custom parameters and custom gauges. |
+| ver1.4.1 | 2017/04/25 | Fixed a bug where SV character positions shifted after escaping from battle. |
+| ver1.4.0 | 2017/04/21 | Separated display change features for non-menu screens into extension plugins. <br> Changed the face image display specifications. <br> Changed the tag specifications for custom images. <br> Added a feature to change the settings of the menu screen's simple status window. |
+| [ver1.3.1](/archive/FTKR_CustomSimpleActorStatus_1.3.1.js) | 2017/04/21 | Added compatibility with FTKR_ExSvMotion.js. |
+| ver1.3.0 | 2017/04/19 | Changed the state icon display specifications. |
+| [ver1.2.5](/archive/FTKR_CustomSimpleActorStatus_1.2.5.js) | 2017/04/15 | Adjusted the display position of state icons. <br> Added a feature to adjust state icon sizes according to row height. |
+| ver1.2.4 | 2017/04/12 | Revised the scaling processing for face images. |
+| ver1.2.3 | 2017/04/11 | Revised the help section. |
+| ver1.2.2 | 2017/04/11 | Added features and started publishing on GitHub. |
+| ver1.2.1 | 2017/04/01 | Removed and added features, published on [Tukimate](http://tm.lucky-duet.com/viewtopic.php?f=5&t=3305). |
+| ver1.0.0 | 2017/03/09 | Initial version, published on [Tukimate](http://tm.lucky-duet.com/viewtopic.php?f=5&t=3305). |
 
-旧バージョンを使用する場合は、ファイル名のバージョン部分(FTKR_CustomSimpleActorStatus[_1.x.x].jsの[]部分)を削除してください。
+If using an older version, remove the version part from the file name (the part in brackets in FTKR_CustomSimpleActorStatus[_1.x.x].js).
 
-# 拡張プラグイン
+# Extension Plugins
 
-以下のプラグインを使用することで、本プラグインの機能を拡張できます。
+The following plugins can be used to extend the functionality of this plugin.
 
-* [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.ja.md) - メニュー画面のステータスレイアウトを変更できます
-* [FTKR_CSS_BattleStatus](FTKR_CSS_BattleStatus.ja.md) - バトル画面のステータスレイアウトを変更できます
-* [FTKR_CSS_DetailedStatus](FTKR_CSS_DetailedStatus.ja.md) - ステータス画面のステータスレイアウトを変更できます
-* [FTKR_CSS_EquipStatus](FTKR_CSS_EquipStatus.ja.md) - 装備画面のステータスレイアウトを変更できます
-* [FTKR_CSS_SkillStatus](FTKR_CSS_SkillStatus.ja.md) - スキル画面のステータスレイアウトを変更できます
-* [FTKR_CSS_CustomizeBattleResults](FTKR_CSS_CustomizeBattleResults.ja.md) - バトル終了時に戦績画面を表示します
-* [FTKR_CSS_ShopStatus](FTKR_CSS_ShopStatus.ja.md) - ショップ画面のステータスレイアウトを変更できます
+* [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.en.md) - Allows customization of the menu screen's status layout.
+* [FTKR_CSS_BattleStatus](FTKR_CSS_BattleStatus.en.md) - Allows customization of the battle screen's status layout.
+* [FTKR_CSS_DetailedStatus](FTKR_CSS_DetailedStatus.en.md) - Allows customization of the status screen's status layout.
+* [FTKR_CSS_EquipStatus](FTKR_CSS_EquipStatus.en.md) - Allows customization of the equipment screen's status layout.
+* [FTKR_CSS_SkillStatus](FTKR_CSS_SkillStatus.en.md) - Allows customization of the skill screen's status layout.
+* [FTKR_CSS_CustomizeBattleResults](FTKR_CSS_CustomizeBattleResults.en.md) - Displays a battle results screen after battle.
+* [FTKR_CSS_ShopStatus](FTKR_CSS_ShopStatus.en.md) - Allows customization of the shop screen's status layout.
 
-* [FTKR_AddOriginalParameters](FTKR_AddOriginalParameters.ja.md) - カスタムパラメータやカスタムゲージに使用可能なアクターのオリジナルパラメータを作成できます
-* [FTKR_ExSvMotion.js](FTKR_ExSvMotion.ja.md) - ステート付加時のモーションを追加・変更できます。
-* [FTKR_ItemSelfVariables.js](FTKR_ItemSelfVariables.ja.md) - カスタムパラメータやカスタムゲージに使用可能なアクターのセルフ変数を追加できます。
-* [FTKR_FTKR_FacialImageDifference.js](FTKR_FTKR_FacialImageDifference.ja.md) - アクターの状態に合わせて表示する顔画像を変更できます。
+* [FTKR_AddOriginalParameters](FTKR_AddOriginalParameters.en.md) - Allows creation of original parameters for actors, usable in custom parameters and custom gauges.
+* [FTKR_ExSvMotion.js](FTKR_ExSvMotion.en.md) - Adds or changes motions when states are applied.
+* [FTKR_ItemSelfVariables.js](FTKR_ItemSelfVariables.en.md) - Adds actor self-variables usable in custom parameters and custom gauges.
+* [FTKR_FTKR_FacialImageDifference.js](FTKR_FTKR_FacialImageDifference.en.md) - Changes face images based on the actor's state.
 
-# ライセンス
+# License
 
-本プラグインはMITライセンスのもとで公開しています。
+This plugin is released under the MIT License.
 
 [The MIT License (MIT)](https://opensource.org/licenses/mit-license.php)
 
 #
-[目次に戻る](#目次)
 
-[トップページに戻る](README.md)
+[Return to Table of Contents](#table-of-contents)
+
+[Return to Top Page](README.md)
