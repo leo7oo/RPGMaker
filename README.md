@@ -49,8 +49,8 @@ Number of plugins: 8
 
 | Plugin | Manual | Download | Update Date | Description |
 |:-----------|:-----------:|:-------------|:-------------|:-------------|
-| [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) | [Available](FTKR_CustomSimpleActorStatus.ja.md) | [v3.5.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CustomSimpleActorStatus.js) | 2019/05/12 | Changes status display - Main plugin |
-| [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) | [Available](FTKR_CSS_MenuStatus.ja.md) | [v2.1.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_MenuStatus.js) | 2018/12/13 | Changes status display in the menu screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
+| [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) | [Available](FTKR_CustomSimpleActorStatus.md) | [v3.5.3](https://raw.githubusercontent.com/leo7oo/RPGMaker/refs/heads/master/FTKR_CustomSimpleActorStatus.js) | 2019/05/12 | Changes status display - Main plugin |
+| [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) | [Available](FTKR_CSS_MenuStatus.md) | [v2.1.3](https://raw.githubusercontent.com/leo7oo/RPGMaker/refs/heads/master/FTKR_CSS_MenuStatus.js) | 2018/12/13 | Changes status display in the menu screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
 | [FTKR_CSS_BattleStatus](FTKR_CSS_BattleStatus.js) | [Available](FTKR_CSS_BattleStatus.ja.md) | [v2.2.0](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_BattleStatus.js) | 2018/12/29 | Changes status display in the battle screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
 | [FTKR_CSS_DetailedStatus](FTKR_CSS_DetailedStatus.js) | [Available](FTKR_CSS_DetailedStatus.ja.md) | [v2.1.4](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_DetailedStatus.js) | 2018/12/13 | Changes status display in the status screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
 | [FTKR_CSS_SkillStatus](FTKR_CSS_SkillStatus.js) | [Available](FTKR_CSS_SkillStatus.ja.md) | [v2.1.3](https://raw.githubusercontent.com/futokoro/RPGMaker/master/FTKR_CSS_SkillStatus.js) | 2018/12/13 | Changes status display in the skill screen<br>Requires:<br>[FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js) |
@@ -302,7 +302,7 @@ Number of plugins: 2
 
 # Other Notes
 
-* [Code List](Code_List.ja.md)
+* [Code List](Code_List.md)
 * [Analysis of RPG Maker MV's Battle System](battleSystem.md)
 
 # Prototype Repository
