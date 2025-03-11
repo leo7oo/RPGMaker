@@ -1,106 +1,104 @@
-[トップページに戻る](README.md)
+[Return to Top Page](README.md)
 
-# コードリスト
+# Code List
 
-プラグインパラメータやスクリプトで使用する各種コードの備忘録。
+A reference for various codes used in plugin parameters and scripts.
 
-## 目次
+## Table of Contents
 
-1. [パラメータ](#パラメータ)
-2. [モーション](#モーション)
-1. [HP回復について](#HP回復について)
+1. [Parameters](#parameters)
+2. [Motions](#motions)
+3. [About HP Recovery](#about-hp-recovery)
 
-## パラメータ
-主にダメージ計算式で使用。
-a.hp などのように表記する。
+## Parameters
+Mainly used in damage formulas.
+Expressed as `a.hp`, etc.
 
-| パラメータ名 | コード | 備考 |
+| Parameter Name | Code | Notes |
 | --- | --- | --- |
-| 現在HP | hp |  |
-| 現在MP | mp |  |
-| 現在TP | tp |  |
-| 現在LV | level |  |
-| 最大HP | mhp |  |
-| 最大MP | mmp |  |
-| 攻撃力 | atk |  |
-| 防御力 | def |  |
-| 魔法攻撃 | mat |  |
-| 魔法防御 | mdf |  |
-| 敏捷性 | agi |  |
-| 運 | luk |  |
-| 命中率 | hit |  |
-| 回避率 | eva |  |
-| 会心率 | cri |  |
-| 会心回避率 | cev |  |
-| 魔法回避率 | mev |  |
-| 魔法反射率 | mrf |  |
-| 反撃率 | cnt |  |
-| HP再生率 | hrg |  |
-| MP再生率 | mrg |  |
-| TP再生率 | trg |  |
-| 狙われ率 | tgr |  |
-| 防御効果率 | grd | 防御時のダメージ軽減率 |
-| 回復効果率 | rec | ダメージタイプおよび使用効果の「HP回復」「MP回復」の倍率 |
-| 薬の知識 | pha | 使用効果の「HP回復」「MP回復」の倍率 |
-| MP消費率 | mcr |  |
-| TPチャージ率 | tcr | 被ダメージ時やスキル使用時の得TPの倍率 |
-| 物理ダメージ率 | pdr | 命中タイプ「物理攻撃」のダメージ倍率<br>ダメージタイプの回復にも効果有り |
-| 魔法ダメージ率 | mdr | 命中タイプ「魔法攻撃」のダメージ倍率<br>ダメージタイプの回復にも効果有り |
-| 床ダメージ率 | fdr |  |
-| 経験獲得率 | exr |  |
+| Current HP | hp |  |
+| Current MP | mp |  |
+| Current TP | tp |  |
+| Current Level | level |  |
+| Max HP | mhp |  |
+| Max MP | mmp |  |
+| Attack Power | atk |  |
+| Defense Power | def |  |
+| Magic Attack | mat |  |
+| Magic Defense | mdf |  |
+| Agility | agi |  |
+| Luck | luk |  |
+| Hit Rate | hit |  |
+| Evasion Rate | eva |  |
+| Critical Rate | cri |  |
+| Critical Evasion Rate | cev |  |
+| Magic Evasion Rate | mev |  |
+| Magic Reflection Rate | mrf |  |
+| Counter Rate | cnt |  |
+| HP Regeneration Rate | hrg |  |
+| MP Regeneration Rate | mrg |  |
+| TP Regeneration Rate | trg |  |
+| Target Rate | tgr |  |
+| Guard Effect Rate | grd | Damage reduction rate when guarding |
+| Recovery Effect Rate | rec | Multiplier for damage type and "HP Recovery"/"MP Recovery" in effects |
+| Pharmacological Knowledge | pha | Multiplier for "HP Recovery"/"MP Recovery" in effects |
+| MP Cost Rate | mcr |  |
+| TP Charge Rate | tcr | Multiplier for TP gained when taking damage or using skills |
+| Physical Damage Rate | pdr | Multiplier for damage of "Physical Attack" hit type<br>Also affects recovery of damage type |
+| Magic Damage Rate | mdr | Multiplier for damage of "Magic Attack" hit type<br>Also affects recovery of damage type |
+| Floor Damage Rate | fdr |  |
+| Experience Gain Rate | exr |  |
 
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## モーション
+## Motions
 
-番号は、画像ファイル内の該当モーションの位置を示しています。<br>
-左上を 0番として、下に 1, 2,...と数えます。（横３枚で１セット）<br>
-0番の 1セット右が 6番です。
+The numbers indicate the position of the corresponding motion in the image file.<br>
+Starting from the top-left as 0, counting down as 1, 2,... (3 images per set).<br>
+The next set to the right of 0 is 6.
 
-ループの○×は、デフォルトでループするかどうかを示しています。
+The loop ○/× indicates whether it loops by default.
 
-| 番号 | モーション | コード | ループ | 備考 |
+| Number | Motion | Code | Loop | Notes |
 | --- | --- | --- | --- | --- |
-| 0 | 歩行 | walk | ○ |  |
-| 1 | 待機 | wait | ○ |  |
-| 2 | 詠唱 | chant | ○ |  |
-| 3 | 防御 | guard | ○ |  |
-| 4 | ダメージ | damage | × |  |
-| 5 | 回避 | evade | × |  |
-| 6 | 突き | thrust | × |  |
-| 7 | 払い | swing | × |  |
-| 8 | 飛び道具 | missile | × |  |
-| 9 | スキル使用 | skill | × |  |
-| 10 | SV魔法スキル使用 | spell | × |  |
-| 11 | アイテム使用 | item | × |  |
-| 12 | 逃走 | escape | ○ |  |
-| 13 | 勝利 | victory | ○ |  |
-| 14 | 瀕死 | dying | ○ |  |
-| 15 | 状態異常 | abnormal | ○ |  |
-| 16 | 睡眠 | sleep | ○ |  |
-| 17 | 戦闘不能 | dead | ○ |  |
+| 0 | Walk | walk | ○ |  |
+| 1 | Idle | wait | ○ |  |
+| 2 | Chant | chant | ○ |  |
+| 3 | Guard | guard | ○ |  |
+| 4 | Damage | damage | × |  |
+| 5 | Evade | evade | × |  |
+| 6 | Thrust | thrust | × |  |
+| 7 | Swing | swing | × |  |
+| 8 | Missile | missile | × |  |
+| 9 | Skill Use | skill | × |  |
+| 10 | SV Magic Skill Use | spell | × |  |
+| 11 | Item Use | item | × |  |
+| 12 | Escape | escape | ○ |  |
+| 13 | Victory | victory | ○ |  |
+| 14 | Dying | dying | ○ |  |
+| 15 | Abnormal State | abnormal | ○ |  |
+| 16 | Sleep | sleep | ○ |  |
+| 17 | Defeated | dead | ○ |  |
 
-#
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-## HP回復について
+## About HP Recovery
 
-スキルやアイテムでHPを回復させる場合に、ダメージタイプと使用効果の２通りあるが、以下の違いがある。<br>
-〇が影響あり、×が影響なし。
+When recovering HP with skills or items, there are two methods: damage type and effect. The following differences exist:<br>
+○ indicates an effect, × indicates no effect.
 
-|  | ダメージタイプ | 使用効果 | 備考 |
+|  | Damage Type | Effect | Notes |
 | --- | --- | --- | --- |
-| 属性有効度 | 〇 | × | 属性を設定した場合 |
-| 物理ダメージ率/魔法ダメージ率 | 〇 | × | 命中タイプを物理か魔法に設定した場合 |
-| 分散度 | 〇 | × |  |
-| 会心 | 〇 | × | 会心ありの設定の場合 |
-| 防御/防御効果率 | 〇 | × | 防御中の対象に使用した場合 |
-| 回復効果率 | 〇 | 〇 |  |
-| 薬の知識 | × | 〇(アイテムのみ) | スキルの場合は効果なし |
+| Elemental Effectiveness | ○ | × | When elements are set |
+| Physical Damage Rate/Magic Damage Rate | ○ | × | When hit type is set to physical or magic |
+| Variance | ○ | × |  |
+| Critical | ○ | × | When critical is enabled |
+| Guard/Guard Effect Rate | ○ | × | When used on a guarding target |
+| Recovery Effect Rate | ○ | ○ |  |
+| Pharmacological Knowledge | × | ○ (Items only) | No effect for skills |
 
-なお、HP回復の効果が発生するタイミングは、「ダメージタイプ→使用効果」の順番になる。
+Note that the timing of HP recovery effects occurs in the order of "Damage Type → Effect".
 
-#
-[目次に戻る](#目次)
+[Return to Table of Contents](#table-of-contents)
 
-[トップページに戻る](README.md)
+[Return to Top Page](README.md)
