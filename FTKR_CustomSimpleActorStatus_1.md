@@ -1,5 +1,5 @@
 [Return to Top Page](README.md)  
-[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#table-of-contents)
+[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 # Layout Settings
 
@@ -51,7 +51,7 @@ To add a new status, double-click on the empty space at the bottom of the list.
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n02_addParam.png)
 
-[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#table-of-contents)
+[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Setting `statusList` Parameters
 
@@ -71,7 +71,7 @@ You can also input scripts in the `value` field. Below is an example from FTKR_C
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n02_paramvalue_sprict.png)
 
-[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#table-of-contents)
+[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ### Setting the Display Position and Width
 
@@ -90,7 +90,7 @@ When using scripts, you can use the following constants:
 * `height`: Refers to the height of the displayable area within the window.
 * `line`: Refers to the height of one line.
 
-[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#table-of-contents)
+[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
 
 ## Other Settings
 
@@ -104,4 +104,4 @@ The spacing between horizontally aligned elements follows the value set in the p
 
 ![Image](image/FTKR_CustomSimpleActorStatus/n02_004.png)
 
-[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.ja.md#table-of-contents)
+[Return to Top](#layout-settings)　　　[Return to Table of Contents](FTKR_CustomSimpleActorStatus.md#table-of-contents)
