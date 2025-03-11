@@ -1,12 +1,12 @@
-//=============================================================================
-// メニュー画面のステータス表示を変更するプラグイン
+// =============================================================================
+// Plugin to modify the status display on the menu screen
 // FTKR_CSS_MenuStatus.js
-// プラグインNo : 47
-// 作成者     : フトコロ
-// 作成日     : 2017/06/18
-// 最終更新日 : 2018/12/13
-// バージョン : v2.1.3
-//=============================================================================
+// Plugin No : 47
+// Creator    : Futokoro
+// Created on : 2017/06/18
+// Last updated on : 2018/12/13
+// Version : v2.1.3
+// =============================================================================
 
 var Imported = Imported || {};
 Imported.FTKR_CSS_MS = true;
@@ -15,216 +15,221 @@ var FTKR = FTKR || {};
 FTKR.CSS = FTKR.CSS || {};
 FTKR.CSS.MS = FTKR.CSS.MS || {};
 
-//=============================================================================
+// =============================================================================
 /*:
- * @plugindesc v2.1.3 メニュー画面のステータス表示を変更するプラグイン
- * @author フトコロ
+ * @plugindesc v2.1.3 Plugin to modify the status display on the menu screen
+ * @author Futokoro
  *
- * @param --簡易ステータス表示--
+ * @param --Simple Status Display--
  * @default
  * 
  * @param statusList
- * @desc 表示するステータスとその位置を設定します。
+ * @desc Set the statuses to be displayed and their positions.
  * @type struct<status>[]
  * @default ["{\"text\":\"face\",\"x\":\"0\",\"y\":\"0\",\"width\":\"144\"}","{\"text\":\"name\",\"x\":\"162\",\"y\":\"0\",\"width\":\"150\"}","{\"text\":\"level\",\"x\":\"162\",\"y\":\"36\",\"width\":\"150\"}","{\"text\":\"state\",\"x\":\"162\",\"y\":\"72\",\"width\":\"150\"}","{\"text\":\"class\",\"value\":\"\",\"x\":\"342\",\"y\":\"0\",\"width\":\"198\"}","{\"text\":\"hp\",\"value\":\"\",\"x\":\"342\",\"y\":\"36\",\"width\":\"198\"}","{\"text\":\"mp\",\"value\":\"\",\"x\":\"342\",\"y\":\"72\",\"width\":\"198\"}"]
+ * @parent --Simple Status Display--
  * 
  * @param Actor Status Space In Text
- * @desc Text内で複数表示する場合の間隔を指定します。
+ * @desc Set the space between multiple status displays within the text.
  * @default 5
+ * @parent --Simple Status Display--
  * 
- * @param --ステータスウィンドウ設定--
+ * @param --Status Window Settings--
  * @default
  * 
  * @param Enabled Custom Window
- * @desc ウィンドウのレイアウト変更機能を使うか。
- * 1 - 有効にする, 0 - 無効にする
+ * @desc Whether to use the window layout change feature.
+ * 1 - Enable, 0 - Disable
  * @default 0
+ * @parent --Status Window Settings--
  * 
  * @param Number Max Cols
- * @desc アクターを横に並べる数：デフォルト 1
+ * @desc The number of actors to display horizontally: default 1
  * @default 1
+ * @parent --Status Window Settings--
  * 
  * @param Cursor Line Number
- * @desc カーソル高さの行数：デフォルト 4
+ * @desc The number of lines for the cursor height: default 4
  * @default 4
+ * @parent --Status Window Settings--
  * 
  * @param Cursor Height Space
- * @desc 縦のカーソル間隔：デフォルト 0
+ * @desc The vertical space between cursors: default 0
  * @default 0
+ * @parent --Status Window Settings--
  * 
  * @param Font Size
- * @desc フォントサイズ：デフォルト 28
+ * @desc The font size: default 28
  * @default 28
+ * @parent --Status Window Settings--
  * 
  * @param Window Padding
- * @desc ウィンドウの周囲の余白：デフォルト 18
+ * @desc The padding around the window: default 18
  * @default 18
+ * @parent --Status Window Settings--
  * 
  * @param Window Line Height
- * @desc ウィンドウ内の1行の高さ：デフォルト 36
+ * @desc The height of one line inside the window: default 36
  * @default 36
+ * @parent --Status Window Settings--
  * 
  * @param Window Opacity
- * @desc ウィンドウ内の背景の透明度：デフォルト 192
+ * @desc The opacity of the window's background: default 192
  * @default 192
+ * @parent --Status Window Settings--
  * 
  * @param Hide Window Frame
- * @desc ウィンドウ枠を非表示にするか
- * 1 - 非表示にする、0 - 表示する
+ * @desc Whether to hide the window frame.
+ * 1 - Hide, 0 - Show
  * @default 0
+ * @parent --Status Window Settings--
  * 
  * @help
- *-----------------------------------------------------------------------------
- * 概要
- *-----------------------------------------------------------------------------
- * 本プラグインを実装することで、メニュー画面で表示するアクターの
- * ステータス表示のレイアウトを変更できます。
- * 
- * このプラグインには、FTKR_CustomSimpleActorStatus.js (v3.0.0以降)が必要です。
- * 
- * プラグインの使い方は、下のオンラインマニュアルページを見てください。
- * https://github.com/futokoro/RPGMaker/blob/master/FTKR_CSS_MenuStatus.ja.md
- * 
- * 
- *-----------------------------------------------------------------------------
- * 設定方法
- *-----------------------------------------------------------------------------
- * 1.「プラグインマネージャー(プラグイン管理)」に、本プラグインを追加して
- *    ください。
- * 
- * 2. 以下のプラグインと組み合わせる場合は、プラグイン管理の順番に注意してください。
- * 
- *    FTKR_CustomSimpleActorStatus.js (ステータス表示を変更)
- *    ↑このプラグインよりも上に登録↑
+ * -----------------------------------------------------------------------------
+ * Overview
+ * -----------------------------------------------------------------------------
+ * By implementing this plugin, you can change the layout of the actor's status
+ * display on the menu screen.
+ *
+ * This plugin requires FTKR_CustomSimpleActorStatus.js (v3.0.0 or later).
+ *
+ * To use the plugin, please refer to the online manual below:
+ * https://github.com/leo7oo/RPGMaker/blob/master/FTKR_CSS_MenuStatus.md
+ *
+ * -----------------------------------------------------------------------------
+ * Setup
+ * -----------------------------------------------------------------------------
+ * 1. Add this plugin to the "Plugin Manager".
+ *
+ * 2. When using with the following plugin, be sure to pay attention to the
+ *    order in the Plugin Manager:
+ *
+ *    FTKR_CustomSimpleActorStatus.js (Changes the status display)
+ *    ↑ Register this plugin above ↑
  *    FTKR_CSS_MenuStatus.js
- * 
- * 
- *-----------------------------------------------------------------------------
- * アクターの簡易ステータス表示の設定
- *-----------------------------------------------------------------------------
- * プラグインパラメータの設定により、メニュー画面で表示する
- * ステータスの表示レイアウトを変更することができます。
- * 
- * 各パラメータの意味と、設定方法は、
- * FTKR_CustomSimpleActorStatus.jsのヘルプを参照してください。
- * 
- * なお、歩行キャラ、SV戦闘キャラ、カスタムパラメータ、カスタムゲージの
- * 設定は、FTKR_CustomSimpleActorStatus.jsの設定に従います。
- * 
- * 
- *-----------------------------------------------------------------------------
- * メニュー画面のステータスウィンドウの設定
- *-----------------------------------------------------------------------------
- * 以下のプラグインパラメータで設定できます。
- * 
+ *
+ * -----------------------------------------------------------------------------
+ * Actor Simple Status Display Settings
+ * -----------------------------------------------------------------------------
+ * By adjusting the plugin parameters, you can modify the layout of the status
+ * display in the menu screen.
+ *
+ * The meanings and setup methods for each parameter can be found in
+ * FTKR_CustomSimpleActorStatus.js help.
+ *
+ * Note that settings for walking characters, SV battle characters, custom
+ * parameters, and custom gauges will follow the settings in
+ * FTKR_CustomSimpleActorStatus.js.
+ *
+ * -----------------------------------------------------------------------------
+ * Menu Screen Status Window Settings
+ * -----------------------------------------------------------------------------
+ * These settings can be modified with the following plugin parameters:
+ *
  * <Enabled Custom Window>
- *    :メニュー画面のウィンドウ変更機能を使うか指定します。
- *    :0 - 無効, 1 - 有効
- * 
+ *    : Specifies whether to use the menu window change feature.
+ *    : 0 - Disable, 1 - Enable
+ *
  * <Number Max Cols>
- *    :ウィンドウ内でアクターを横に並べる数を変更します。
- *    :デフォルトは 1 です。
- * 
+ *    : Change the number of actors to be displayed horizontally within the
+ *      window. The default is 1.
+ *
  * <Cursor Line Number>
- *    :カーソル(アクター１人分)の高さを何行分にするか設定します。
- *    :デフォルトは 4 です。
- * 
+ *    : Set how many lines high the cursor (one actor) should be. The default
+ *      is 4.
+ *
  * <Cursor Height Space>
- *    :縦のカーソル間隔を設定します。
- *    :デフォルトは 0 です。(単位はpixel)
- * 
+ *    : Set the vertical space between cursors. The default is 0 (unit is in
+ *      pixels).
+ *
  * <Font Size>
- *    :ウィンドウ内のフォントサイズを変更します。
- *    :デフォルトは 28 です。(単位はpixel)
- * 
+ *    : Change the font size inside the window. The default is 28 (unit is in
+ *      pixels).
+ *
  * <Window Padding>
- *    :ウィンドウの周囲の余白を変更します。
- *    :デフォルトは 18 です。(単位はpixel)
- * 
+ *    : Change the padding around the window. The default is 18 (unit is in
+ *      pixels).
+ *
  * <Window Line Height>
- *    :ウィンドウ内の1行の高さを変更します。
- *    :デフォルトは 36 です。(単位はpixel)
- * 
+ *    : Change the height of one line inside the window. The default is 36
+ *      (unit is in pixels).
+ *
  * <Window Opacity>
- *    :ウィンドウ内の背景の透明度を変更します。
- *    :デフォルトは 192 です。
- *    :0 - 透明、255 - 不透明
- * 
+ *    : Change the opacity of the window background. The default is 192.
+ *    : 0 - Transparent, 255 - Opaque
+ *
  * <Hide Window Frame>
- *    :ウィンドウ枠を非表示にするか指定します。
- *    :1 - 非表示にする、0 - 表示する
- *    :デフォルトは表示します。
- * 
- * 
- * ＜ウィンドウの高さ＞
- * ウィンドウの高さは、以下の計算式で算出します。
- *    [ウィンドウ高さ] ＝ [縦の行数] × [1行の高さ] + [余白のサイズ] × 2
- * 
- * 
- * ＜フォントサイズと行の高さ＞
- * 基本的に、下の大小関係になるように設定しましょう。
- *    フォントサイズ ＜ 1行の高さ
- * 
- * 
- * ＜ウィンドウを消す方法＞
- * 以下の設定にすると、ウィンドウ枠とウィンドウの背景が消えて
- * アクターのステータスだけを表示します。
- * 
- * <Window Opacity>     : 0
- * <Hide Window Frame>  : 1
- * 
- * 
- *-----------------------------------------------------------------------------
- * 本プラグインのライセンスについて(License)
- *-----------------------------------------------------------------------------
- * 本プラグインはMITライセンスのもとで公開しています。
+ *    : Specify whether to hide the window frame.
+ *    : 1 - Hide, 0 - Show
+ *    : The default is Show.
+ *
+ * <Window Height>
+ *    The window height is calculated with the following formula:
+ *    [Window Height] = [Number of Lines] × [Line Height] + [Padding Size] × 2
+ *
+ * <Font Size and Line Height>
+ *    It is recommended to configure the following relationship:
+ *    Font Size < Line Height
+ *
+ * <How to Remove the Window>
+ *    The window frame and background will disappear, displaying only the
+ *    actor's status, when the following settings are made:
+ *    <Window Opacity>     : 0
+ *    <Hide Window Frame>  : 1
+ *
+ * -----------------------------------------------------------------------------
+ * License Information for this Plugin
+ * -----------------------------------------------------------------------------
  * This plugin is released under the MIT License.
- * 
+ *
  * Copyright (c) 2017,2018 Futokoro
  * http://opensource.org/licenses/mit-license.php
- * 
- * 
- * プラグイン公開元
+ *
+ * Plugin Repository:
  * https://github.com/futokoro/RPGMaker/blob/master/README.md
  * 
- *-----------------------------------------------------------------------------
- * 変更来歴
- *-----------------------------------------------------------------------------
+ * -----------------------------------------------------------------------------
+*/
+
+/* ja:
+ * -----------------------------------------------------------------------------
+ * Changelog
+ * -----------------------------------------------------------------------------
  * 
- * v2.1.3 - 2018/12/13 : プラグインパラメータstatusListの初期値変更
+ * v2.1.3 - 2018/12/13 : Changed the default value of plugin parameter statusList
  * 
- * v2.1.2 - 2018/09/29 : 機能追加
- *    1. プラグインパラメータのリストで選択できる項目を追加。
+ * v2.1.2 - 2018/09/29 : Added features
+ *    1. Added selectable items to the plugin parameters list.
  * 
- * v2.1.1 - 2018/09/12 : 不要なプラグインパラメータを削除
+ * v2.1.1 - 2018/09/12 : Removed unnecessary plugin parameters
  * 
- * v2.1.0 - 2018/08/30 : 機能追加
- *    1. プラグインパラメータで表示するステータスをリストで選択できる機能を追加。
+ * v2.1.0 - 2018/08/30 : Added features
+ *    1. Added the ability to select statuses to display from a list in the plugin parameters.
  * 
- * v2.0.0 - 2018/08/19 : FTKR_CustomSimpleActorStatus v3.0.0 対応版に変更
+ * v2.0.0 - 2018/08/19 : Changed to be compatible with FTKR_CustomSimpleActorStatus v3.0.0
  * 
- * v1.1.0 - 2017/11/18 : 仕様変更
- *    1. FTKR_CustomSimpleActorStatus.js の v2.6.0に対応。
+ * v1.1.0 - 2017/11/18 : Changed specifications
+ *    1. Compatible with FTKR_CustomSimpleActorStatus.js v2.6.0
  * 
- * v1.0.0 - 2017/06/18 : 初版作成
- *    FTKR_CustomSimpleActorStatus.js v1.8.0 から分離
+ * v1.0.0 - 2017/06/18 : Initial release
+ *    Separated from FTKR_CustomSimpleActorStatus.js v1.8.0
  * 
  *-----------------------------------------------------------------------------
  */
 //=============================================================================
 /*~struct~status:
  * @param text
- * @desc 表示するステータスを選択
- * リストにない場合は、直接テキストで記述
+ * @desc Select the status to display.
+ * If it's not in the list, enter it directly as text.
  * @default 
  * @type select
- * @option 名前
+ * @option Name
  * @value name
- * @option 二つ名
+ * @option Nickname
  * @value nickname
- * @option 職業
+ * @option Class
  * @value class
- * @option レベル
+ * @option Level
  * @value level
  * @option HP
  * @value hp
@@ -232,97 +237,152 @@ FTKR.CSS.MS = FTKR.CSS.MS || {};
  * @value mp
  * @option TP
  * @value tp
- * @option 顔画像
+ * @option Face Image
  * @value face
- * @option 顔画像(サイズ指定)
+ * @option Face Image (Size Specified)
  * @value face(%1)
- * @option 歩行キャラ画像
+ * @option Walking Character Image
  * @value chara
- * @option SV戦闘キャラ画像
+ * @option SV Battle Character Image
  * @value sv
- * @option ステート(横)
+ * @option State (Horizontal)
  * @value state
- * @option ステート(縦)
+ * @option State (Vertical)
  * @value state2(%1)
- * @option プロフィール
+ * @option Profile
  * @value profile
- * @option 通常能力値
+ * @option Normal Ability Value
  * @value param(%1)
- * @option 通常能力値(素)
+ * @option Normal Ability Value (Base)
  * @value pbase(%1)
- * @option 通常能力値(増加分)
+ * @option Normal Ability Value (Increase)
  * @value pdiff(%1)
- * @option 装備
+ * @option Equipment
  * @value equip(%1)
- * @option 装備パラメータ
+ * @option Equipment Parameters
  * @value eparam(%1)
- * @option カスタムパラメータ
+ * @option Custom Parameters
  * @value custom(%1)
- * @option カスタムゲージ
+ * @option Custom Gauge
  * @value gauge(%1)
- * @option アクター別カスタムゲージ
+ * @option Actor Specific Custom Gauge
  * @value agauge(%1)
- * @option クラス別カスタムゲージ
+ * @option Class Specific Custom Gauge
  * @value cgauge(%1)
- * @option カスタム画像
+ * @option Custom Image
  * @value image
- * @option カスタム画像(登録ID)
+ * @option Custom Image (Registration ID)
  * @value image(%1)
- * @option メッセージ
+ * @option Message
  * @value message
- * @option テキスト
+ * @option Text
  * @value text(%1)
- * @option JS計算式(数値表示)
+ * @option JS Formula (Numeric Display)
  * @value eval(%1)
- * @option JS計算式(文字列表示)
+ * @option JS Formula (String Display)
  * @value streval(%1)
- * @option 横線
+ * @option Horizontal Line
  * @value line
- * @option AOP能力値
+ * @option AOP Ability Value
  * @value aop(%1)
- * @option AOP能力値(素)
+ * @option AOP Ability Value (Base)
  * @value aopbase(%1)
- * @option AOP能力値(増加分)
+ * @option AOP Ability Value (Increase)
  * @value aopdiff(%1)
- * @option AOP装備パラメータ
+ * @option AOP Equipment Parameters
  * @value eaop(%1)
- * @option アイテム名
+ * @option Item Name
  * @value iname
- * @option アイテムアイコン
+ * @option Item Icon
  * @value iicon
- * @option アイテム説明
+ * @option Item Description
  * @value idesc
- * @option アイテムタイプ
+ * @option Item Type
  * @value itype
- * @option アイテム装備タイプ
+ * @option Item Equipment Type
  * @value ietype
- * @option アイテム範囲
+ * @option Item Scope
  * @value iscope
- * @option アイテム属性
+ * @option Item Element
  * @value ielement
- * @option アイテム設定詳細
- * @value iparam(%1)
- * @option アイテムカスタム画像
- * @value iimage(%1)
- * @option マップ名
- * @value mapname
- *
- * @param value
- * @desc code(%1)の形式で設定するステータスの%1の内容を入力
- * @default 
+ * @option Item Settings Details
+ * @value idetail
+ * @option All Items
+ * @value allitems
+ * @option Item Special Effect
+ * @value iespec
+ * @option Item Cost
+ * @value icost
+ * @option Item Damage
+ * @value idamage
+ * @option Item Price
+ * @value iprice
+ * @option Item Rarity
+ * @value irarity
+ * @option Skill Name
+ * @value sname
+ * @option Skill Icon
+ * @value sicon
+ * @option Skill Description
+ * @value sdesc
+ * @option Skill Type
+ * @value stype
+ * @option Skill Element
+ * @value selement
+ * @option Skill Special Effect
+ * @value sspec
+ * @option Skill Cost
+ * @value scost
+ * @option Skill Damage
+ * @value sdamage
+ * @option Skill Price
+ * @value sprice
+ * @option Skill Rarity
+ * @value srarity
+ * @option All Skills
+ * @value allskills
+ * @option Ability Name
+ * @value pname
+ * @option Ability Description
+ * @value pdesc
+ * @option Ability Icon
+ * @value picon
+ * @option Ability Special Effect
+ * @value pspec
+ * @option Ability Cost
+ * @value pcost
+ * @option Ability Price
+ * @value pprice
+ * @option Ability Rarity
+ * @value prarity
+ * @option All Abilities
+ * @value allpabilities
+ * @option All Weapon Skills
+ * @value allwskills
+ * @option All Skill Categories
+ * @value allskillcategories
+ * @option All Weapon Types
+ * @value allwtypes
+ * @option All Equipment Categories
+ * @value allequipcategories
+ * @option All Types
+ * @value alltypes
  * 
  * @param x
- * @desc 表示するX座標
+ * @desc Set the position of the status display (x-axis).
  * @default 0
- *
+ * @type number
+ * 
  * @param y
- * @desc 表示するY座標
+ * @desc Set the position of the status display (y-axis).
  * @default 0
- *
+ * @type number
+ * 
  * @param width
- * @desc 表示する幅
- * @default 0
- *
+ * @desc Set the width of the status display area.
+ * @default 144
+ * @type number
+ * 
  */
 
 if (Imported.FTKR_CSS) (function() {
@@ -340,17 +400,17 @@ if (Imported.FTKR_CSS) (function() {
     };
 
     //=============================================================================
-    // プラグイン パラメータ
+    // Plugin Parameters
     //=============================================================================
     var parameters = PluginManager.parameters('FTKR_CSS_MenuStatus');
 
-    //簡易ステータスオブジェクト
+    // Simple Status Object
     FTKR.CSS.MS.simpleStatus = {
         statusList : paramParse(parameters['statusList']),
         spaceIn   :Number(parameters['Actor Status Space In Text'] || 0),
     };
 
-    //ウィンドウ設定オブジェクト
+    // Window Settings Object
     FTKR.CSS.MS.window = {
         enabled         :Number(parameters['Enabled Custom Window'] || 0),
         maxCols         :Number(parameters['Number Max Cols'] || 0),
@@ -365,7 +425,7 @@ if (Imported.FTKR_CSS) (function() {
 
     //=============================================================================
     // Window_MenuStatus
-    // メニュー画面のステータスウィンドウの表示クラス
+    // Display Class for the Status Window on the Menu Screen
     //=============================================================================
     Window_MenuStatus.prototype.standardCssLayout = function() {
         return FTKR.CSS.MS.window;
@@ -382,11 +442,11 @@ if (Imported.FTKR_CSS) (function() {
             _Window_MenuStatus_itemHeight.call(this);
     };
 
-    //書き換え
+    // Rewrite
     Window_MenuStatus.prototype.drawItemImage = function(index) {
     };
 
-    //書き換え
+    // Rewrite
     Window_MenuStatus.prototype.drawItemStatus = function(index) {
         var lss = this._lssStatus;
         var actor = $gameParty.members()[index];
@@ -394,7 +454,7 @@ if (Imported.FTKR_CSS) (function() {
         this.drawCssActorStatus(index, actor, rect.x, rect.y, rect.width, rect.height, lss);
     };
 
-    //書き換え
+    // Rewrite
     Window_MenuStatus.prototype.drawAllItems = function() {
         var topIndex = this.topIndex();
         for (var i = 0; i < this.maxPageItems(); i++) {
@@ -407,4 +467,4 @@ if (Imported.FTKR_CSS) (function() {
         }
     };
 
-}());//EOF
+}());// EOF
