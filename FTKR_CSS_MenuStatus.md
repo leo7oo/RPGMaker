@@ -1,4 +1,4 @@
-[Return to README page](README.md)
+[Return to README Page](README.md)
 
 # [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) Plugin
 
