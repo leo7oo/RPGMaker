@@ -354,12 +354,6 @@ When entering the code `image` or `image(x)`, an image set in the actor's note f
 
 Use the following tags to set the image:
 ```
-<CSS_画像:画像名>
-code
-</CSS_画像>
-```
-or
-```
 <CSS_IMAGE:imagename>
 code
 </CSS_IMAGE>
@@ -418,35 +412,34 @@ The set custom image can be changed during the game using the following plugin c
 ※[] are not used in actual input
 
 ```
-CSS_カスタム画像変更 [アクター または パーティー] [アクターID または パーティー順番] [カスタム画像ID] [画像名] [X座標] [Y座標] [幅] [高さ] [拡大率]
 CSS_CHANGE_CUSTOM_IMAGE [ACTOR or PARTY] [actorID or partyNumber] [customImageID] [imageName] [offsetX] [offsetY] [width] [height] [scale]
 ```
 
-`アクター または パーティー(ACTOR or PARTY)`<br>
+`ACTOR or PARTY`<br>
 Selects the method for specifying the target actor.<br>
 Enter one of the following strings.
 
-   `アクターID または パーティー順番(actorID or partyNumber)`<br>
+   `actorID or partyNumber`<br>
      Enter the actor ID or party number according to the method set above.<br>
        Note that the party number starts with 0 for the first character.<br>
        \v[n] can be used to specify a variable.
 
-   `カスタム画像ID(customImageID)`<br>
+   `customImageID`<br>
      Sets the custom image ID to change.<br>
        \v[n] can be used to specify a variable.
 
-   `画像名(imageName)`<br>
+   `imageName`<br>
      Sets the image file name as a string.<br>
        The image should be saved in the /img/pictures/ folder of the project.
 
 Note that this file is not included in the "Exclude unused files" deployment option.<br>
 Please take measures to avoid this, such as registering the image as a picture in an event.
 
-   `X座標(offsetX)`<br>
-   `Y座標(offsetY)`<br>
-   `幅(width)`<br>
-   `高さ(height)`<br>
-   `拡大率(scale)`<br>
+   `offsetX`<br>
+   `offsetY`<br>
+   `width`<br>
+   `height`<br>
+   `scale`<br>
      Changes the display settings of the image file.<br>
        Same as the settings in the actor's note field.<br>
        Enter -1 to leave unchanged.<br>
@@ -454,7 +447,7 @@ Please take measures to avoid this, such as registering the image as a picture i
 
 Example:
 ```
-◆Plugin Command: CSS_カスタム画像変更 アクター 1 0 Package1_2 -1 -1 -1 -1 50
+◆Plugin Command: CSS_CHANGE_CUSTOM_IMAGE 1 0 Package1_2 -1 -1 -1 -1 50
 ```
 This command changes the custom image ID 0 of actor ID 1 to /img/pictures/Package1_2.png, leaving the trimming size unchanged and setting the scaling to 50%.
 
@@ -471,12 +464,6 @@ Actors without a note field setting will display a blank.
 
 Use the following tags to set the gauge:
 ```
-<CSS_カスタム: x>
-code
-</CSS_カスタム>
-```
-or
-```
 <CSS_CUSTOM: x>
 code
 </CSS_CUSTOM>
@@ -486,7 +473,6 @@ The display width of the current and maximum values uses the custom gauge settin
 
 ### Tags Available in Code
 ```
-表示名: y
 NAME: y
 ```
 Sets the display name of the gauge.  
@@ -494,27 +480,23 @@ Control characters can be used in the display name.
 If no display name is set, the current and maximum values of the gauge will not be displayed.
 
 ```
-参照先: eval
 REFERENCES: eval
 ```
 Sets the reference for the gauge's value using an eval formula.  
 If this value is set, the current and maximum values will not be displayed.
 
 ```
-現在値: eval
 CURRENT: eval
 ```
 Sets the reference for the gauge's current value using an eval formula.
 
 ```
-最大値: eval
 MAX: eval
 ```
 Sets the reference for the gauge's maximum value using an eval formula.  
 The maximum value will not be displayed if the drawing area's width is insufficient.
 
 ```
-色: y1,y2
 COLOR: y1,y2
 ```
 Sets color1 to y1 and color2 to y2 for the gauge.  
