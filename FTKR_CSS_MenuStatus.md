@@ -1,4 +1,4 @@
-[Return to Top Page](README.md)
+[Return to Top Page](FTKR_CSS_MenuStatus.md)
 
 # [FTKR_CSS_MenuStatus](FTKR_CSS_MenuStatus.js) Plugin
 
