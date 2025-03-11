@@ -48,7 +48,7 @@ FTKR_CSS_MenuStatus.js
 The layout settings for the status screen in this plugin are the same as in [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.js).  
 The plugin parameter names are also the same.
 
-For setting instructions, please refer to the [manual](#FTKR_CustomSimpleActorStatus.md) of FTKR_CustomSimpleActorStatus.
+For setting instructions, please refer to the [manual](https://github.com/leo7oo/RPGMaker/blob/master/FTKR_CustomSimpleActorStatus.md) of FTKR_CustomSimpleActorStatus.
 
 [Return to Table of Contents](#table-of-contents)
 
