@@ -268,23 +268,23 @@ The following plugin commands can be used.
 
 ### Get Parameter (Maximum Value)
 ```
-AOP_パラメータ取得 ゲーム内変数ID アクター(x) コード名
-または
-AOP_パラメータ取得 ゲーム内変数ID パーティー(n) コード名
+AOP_get_Parameters 'game variable ID' actor(x) 'code'
+Or
+AOP_get_Parameters 'game variable ID' party(n) 'code'
 ```
 This retrieves the value of parameter (or 'code') for actor x, or for the character in the specified party position.
 
 Example Input:
 ```
-AOP_パラメータ取得 5 アクター(1) str
+AOP_get_Parameters 5 actor(1) str
 ```
 This assigns the value of actor ID 1's 'str' to game variable ID 5.
 
 ### Change Parameter (Maximum Value)
 ```
-AOP_パラメータ変更 アクター(x) コード名 演算方法 数値
-または
-AOP_パラメータ変更 パーティー(n) コード名 演算方法 数値
+AOP_set_Parameters actor(x) 'code' 'operation method' 'value'
+Or
+AOP_set_Parameters party(n) 'code' 'operation method' 'value'
 ```
 This changes the parameter (or 'code') of actor x or the specified party member based on the value and operation method.  
 Operation methods include:
@@ -292,7 +292,7 @@ Operation methods include:
 
 Example Input:
 ```
-AOP_パラメータ変更 アクター(1) str 代入 v[5]
+AOP_set_Parameters actor(1) str = v[5]
 ```
 This sets actor ID 1's 'str' to the value of game variable ID 5.
 
