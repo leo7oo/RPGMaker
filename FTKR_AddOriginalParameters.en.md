@@ -315,7 +315,7 @@ This sets actor ID 1's 'str' to the value of game variable ID 5.
 
 The following plugins extend the functionality of this plugin:
 
-* [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.ja.md) - Displays the original parameters set by this plugin on the actor's status screen.
+* [FTKR_CustomSimpleActorStatus](FTKR_CustomSimpleActorStatus.md) - Displays the original parameters set by this plugin on the actor's status screen.
 
 # License
 
